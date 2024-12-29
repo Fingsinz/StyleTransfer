@@ -1,7 +1,7 @@
 {
     "site_name": "Style Transfer",
     "site_slogon": "",
-    "site_root_url": "/",
+    "site_root_url": "/docs",
     "site_domain": "",
     "site_protocol": "https",
     "config_template_dir": "config",
