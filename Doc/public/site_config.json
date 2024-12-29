@@ -7,7 +7,8 @@
     "config_template_dir": "config",
     "route": {
         "docs": {
-            "/doc1/": "docs/doc1"
+            "/doc1/": "docs/doc1",
+            "/background/": "docs/background"
         },
         "pages": {
             "/": "pages/index"

@@ -6,11 +6,11 @@
             "alt": "logo",
             "url": ""
         },
-        "home_url": "/StyleTransfer/",
+        "home_url": "/",
         "items": [
             {
-                "url": "/doc1/",
-                "label": "Doc1",
+                "url": "/background/background.html",
+                "label": "课题背景",
                 "position": "left"
             }
         ]
