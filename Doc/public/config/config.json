@@ -9,7 +9,7 @@
         "home_url": "/",
         "items": [
             {
-                "url": "/background/background.html",
+                "url": "/background/",
                 "label": "课题背景",
                 "position": "left"
             }
