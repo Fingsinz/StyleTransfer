@@ -9,8 +9,8 @@
         "home_url": "/",
         "items": [
             {
-                "url": "/background/",
-                "label": "课题背景",
+                "url": "/document/",
+                "label": "文档材料",
                 "position": "left"
             }
         ]

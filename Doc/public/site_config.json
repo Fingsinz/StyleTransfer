@@ -8,7 +8,7 @@
     "route": {
         "docs": {
             "/doc1/": "docs/doc1",
-            "/background/": "docs/background"
+            "/document/": "docs/document"
         },
         "pages": {
             "/": "pages/index"
