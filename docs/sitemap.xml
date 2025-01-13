@@ -7,19 +7,19 @@
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/document/background.html</loc>
+            <loc>https:///StyleTransfer/supporting/background.html</loc>
             <lastmod>2024-01-08</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/document/expectation.html</loc>
+            <loc>https:///StyleTransfer/supporting/expectation.html</loc>
             <lastmod>2024-01-08</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/document/index.html</loc>
+            <loc>https:///StyleTransfer/supporting/index.html</loc>
             <lastmod>2024-01-08</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
