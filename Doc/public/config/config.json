@@ -1,7 +1,7 @@
 {
     "locale": "zh",
     "navbar": {
-        "title": "Style Transfer",
+        "title": "Style Transfer By Fingsinz",
         "logo": {
             "alt": "logo",
             "url": ""
@@ -9,8 +9,18 @@
         "home_url": "/",
         "items": [
             {
-                "url": "/document/",
-                "label": "文档材料",
+                "url": "/supporting/",
+                "label": "辅助材料",
+                "position": "left"
+            },
+            {
+                "url": "/",
+                "label": "文献学习 & 笔记(未完成)",
+                "position": "left"
+            },
+            {
+                "url": "/",
+                "label": "论文正文(未完成)",
                 "position": "left"
             }
         ]

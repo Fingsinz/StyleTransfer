@@ -8,7 +8,9 @@
     "route": {
         "docs": {
             "/doc1/": "docs/doc1",
-            "/document/": "docs/document"
+            "/supporting/": "docs/supporting",
+            "/paper/": "docs/paper",
+            "/ref/": "docs/ref"
         },
         "pages": {
             "/": "pages/index"

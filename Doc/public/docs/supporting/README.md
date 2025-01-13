@@ -1,7 +1,7 @@
 ---
-title: 研究文档材料
+title: 研究辅助材料
 keywords: Style Transfer
-desc: 图像风格迁移文档材料
+desc: 图像风格迁移辅助材料
 date: 2024-01-08
 ---
 
