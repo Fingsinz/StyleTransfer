@@ -5,4 +5,4 @@ desc: 参考文献阅读及其代码测试
 date: 2025-01-16
 ---
 
-1. [GAN Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)
+1. 原始GAN: [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)

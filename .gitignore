@@ -1,6 +1,6 @@
 # 虚拟环境
 Doc/.webenv
-src/01.ref_and_notes/.prepareenv
+src/01.ref_and_note/.venv
 
 # 临时文件
 Doc/public/out
