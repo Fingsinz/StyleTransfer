@@ -14,12 +14,12 @@
                 "position": "left"
             },
             {
-                "url": "/",
+                "url": "/ref_and_note/",
                 "label": "文献学习 & 笔记(未完成)",
                 "position": "left"
             },
             {
-                "url": "/",
+                "url": "/paper/",
                 "label": "论文正文(未完成)",
                 "position": "left"
             }
