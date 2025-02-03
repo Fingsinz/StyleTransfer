@@ -7,3 +7,10 @@
 ```bat
 python -m venv .venv
 ```
+
+使用到的包：
+
+- torch
+- matplotlib
+- torchvision
+- numpy
