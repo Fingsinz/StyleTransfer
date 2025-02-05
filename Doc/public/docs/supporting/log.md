@@ -18,11 +18,11 @@ class: heading_no_counter
 
 - [x] 选定网页框架，新建文件夹 `.../StyleTransfer`
 
-### 2025-01-08
+### 2025-01-06~2025-01-13
 
 - [x] 完成 & 提交开题报告
-- [x] 完成 & 预期方案及成果
+- [x] 完成预期方案及成果
 
-### 2025-02-01~2025-02-03
+### 2025-02-01~2025-02-04
 
-- [x] 粗略阅读论文 《Generative Adversarial Nets》，做了个[笔记和实验](/ref_and_note/GAN.html)
+- [x] 完成阅读论文 《Generative Adversarial Nets》，做了个[笔记和实验](/ref_and_note/GAN.html)

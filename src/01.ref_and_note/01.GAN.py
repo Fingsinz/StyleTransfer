@@ -123,9 +123,12 @@ class GAN():
                 # ---生成器训练-----------------------------
                 else:
                     self.g_optimizer.zero_grad()
-                    labels.fill_(self.real_label).float()
+                    labels.fill_(self.real_label).float()   # 使生成器输出为真实数据
                     output = self.discriminator(fake_images)
+                    
+                    # BCELoss(D(G(z)),1) = −log(D(G(z))), 最小化 −log(D(G(z))) 即最大化 log(D(G(z)))
                     loss_g = self.criterion(output.view(-1), labels)
+                    
                     loss_g.backward()
                     self.g_optimizer.step()
                     g_loss = loss_g.item()
