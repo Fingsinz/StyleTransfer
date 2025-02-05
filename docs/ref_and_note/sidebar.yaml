@@ -1,3 +1,5 @@
 items:
--   label: 原始生成对抗网络
+-   label: Pytorch 框架
+    file: Pytorch.md
+-   label: 生成对抗网络 GAN
     file: GAN.md
