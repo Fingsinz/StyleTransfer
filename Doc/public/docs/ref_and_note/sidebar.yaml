@@ -1,5 +1,10 @@
 items:
--   label: Pytorch 框架
-    file: pytorch.md
+-   label: PyTorch 框架
+    collapse: true
+    items:
+    -   label: PyTorch 环境安装
+        file: pytorch-install.md
+    -   label: Tensor 张量
+        file: pytorch-tensor.ipynb
 -   label: 生成对抗网络 GAN
-    file: gAN.md
+    file: gan.md

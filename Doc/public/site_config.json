@@ -55,6 +55,11 @@
                     "second_color": "#0a7d43"
                 }
             }
+        },
+        "teedoc-plugin-jupyter-notebook-parser":{
+            "from": "pypi",
+            "config": {
+            }
         }
     },
     "rebuild_changes_delay": 1,
