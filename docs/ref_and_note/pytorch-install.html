@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html lang="zh" id="ref_GAN" class="">
+<html lang="zh" id="pytorch" class="">
 
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="keywords" content="Pytorch">
+    <meta name="keywords" content="PyTorch">
     
     
-    <meta name="description" content="Pytorch 框架">
+    <meta name="description" content="PyTorch 安装">
     
     <meta name="generator" content="teedoc">
     <meta name="theme" content="teedoc-plugin-theme-default">
@@ -42,12 +42,14 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         
         <link rel="stylesheet" href="/StyleTransfer/static/css/custom.css" type="text/css"/>
         
+        <meta name="html-generator" content="teedoc-plugin-jupyter-notebook-parser">
+        
     
     
-    <title>Pytorch 框架 - Style Transfer - Fingsinz</title>
+    <title>PyTorch 安装 - Style Transfer - Fingsinz</title>
     
     <script type="text/javascript">js_vars = {}</script>
-    <script type="text/javascript">metadata = {"tags": [], "date": "2025-02-07", "update": [], "ts": 1738857600, "author": "", "brief": "", "cover": "", "id": "ref_GAN"}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2025-02-07", "update": [], "ts": 1738857600, "author": "", "brief": "", "cover": "", "id": "pytorch"}</script>
 </head>
 
 
@@ -95,8 +97,12 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     
                 </div>
                 <ul class="show">
-<li class="active with_link"><a href="/StyleTransfer/ref_and_note/pytorch.html"><span class="label">Pytorch 框架</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/StyleTransfer/ref_and_note/gAN.html"><span class="label">生成对抗网络 GAN</span><span class=""></span></a></li>
+<li class="active_parent no_link"><a><span class="label">PyTorch 框架</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="active with_link"><a href="/StyleTransfer/ref_and_note/pytorch-install.html"><span class="label">PyTorch 环境安装</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_note/pytorch-tensor.html"><span class="label">Tensor 张量</span><span class=""></span></a></li>
+</ul>
+</li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_note/gan.html"><span class="label">生成对抗网络 GAN</span><span class=""></span></a></li>
 </ul>
 
             </div>
@@ -111,7 +117,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     <div id="article_head">
                         <div id="article_title">
                             
-                            <h1>Pytorch 框架</h1>
+                            <h1>PyTorch 安装</h1>
                             
                         </div>
                         <div id="article_tags">
@@ -144,7 +150,53 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <p>...</p>
+                            <p>Reference: <a href="https://www.learnpytorch.io/"  target="_blank">Zero to Mastery Learn PyTorch for Deep Learning</a></p>
+<h2 id="PyTorch-%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA">PyTorch 基本环境搭建</h2>
+<ol>
+<li>创建并激活环境</li>
+</ol>
+
+<pre class="language-bat"><code class="language-bat">python -m venv [venv-name]
+[venv-name]\Scripts\activate
+</code></pre>
+<ol start="2">
+<li>安装 Pytorch</li>
+</ol>
+
+<pre class="language-bat"><code class="language-bat">pip install torch torchvision torchaudio
+</code></pre>
+<p>验证 Pytorch 安装，出现版本号则为正常。</p>
+<h2 id="PyTorch-GPU-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA">PyTorch-GPU 环境搭建</h2>
+<p>在搭建虚拟环境后，如果需要在 GPU 上运行，需要安装 PyTorch-GPU 版本。</p>
+<ol>
+<li>确定自己的 GPU CUDA 版本。</li>
+</ol>
+
+<pre class="language-bat"><code class="language-bat">nvidia-smi
+</code></pre>
+<ol start="2">
+<li>下载对应的 PyTorch-GPU 版本。<a href="https://pytorch.org/get-started/locally/"  target="_blank">官方引导下载</a></li>
+</ol>
+<p>附镜像页面链接：</p>
+<ul>
+<li>PyTorch官方镜像<ul>
+<li><a href="https://download.pytorch.org/whl/torch/"  target="_blank">Torch</a></li>
+<li><a href="https://download.pytorch.org/whl/torchvision/"  target="_blank">TorchVision</a></li>
+<li><a href="https://download.pytorch.org/whl/torchaudio/"  target="_blank">TorchAudio</a></li>
+</ul>
+</li>
+<li><a href="https://mirrors.aliyun.com/pytorch-wheels/"  target="_blank">阿里云镜像源</a><ul>
+<li>支持的 CUDA：10.0、10.1、10.2、11.0、11.1、11.3、11.5、11.6、11.7、11.8、12.1</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>检测是否可用。</li>
+</ol>
+
+<pre class="language-python"><code class="language-python">import torch
+print(torch.cuda.is_available())
+</code></pre>
 
                         
                     </div>
@@ -155,8 +207,8 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="next">
                         
-                        <a href="/StyleTransfer/ref_and_note/gAN.html">
-                            <span class="label">生成对抗网络 GAN</span>
+                        <a href="/StyleTransfer/ref_and_note/pytorch-tensor.html">
+                            <span class="label">Tensor 张量</span>
                             <span class="icon"></span>
                         </a>
                         

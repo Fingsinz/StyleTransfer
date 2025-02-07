@@ -43,7 +43,13 @@
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_note/pytorch.html</loc>
+            <loc>https:///StyleTransfer/ref_and_note/pytorch-install.html</loc>
+            <lastmod>2025-02-07</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_note/pytorch-tensor.html</loc>
             <lastmod>2025-02-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>

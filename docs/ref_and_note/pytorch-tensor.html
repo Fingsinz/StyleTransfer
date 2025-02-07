@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+
+<html lang="zh" id="pytorch_tensor" class="">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="keywords" content="PyTorch">
+    
+    
+    <meta name="description" content="PyTorch Tensor">
+    
+    <meta name="generator" content="teedoc">
+    <meta name="theme" content="teedoc-plugin-theme-default">
+    
+        
+        <meta name="markdown-generator" content="teedoc-plugin-markdown-parser">
+        
+        <script>
+MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}};
+</script>
+        
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+        <script src="/StyleTransfer/static/js/theme_default/pre_main.js"></script>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/prism.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/viewer.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/dark.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/light.css" type="text/css"/>
+        
+        <script src="/StyleTransfer/static/js/theme_default/jquery.min.js"></script>
+        
+        <script src="/StyleTransfer/static/js/theme_default/split.js"></script>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/search/style.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/custom.css" type="text/css"/>
+        
+        <meta name="html-generator" content="teedoc-plugin-jupyter-notebook-parser">
+        
+    
+    
+    <title>PyTorch 张量 - Style Transfer - Fingsinz</title>
+    
+    <script type="text/javascript">js_vars = {}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2025-02-07", "update": [], "ts": 1738857600, "author": "", "brief": "", "cover": "", "id": "pytorch_tensor"}</script>
+</head>
+
+
+<body class="type_doc">
+    
+    <div id="navbar">
+        <div id="navbar_menu">
+            <a class="site_title" href="/StyleTransfer/">
+                
+                
+                    <h2>Style Transfer By Fingsinz</h2>
+                
+        </a>
+            <a id="navbar_menu_btn"></a>
+        </div>
+        <div id="navbar_items">
+            <div>
+                <ul id="nav_left">
+<li class=""><a  href="/StyleTransfer/supporting/">辅助材料</a></li>
+<li class="active"><a  href="/StyleTransfer/ref_and_note/">文献学习 & 笔记</a></li>
+<li class=""><a  href="/StyleTransfer/paper/">论文正文</a></li>
+</ul>
+
+            </div>
+            <div>
+                <ul id="nav_right">
+</ul>
+
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">搜索</span>
+                            <div id="search_hints">
+                                <span id="search_input_hint">输入关键词，多关键词空格隔开</span>
+                                <span id="search_loading_hint">正在加载，请稍候。。。</span>
+                                <span id="search_download_err_hint">下载文件失败，请刷新重试或检查网络</span>
+                                <span id="search_other_docs_result_hint">来自其它文档的结果</span>
+                                <span id="search_curr_doc_result_hint">当前文档搜索结果</span>
+                            </div></a></li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="sidebar_wrapper">
+            <div id="sidebar">
+                <div id="sidebar_title">
+                    
+                </div>
+                <ul class="show">
+<li class="active_parent no_link"><a><span class="label">PyTorch 框架</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_note/pytorch-install.html"><span class="label">PyTorch 环境安装</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/StyleTransfer/ref_and_note/pytorch-tensor.html"><span class="label">Tensor 张量</span><span class=""></span></a></li>
+</ul>
+</li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_note/gan.html"><span class="label">生成对抗网络 GAN</span><span class=""></span></a></li>
+</ul>
+
+            </div>
+        </div>
+        <div id="article">
+            <div id="menu_wrapper">
+                <div id="menu">
+                </div>
+            </div>
+            <div id="content_wrapper">
+                <div id="content_body">
+                    <div id="article_head">
+                        <div id="article_title">
+                            
+                            <h1>PyTorch 张量</h1>
+                            
+                        </div>
+                        <div id="article_tags">
+                            <ul>
+                            
+                            </ul>
+                        </div>
+                        <div id="article_info">
+                        <div id="article_info_left">
+                            <span class="article_author">
+                                
+                            </span>
+                            
+                                <span class="article_date" title="最后修改日期： 2025-02-07">
+                                    2025-02-07
+                                </span>
+                            
+                        </div>
+                        <div id="article_info_right">
+                            
+                        </div>
+                        </div>
+                    </div>
+                    <div id="article_tools">
+                        <span></span>
+                        <span id="toc_btn"></span>
+                    </div>
+                    <div id="update_history">
+                        
+                    </div>
+                    <div id="article_content">
+                        
+                            <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Reference: <a href="https://www.learnpytorch.io/">Zero to Mastery Learn PyTorch for Deep Learning</a></p>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><em>该页面为 Jupyter Notebook 生成，原文件于 <a href="https://github.com/Fingsinz/StyleTransfer/tree/main/src/02.pytorch_learning/pytorch-tensor.ipynb">Github</a></em></p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">import torch
+torch.__version__</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>'2.5.1+cu124'</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E4%BB%80%E4%B9%88%E6%98%AF%E5%BC%A0%E9%87%8F">什么是张量<a class="anchor-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BC%A0%E9%87%8F"> </a></h2>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>张量用于表示数据，是机器学习的基本组成部分。</p>
+<ul>
+<li>图片可以是三维张量，如 <code>[height, width, channel]</code>，如经典的 lena 图片用张量表示：</li>
+</ul>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">import numpy as np
+from PIL import Image
+# 使用 pillow 打开图片, 转换为 numpy 矩阵, 再转换为 torch 张量
+img = torch.from_numpy(np.array(Image.open("imgs/lena.jpg")))
+img.shape</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>torch.Size([500, 500, 3])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E5%88%9B%E5%BB%BA%E5%BC%A0%E9%87%8F">创建张量<a class="anchor-link" href="#%E5%88%9B%E5%BB%BA%E5%BC%A0%E9%87%8F"> </a></h2>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Tensors说明文档：<a href="https://pytorch.org/docs/stable/tensors.html">https://pytorch.org/docs/stable/tensors.html</a></p>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol>
+<li>Scalar，标量是一个单独的数字，用张量的术语来说是一个零维张量。</li>
+</ol>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">scalar = torch.tensor(3.0)
+# 维度同样可以通过 tensor.dim() 获取
+print(f"scalar为{scalar}, 维度为{scalar.ndim}, 常量通过item方法获取{scalar.item()}数字")</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>scalar为3.0, 维度为0, 常量通过item方法获取3.0数字
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="2">
+<li>Vector，向量是一个一维张量，类似于数组。</li>
+</ol>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">vector = torch.tensor([1.0, 2.0, 3.0])
+print(f"vector为{vector}, 维度为{vector.ndim}, 通过shape属性获取形状{vector.shape}")</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>vector为tensor([1., 2., 3.]), 维度为1, 通过shape属性获取形状torch.Size([3])
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ol start="3">
+<li>Matrix，矩阵是一个二维张量。</li>
+</ol>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">matrix = torch.tensor([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
+print(f"{matrix}, \n维度为{matrix.ndim}, 通过shape属性获取形状{matrix.shape}")</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>tensor([[1., 2., 3.],
+        [4., 5., 6.]]), 
+维度为2, 通过shape属性获取形状torch.Size([2, 3])
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>总结：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">结构</th>
+<th style="text-align:center">表示</th>
+<th style="text-align:center">维度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">scalar</td>
+<td style="text-align:center">一个数字</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">vector</td>
+<td style="text-align:center">一组数字</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">matrix</td>
+<td style="text-align:center">一个矩阵</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">tensor</td>
+<td style="text-align:center">若干维度</td>
+<td style="text-align:center">0维表示scalar，每一维表示一个vector</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="torch.rand()-%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%BC%A0%E9%87%8F"><code>torch.rand()</code> 生成随机张量<a class="anchor-link" href="#torch.rand()-%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%BC%A0%E9%87%8F"> </a></h3>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>实际上在机器学习中很少会手动创建张量，更多是随机生成。</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python"># 创建指定大小的随机张量
+random_tensor = torch.rand(size=(3, 4))
+random_tensor, random_tensor.dtype</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(tensor([[0.3467, 0.2830, 0.2079, 0.1919],
+         [0.8412, 0.7202, 0.9083, 0.1247],
+         [0.0241, 0.2289, 0.6623, 0.6389]]),
+ torch.float32)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%E5%A1%AB%E5%85%85%E5%85%A8%E9%9B%B6%E6%88%96%E5%85%A8%E4%B8%80%E5%BC%A0%E9%87%8F">填充全零或全一张量<a class="anchor-link" href="#%E5%A1%AB%E5%85%85%E5%85%A8%E9%9B%B6%E6%88%96%E5%85%A8%E4%B8%80%E5%BC%A0%E9%87%8F"> </a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">zeros = torch.zeros(size=(3, 4))
+ones = torch.ones(size=(3, 4))
+zeros, zeros.dtype
+ones, ones.dtype</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(tensor([[1., 1., 1., 1.],
+         [1., 1., 1., 1.],
+         [1., 1., 1., 1.]]),
+ torch.float32)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%8C%83%E5%9B%B4%E5%BC%A0%E9%87%8F">创建一个范围张量<a class="anchor-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%8C%83%E5%9B%B4%E5%BC%A0%E9%87%8F"> </a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python"># 创建一个从0到9的张量的两种方法
+# zero_to_ten1 = torch.range(0, 10) # 将弃用
+zero_to_ten2 = torch.arange(start=0, end=10, step=1)
+# zero_to_ten1, zero_to_ten1.dtype
+zero_to_ten2, zero_to_ten2.dtype</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(tensor([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]), torch.int64)</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">#创建一个形状一样的向量
+same_shape = torch.zeros_like(input=zero_to_ten2)
+same_shape, same_shape.dtype</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]), torch.int64)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E5%BC%A0%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">张量数据类型<a class="anchor-link" href="#%E5%BC%A0%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"> </a></h2>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Tensor 的 DataTypes：<a href="https://pytorch.org/docs/stable/tensors.html#data-types">https://pytorch.org/docs/stable/tensors.html#data-types</a></p>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>有些数据类型是特定于CPU，而有些更适合GPU。同时确保精度问题，可以选用不同精度的浮点数类型。</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">float32_tensor = torch.tensor([3.0, 6.0, 9.0],
+                              dtype=None,  # 默认为None，即torch。Float32或传递的任何数据类型
+                              device=None, # 默认为None，使用默认的张量类型
+                              requires_grad=False) # 如果为True，则记录对张量执行的操作
+float32_tensor.shape, float32_tensor.dtype, float32_tensor.device</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(torch.Size([3]), torch.float32, device(type='cpu'))</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>可以修改张量的数据类型：</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">float64_tensor = float32_tensor.type(torch.float64)
+float64_tensor.dtype</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>torch.float64</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>在进行带张量的操作时，除了张量的 Shape 要匹配之外，还需要注意张量的 dtype 和 device。</p>
+<ul>
+<li><code>tensor.shape</code>：获取 Shape。</li>
+<li><code>tensor.dtype</code>：获取 dtype。</li>
+<li><code>tensor.device</code>：获取 device。</li>
+</ul>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="%E5%BC%A0%E9%87%8F%E7%9A%84%E6%93%8D%E4%BD%9C">张量的操作<a class="anchor-link" href="#%E5%BC%A0%E9%87%8F%E7%9A%84%E6%93%8D%E4%BD%9C"> </a></h2>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%E5%BC%A0%E9%87%8F%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C">张量的基础操作<a class="anchor-link" href="#%E5%BC%A0%E9%87%8F%E7%9A%84%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"> </a></h3>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>张量的加减乘操作如下：</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">test_tensor = torch.tensor([1, 2, 3])
+test_tensor + 10, test_tensor * 10, test_tensor - 1, test_tensor # 在不赋值的时候是不变的</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(tensor([11, 12, 13]),
+ tensor([10, 20, 30]),
+ tensor([0, 1, 2]),
+ tensor([1, 2, 3]))</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>也可以通过函数实现：</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">torch.add(test_tensor, 10), torch.mul(test_tensor, 10), torch.sub(test_tensor, 1)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(tensor([11, 12, 13]), tensor([10, 20, 30]), tensor([0, 1, 2]))</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>注意，<strong>矩阵乘法遵循其规则，与形状相关。</strong></p>
+$$
+M_{m\times n} = M_{m\times k} @ M_{k\times n}
+$$<p><em><code>@</code> 在 Python 中是矩阵乘法</em></p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">tensor = torch.tensor([1, 2, 3])
+tensor * tensor, tensor @ tensor, torch.matmul(tensor, tensor)
+# torch.matmul是矩阵乘法，且比 @ 操作更快</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(tensor([1, 4, 9]), tensor(14), tensor(14))</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<ul>
+<li>$[1, 2, 3] * [1, 2, 3] = [1 * 1, 2 * 2, 3 * 3] = [1, 4, 9]$</li>
+<li>$[1, 2, 3] @ [1, 2, 3] = 1 * 1 + 2 * 2 + 3 * 3 = 14$</li>
+</ul>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><code>torch.mm()</code> 是 <code>torch.matmul()</code> 的缩写。另外提供一些操作进行矩阵变换：</p>
+<ul>
+<li><code>torch.transpose(input, dim0, dim1)</code>，<code>input</code> 是输入矩阵，<code>dim0</code> 和 <code>dim1</code> 是要交换的维度。</li>
+<li><code>torch.T</code>：转置矩阵。</li>
+</ul>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%E6%B1%82%E6%9C%80%E5%B0%8F%E5%80%BC%E3%80%81%E6%9C%80%E5%A4%A7%E5%80%BC%E3%80%81%E5%B9%B3%E5%9D%87%E5%80%BC%E3%80%81%E6%80%BB%E5%92%8C%E7%AD%89">求最小值、最大值、平均值、总和等<a class="anchor-link" href="#%E6%B1%82%E6%9C%80%E5%B0%8F%E5%80%BC%E3%80%81%E6%9C%80%E5%A4%A7%E5%80%BC%E3%80%81%E5%B9%B3%E5%9D%87%E5%80%BC%E3%80%81%E6%80%BB%E5%92%8C%E7%AD%89"> </a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">x = torch.arange(0, 100, 10)
+print(x)
+print(f"最小值: {x.min()}")
+print(f"最大值: {x.max()}")
+# print(f"Mean: {x.mean()}") # 会报错
+print(f"均值: {x.type(torch.float32).mean()}") # 没有float数据类型将无法工作
+print(f"总和: {x.sum()}")</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>tensor([ 0, 10, 20, 30, 40, 50, 60, 70, 80, 90])
+最小值: 0
+最大值: 90
+均值: 45.0
+总和: 450
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><em>一些方法，如torch.mean()，要求张量位于torch.float32（最常见）或其他特定数据类型中，否则操作将失败。</em></p>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%E6%B1%82%E6%9C%80%E5%B0%8F%E6%9C%80%E5%A4%A7%E5%80%BC%E7%9A%84%E4%BD%8D%E7%BD%AE">求最小最大值的位置<a class="anchor-link" href="#%E6%B1%82%E6%9C%80%E5%B0%8F%E6%9C%80%E5%A4%A7%E5%80%BC%E7%9A%84%E4%BD%8D%E7%BD%AE"> </a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">print(x)
+print(f"Index where max value occurs: {x.argmax()}")
+print(f"Index where min value occurs: {x.argmin()}")</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>tensor([ 0, 10, 20, 30, 40, 50, 60, 70, 80, 90])
+Index where max value occurs: 9
+Index where min value occurs: 0
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%E5%BC%A0%E9%87%8F%E5%BD%A2%E7%8A%B6%E9%87%8D%E5%A1%91%E3%80%81%E5%A0%86%E5%8F%A0%E3%80%81%E6%8C%A4%E5%8E%8B%E5%92%8C%E6%89%A9%E5%B1%95">张量形状重塑、堆叠、挤压和扩展<a class="anchor-link" href="#%E5%BC%A0%E9%87%8F%E5%BD%A2%E7%8A%B6%E9%87%8D%E5%A1%91%E3%80%81%E5%A0%86%E5%8F%A0%E3%80%81%E6%8C%A4%E5%8E%8B%E5%92%8C%E6%89%A9%E5%B1%95"> </a></h3>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>因为深度学习模型（神经网络）都是关于以某种方式操纵张量的。因为矩阵乘法的规则，如果有形状不匹配，就会遇到错误。这些方法帮助你确保你的张量的正确元素与其他张量的正确元素混合在一起。</p>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="https://pytorch.org/docs/stable/generated/torch.reshape.html#torch.reshape">torch.reshape(input, shape)</a> 或 <code>torch.Tensor.reshape()</code></td>
+<td style="text-align:center">在兼容的情况下把 <code>input</code> 重塑成 <code>shape</code> 的形状</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://pytorch.org/docs/stable/generated/torch.Tensor.view.html">Tensor.view(shape)</a></td>
+<td style="text-align:center">以不同的形状返回原始张量的视图，但与原始张量共享相同的数据</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://pytorch.org/docs/1.9.1/generated/torch.stack.html">torch.stack(tensors, dim=0)</a></td>
+<td style="text-align:center">沿着一个新的维度 <code>dim</code> 连接一系列张量，所有张量必须是相同的大小</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://pytorch.org/docs/stable/generated/torch.squeeze.html">torch.squeeze(input)</a></td>
+<td style="text-align:center">挤压 <code>input</code>，删除值为1的所有维度</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://pytorch.org/docs/1.9.1/generated/torch.unsqueeze.html">torch.unsqueeze(input, dim)</a></td>
+<td style="text-align:center">在 <code>dim</code> 处添加值为1的维度并返回</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="https://pytorch.org/docs/stable/generated/torch.permute.html">torch.permute(input, dims)</a></td>
+<td style="text-align:center">返回原始输入的视图，其维度重新排列</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><code>tensor.reshape()</code>：</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">import torch
+
+x = torch.arange(1., 9.)
+
+x_reshaped = x.reshape(1, 8) # 重塑
+print(f"x.shape: {x.shape}, x_reshaped.shape: {x_reshaped.shape}")</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>x.shape: torch.Size([8]), x_reshaped.shape: torch.Size([1, 8])
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><code>tensor.view()</code>：改变视图也会改变原来的张量。</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">x_viewed = x.view(2, 4) # 重塑
+print(f"x.shape: {x.shape}, x_viewed.shape: {x_viewed.shape}")
+
+# 修改 x_viewd, x 同步变化
+x_viewed[:, 0] = 5
+print(x)
+print(x_viewed)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>x.shape: torch.Size([8]), x_viewed.shape: torch.Size([2, 4])
+tensor([5., 2., 3., 4., 5., 6., 7., 8.])
+tensor([[5., 2., 3., 4.],
+        [5., 6., 7., 8.]])
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>用该函数改变一个张量的视图实际上只会创建同一个张量的新视图。</p>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>如果想要将新张量在自身之上堆叠五次，可以使用 <code>torch.stack()</code> 来实现。</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">x_stacked = torch.stack([x, x, x, x], dim=0)
+x_stacked</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>tensor([[5., 2., 3., 4., 5., 6., 7., 8.],
+        [5., 2., 3., 4., 5., 6., 7., 8.],
+        [5., 2., 3., 4., 5., 6., 7., 8.],
+        [5., 2., 3., 4., 5., 6., 7., 8.]])</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>同时可以移除单维度：</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">print(x_reshaped.shape)
+x_squzzed = x_reshaped.squeeze()
+print(x_squzzed.shape)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>torch.Size([1, 8])
+torch.Size([8])
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>与 <code>torch.squeeze()</code> 相反，可以使用 <code>torch.unsqueeze()</code> 在特定索引处添加一个维度值 1：</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">print(x_squzzed.shape)
+x_unsquzzed = x_squzzed.unsqueeze(dim=0)
+print(x_unsquzzed.shape)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>torch.Size([8])
+torch.Size([1, 8])
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><code>torch.permute(input, dims)</code> 重排张量的维度：</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">img = torch.rand(size=(128, 256, 3))
+
+img_permuted = img.permute(2, 0, 1)
+
+img.shape, img_permuted.shape</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>(torch.Size([128, 256, 3]), torch.Size([3, 128, 256]))</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%E5%BC%A0%E9%87%8F%E5%8F%96%E4%B8%8B%E6%A0%87">张量取下标<a class="anchor-link" href="#%E5%BC%A0%E9%87%8F%E5%8F%96%E4%B8%8B%E6%A0%87"> </a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">import torch
+x = torch.arange(1, 10).reshape(1, 3, 3)
+print(f"{x}, {x.shape}")
+
+print(f"x[0]: \n{x[0]}") 
+print(f"x[0][0]: {x[0][0]}") 
+print(f"x[0][0][0]: {x[0][0][0]}")</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>tensor([[[1, 2, 3],
+         [4, 5, 6],
+         [7, 8, 9]]]), torch.Size([1, 3, 3])
+x[0]: 
+tensor([[1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]])
+x[0][0]: tensor([1, 2, 3])
+x[0][0][0]: 1
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><em>可以使用 <code>:</code> 来指定此维度中的所有值，使用逗号 <code>,</code> 来添加另一个维度。</em></p>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Pytorch-%E5%BC%A0%E9%87%8F%E5%92%8C-Numpy">Pytorch 张量和 Numpy<a class="anchor-link" href="#Pytorch-%E5%BC%A0%E9%87%8F%E5%92%8C-Numpy"> </a></h2>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>NumPy 和 PyTorch 数据结构互转：</p>
+<ul>
+<li>Numpy Array -&gt; PyTorch Tensor：<code>torch.from_numpy(ndarray)</code>。</li>
+<li>PyTorch Tensor -&gt; Numpy Array：<code>torch.Tensor.numpy()</code>。</li>
+</ul>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Tensor-%E9%9A%8F%E6%9C%BA%E5%80%BC">Tensor 随机值<a class="anchor-link" href="#Tensor-%E9%9A%8F%E6%9C%BA%E5%80%BC"> </a></h2>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><code>torch.rand()</code> 方法可以生成一个给定大小而值随机的张量，但是每次生成都会不一样。如果需要每次随机都一样，需要固定下随机数种子。</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">import torch
+import random
+
+RANDOM_SEED=42
+torch.manual_seed(seed=RANDOM_SEED) 
+random_tensor_A = torch.rand(3, 4)
+
+torch.random.manual_seed(seed=RANDOM_SEED)
+random_tensor_B = torch.rand(3, 4)
+
+print(f"Tensor A:\n{random_tensor_A}\n")
+print(f"Tensor B:\n{random_tensor_B}\n")
+print(f"A == B?")
+print(random_tensor_A == random_tensor_B)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>Tensor A:
+tensor([[0.8823, 0.9150, 0.3829, 0.9593],
+        [0.3904, 0.6009, 0.2566, 0.7936],
+        [0.9408, 0.1332, 0.9346, 0.5936]])
+
+Tensor B:
+tensor([[0.8823, 0.9150, 0.3829, 0.9593],
+        [0.3904, 0.6009, 0.2566, 0.7936],
+        [0.9408, 0.1332, 0.9346, 0.5936]])
+
+A == B?
+tensor([[True, True, True, True],
+        [True, True, True, True],
+        [True, True, True, True]])
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="GPU-%E4%B8%8B%E4%BD%BF%E7%94%A8%E5%BC%A0%E9%87%8F">GPU 下使用张量<a class="anchor-link" href="#GPU-%E4%B8%8B%E4%BD%BF%E7%94%A8%E5%BC%A0%E9%87%8F"> </a></h2>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>导入 PyTorch：</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">import torch
+torch.cuda.is_available()</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>True</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>设置设备类型：</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python"># Set device type
+device = "cuda" if torch.cuda.is_available() else "cpu"
+device</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>'cuda'</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>检查设备数：</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">torch.cuda.device_count()</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>1</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="%E5%BC%A0%E9%87%8F%E5%9C%A8-CPU-%E5%92%8C-GPU-%E9%97%B4%E7%A7%BB%E5%8A%A8">张量在 CPU 和 GPU 间移动<a class="anchor-link" href="#%E5%BC%A0%E9%87%8F%E5%9C%A8-CPU-%E5%92%8C-GPU-%E9%97%B4%E7%A7%BB%E5%8A%A8"> </a></h3>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>通过调用 <code>to(device)</code> 将张量（和模型）放在特定的设备上。</p>
+<p>GPU 可以提供比 CPU 更快的数值计算，但有时候某些操作不支持在 GPU 中执行，所以需要将张量进行移动。</p>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>张量移动到 GPU 侧：</p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">tensor = torch.tensor([1, 2, 3])
+
+print(tensor, tensor.device)
+
+tensor_on_gpu = tensor.to(device)
+print(tensor_on_gpu)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>tensor([1, 2, 3]) cpu
+tensor([1, 2, 3], device='cuda:0')
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>张量移动到 CPU 侧：通过使用 <code>tensor.CPU()</code></p>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<pre><code class="python language-python">tensor_back_on_cpu = tensor_on_gpu.cpu()
+print(tensor_back_on_cpu)
+
+# 上面的代码返回CPU内存中GPU张量的副本，原始张量仍然在GPU上。
+print(tensor_on_gpu)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre><code>tensor([1, 2, 3])
+tensor([1, 2, 3], device='cuda:0')
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+                        
+                    </div>
+                </div>
+                <div id="previous_next">
+                    <div id="previous">
+                        
+                        <a href="/StyleTransfer/ref_and_note/pytorch-install.html">
+                            <span class="icon"></span>
+                            <span class="label">PyTorch 环境安装</span>
+                        </a>
+                        
+                    </div>
+                    <div id="next">
+                        
+                        <a href="/StyleTransfer/ref_and_note/gan.html">
+                            <span class="label">生成对抗网络 GAN</span>
+                            <span class="icon"></span>
+                        </a>
+                        
+                    </div>
+                </div>
+                <div id="comments-container"></div>
+            </div>
+            <div id="toc_wrapper">
+                <div id="toc">
+                    <div id="toc_content">
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="to_top" href="#"></a>
+    <div id="doc_footer">
+        <div id="footer">
+            <div id="footer_top">
+                <ul>
+<li><a></a><ul><li><a target="_blank" href="/StyleTransfer/#"></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <div id="footer_bottom">
+                <ul>
+<li><a target="_blank" href="https://github.com/teedoc/teedoc">Generated by teedoc - Fingsinz - 2024.12.29</a></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+        <script src="/StyleTransfer/teedoc-plugin-markdown-parser/mermaid.min.js"></script>
+    
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+        <script src="/StyleTransfer/static/js/theme_default/tocbot.min.js"></script>
+    
+        <script src="/StyleTransfer/static/js/theme_default/main.js"></script>
+    
+        <script src="/StyleTransfer/static/js/theme_default/viewer.min.js"></script>
+    
+        <script src="/StyleTransfer/static/css/theme_default/prism.min.js"></script>
+    
+        <script src="/StyleTransfer/static/js/search/search_main.js"></script>
+    
+        <script src="/StyleTransfer/static/js/custom.js"></script>
+    
+</body>
+
+</html>
