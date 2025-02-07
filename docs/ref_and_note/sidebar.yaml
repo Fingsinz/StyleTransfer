@@ -1,5 +1,5 @@
 items:
 -   label: Pytorch 框架
-    file: Pytorch.md
+    file: pytorch.md
 -   label: 生成对抗网络 GAN
-    file: GAN.md
+    file: gAN.md
