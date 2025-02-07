@@ -15,10 +15,11 @@ StyleTransfer
 
 - Doc: 研究文档、资料文档
 
-- docs: teedoc生成的网页文档
+- docs: teedoc 生成的静态网页文档
 
 - src: 项目源码
-    - 01.Preparation: 前期准备
+    - 01.ref_and_note: 文献阅读笔记
+    - 02.pytorch_learning: PyTorch 框架学习
 
 - README.md: 项目说明文件
 
