@@ -10,7 +10,7 @@
             "/doc1/": "docs/doc1",
             "/supporting/": "docs/supporting",
             "/paper/": "docs/paper",
-            "/ref_and_note/": "docs/ref_and_note"
+            "/ref-and-notes/": "docs/ref-and-notes"
         },
         "pages": {
             "/": "pages/index"
