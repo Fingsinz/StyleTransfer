@@ -6,5 +6,7 @@ items:
         file: pytorch-install.md
     -   label: Tensor 张量
         file: pytorch-tensor.ipynb
+    -   label: Tensor 基本工作流
+        file: pytorch-basic-workflow.ipynb
 -   label: 生成对抗网络 GAN
     file: gan.md

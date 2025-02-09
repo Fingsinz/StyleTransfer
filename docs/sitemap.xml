@@ -37,25 +37,31 @@
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_note/gan.html</loc>
+            <loc>https:///StyleTransfer/ref-and-notes/gan.html</loc>
             <lastmod>2025-02-01</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_note/pytorch-install.html</loc>
+            <loc>https:///StyleTransfer/ref-and-notes/pytorch-basic-workflow.html</loc>
+            <lastmod>2025-02-08</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref-and-notes/pytorch-install.html</loc>
             <lastmod>2025-02-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_note/pytorch-tensor.html</loc>
+            <loc>https:///StyleTransfer/ref-and-notes/pytorch-tensor.html</loc>
             <lastmod>2025-02-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_note/index.html</loc>
+            <loc>https:///StyleTransfer/ref-and-notes/index.html</loc>
             <lastmod>2025-01-16</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
