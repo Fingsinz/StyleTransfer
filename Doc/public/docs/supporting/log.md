@@ -26,6 +26,15 @@ class: heading_no_counter
 
 - [x] 完成阅读论文 《Generative Adversarial Nets》，做了个[笔记和实验](/ref_and_note/GAN.html)。
 
-### 2025.02.07
+### 2025.02.07~
 
 - [ ] 学习 PyTorch 框架。
+    - [x] PyTorch 张量操作、模型搭建。
+    - [x] 基础分类模型
+    - [x] 计算机视觉基础
+    - [ ] 自定义数据集
+    - [ ] 模块化
+    - [ ] 迁移学习
+    - [ ] 实验跟踪
+    - [ ] 论文复制
+    - [ ] 模型部署
