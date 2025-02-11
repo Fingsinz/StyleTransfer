@@ -12,3 +12,4 @@ src/01.ref_and_note/gan_generated_images/
 
 # 02.pytorch_learning 中间内容
 src/02.pytorch_learning/.ipynb_checkpoints
+src/02.pytorch_learning/data/

@@ -10,5 +10,7 @@ items:
         file: pytorch-basic-workflow.ipynb
     -   label: PyTorch 分类模型
         file: pytorch-classification.ipynb
+    -   label: PyTorch 中的计算机视觉
+        file: pytorch-computer-vision.ipynb
 -   label: 生成对抗网络 GAN
     file: gan.md
