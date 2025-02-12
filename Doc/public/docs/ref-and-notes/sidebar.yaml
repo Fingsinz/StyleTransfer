@@ -12,5 +12,7 @@ items:
         file: pytorch-classification.ipynb
     -   label: PyTorch 中的计算机视觉
         file: pytorch-computer-vision.ipynb
+    -   label: PyTorch 中自定义数据集
+        file: pytorch_custom_datasets.ipynb
 -   label: 生成对抗网络 GAN
     file: gan.md
