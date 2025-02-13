@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+<html lang="zh" id="pytorch_modular" class="">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="keywords" content="PyTorch">
+    
+    
+    <meta name="description" content="PyTorch 模块化">
+    
+    <meta name="generator" content="teedoc">
+    <meta name="theme" content="teedoc-plugin-theme-default">
+    
+        
+        <meta name="markdown-generator" content="teedoc-plugin-markdown-parser">
+        
+        <script>
+MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}};
+</script>
+        
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+        <script src="/StyleTransfer/static/js/theme_default/pre_main.js"></script>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/prism.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/viewer.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/dark.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/light.css" type="text/css"/>
+        
+        <script src="/StyleTransfer/static/js/theme_default/jquery.min.js"></script>
+        
+        <script src="/StyleTransfer/static/js/theme_default/split.js"></script>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/search/style.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/custom.css" type="text/css"/>
+        
+        <meta name="html-generator" content="teedoc-plugin-jupyter-notebook-parser">
+        
+    
+    
+    <title>PyTorch 模块化 - Style Transfer - Fingsinz</title>
+    
+    <script type="text/javascript">js_vars = {}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2025-02-13", "update": [], "ts": 1739376000, "author": "", "brief": "", "cover": "", "id": "pytorch_modular"}</script>
+</head>
+
+
+<body class="type_doc">
+    
+    <div id="navbar">
+        <div id="navbar_menu">
+            <a class="site_title" href="/StyleTransfer/">
+                
+                
+                    <h2>Style Transfer By Fingsinz</h2>
+                
+        </a>
+            <a id="navbar_menu_btn"></a>
+        </div>
+        <div id="navbar_items">
+            <div>
+                <ul id="nav_left">
+<li class=""><a  href="/StyleTransfer/supporting/">辅助材料</a></li>
+<li class="active"><a  href="/StyleTransfer/ref_and_notes/">文献学习 & 笔记</a></li>
+<li class=""><a  href="/StyleTransfer/paper/">论文正文</a></li>
+</ul>
+
+            </div>
+            <div>
+                <ul id="nav_right">
+</ul>
+
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">搜索</span>
+                            <div id="search_hints">
+                                <span id="search_input_hint">输入关键词，多关键词空格隔开</span>
+                                <span id="search_loading_hint">正在加载，请稍候。。。</span>
+                                <span id="search_download_err_hint">下载文件失败，请刷新重试或检查网络</span>
+                                <span id="search_other_docs_result_hint">来自其它文档的结果</span>
+                                <span id="search_curr_doc_result_hint">当前文档搜索结果</span>
+                            </div></a></li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="sidebar_wrapper">
+            <div id="sidebar">
+                <div id="sidebar_title">
+                    
+                </div>
+                <ul class="show">
+<li class="active_parent no_link"><a><span class="label">PyTorch 框架</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_install.html"><span class="label">PyTorch 环境安装</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_tensor.html"><span class="label">Tensor 张量</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_basic_workflow.html"><span class="label">PyTorch 基本工作流</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_classification.html"><span class="label">PyTorch 分类模型</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_computer_vision.html"><span class="label">PyTorch 中的计算机视觉</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_custom_datasets.html"><span class="label">PyTorch 中自定义数据集</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_modular.html"><span class="label">PyTorch 模块化</span><span class=""></span></a></li>
+</ul>
+</li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/gan.html"><span class="label">生成对抗网络 GAN</span><span class=""></span></a></li>
+</ul>
+
+            </div>
+        </div>
+        <div id="article">
+            <div id="menu_wrapper">
+                <div id="menu">
+                </div>
+            </div>
+            <div id="content_wrapper">
+                <div id="content_body">
+                    <div id="article_head">
+                        <div id="article_title">
+                            
+                            <h1>PyTorch 模块化</h1>
+                            
+                        </div>
+                        <div id="article_tags">
+                            <ul>
+                            
+                            </ul>
+                        </div>
+                        <div id="article_info">
+                        <div id="article_info_left">
+                            <span class="article_author">
+                                
+                            </span>
+                            
+                                <span class="article_date" title="最后修改日期： 2025-02-13">
+                                    2025-02-13
+                                </span>
+                            
+                        </div>
+                        <div id="article_info_right">
+                            
+                        </div>
+                        </div>
+                    </div>
+                    <div id="article_tools">
+                        <span></span>
+                        <span id="toc_btn"></span>
+                    </div>
+                    <div id="update_history">
+                        
+                    </div>
+                    <div id="article_content">
+                        
+                            <p>Reference: <a href="https://www.learnpytorch.io/05_pytorch_going_modular/"  target="_blank">PyTorch Going Modular</a></p>
+<h2 id="%E5%89%8D%E8%A8%80">前言</h2>
+<p>模块化后的 Python 文件：</p>
+<ul>
+<li><code>data_setup.py</code>：用于准备和下载数据的文件。</li>
+<li><code>engine.py</code>：包含各种训练函数的文件。</li>
+<li><code>model_builder.py</code> 或 <code>model.py</code>：创建 PyTorch 模型的文件。</li>
+<li><code>train.py</code>：利用所有其他文件并训练目标 PyTorch 模型的文件</li>
+<li><code>utils.py</code>：专用于有用的实用程序功能的文件。</li>
+</ul>
+<p>然后就可以使用类似于下面的命令调用脚本进行模型训练：</p>
+
+<pre class="language-bat"><code class="language-bat">python train.py --model tinyvgg --batch_size 32 --lr 0.001 --num_epochs 10
+</code></pre>
+<p>模块化后的目录：</p>
+
+<pre class="language-none"><code class="language-none">root/
+├── data_setup.py
+├── engine.py
+├── model.py
+├── train.py
+└── utils.py
+└── models/
+│   ├── xxx.pth
+└── data/
+    ├── train/
+    │   └── xxx.jpg
+    └── test/
+        └── xxx.jpg
+</code></pre>
+<h2 id="data_setup.py%EF%BC%9A%E5%BB%BA%E7%AB%8B-Datasets-%E5%92%8C-DataLoaders">data_setup.py：建立 Datasets 和 DataLoaders</h2>
+<p>获得数据后，将其转换为 PyTorch <code>Dataset</code> 和 <code>DataLoader</code> 。</p>
+<ul>
+<li>将 <code>Dataset</code> 和 <code>DataLoader</code> 创建代码转换为一个名为 <code>create_dataloaders()</code> 的函数。</li>
+</ul>
+<details>
+<summary>data_setup.py</summary>
+
+<pre class="language-python"><code class="language-python">&quot;&quot;&quot;
+@file: data_setup.py
+@brief: 包含从图像文件夹创建 PyTorch dataloader 的函数。
+@author: -
+@date: 2025-02-13
+&quot;&quot;&quot;
+
+import os
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
+
+NUM_WORKERS = 3
+
+def create_dataloaders(
+    train_dir: str,
+    test_dir: str,
+    transform: transforms.Compose,
+    batch_size: int,
+    num_workers: int = NUM_WORKERS,
+) -&gt; tuple[DataLoader, DataLoader, list[str]]:
+    &quot;&quot;&quot;
+    从图像文件夹创建PyTorch dataloader。
+
+    参数:
+        train_dir (str): 训练图像文件夹的路径。
+        test_dir (str): 测试图像文件夹的路径。
+        transform (transforms.Compose): 应用的图像变换。
+        batch_size (int): DataLoader 的批量大小。
+        num_workers (int): 用于加载数据的工作线程数。
+
+    返回:
+        包含训练 DataLoader、测试 DataLoader 和类名列表的元组。
+    &quot;&quot;&quot;
+    train_data = datasets.ImageFolder(train_dir, transform=transform)
+    test_data = datasets.ImageFolder(test_dir, transform=transform)
+
+    class_names = train_data.classes
+
+    train_dataloader = DataLoader(
+        train_data,
+        batch_size=batch_size,
+        shuffle=True,
+        num_workers=num_workers,
+        pin_memory=True,
+    )
+
+    test_dataloader = DataLoader(
+        test_data,
+        batch_size=batch_size,
+        shuffle=True,
+        num_workers=num_workers,
+        pin_memory=True,
+    )
+
+    return train_dataloader, test_dataloader, class_names
+
+</code></pre>
+</details>
+<h2 id="model.py%3A-%E6%9E%84%E5%BB%BA%E6%A8%A1%E5%9E%8B">model.py: 构建模型</h2>
+<p>将模型放入其文件中使得可以一次又一次地重用它。</p>
+<details>
+<summary>data_setup.py</summary>
+
+<pre class="language-python"><code class="language-python">&quot;&quot;&quot;
+@file: model.py
+@brief: TinyVGG 定义
+@author: -
+@date: 2025-02-13
+&quot;&quot;&quot;
+
+import torch
+import torch.nn as nn
+
+class TinyVGG(nn.Module):
+    &quot;&quot;&quot;
+    一个简单的 VGG 类神经网络图像分类任务。
+
+    参数:
+        input_channels (int): 输入通道数 (e.g., 3 for RGB images)。
+        hidden_units (int): 卷积层中隐藏单元的数量。
+        output_shape (int): 输出类的数量。
+    &quot;&quot;&quot;
+    def __init__(self, input_channels: int, hidden_units: int, output_shape: int) -&gt; None:
+        super().__init__()
+
+        self.block_1 = nn.Sequential(
+            nn.Conv2d(in_channels=input_channels,
+                      out_channels=hidden_units,
+                      kernel_size=3,
+                      stride=1,
+                      padding=1),
+            nn.ReLU(),
+            nn.Conv2d(in_channels=hidden_units,
+                      out_channels=hidden_units,
+                      kernel_size=3,
+                      stride=1,
+                      padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2)
+        )
+
+        self.block_2 = nn.Sequential(
+            nn.Conv2d(hidden_units, hidden_units, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(hidden_units, hidden_units, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2)
+        )
+
+        self.classifier = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(in_features=hidden_units * 16 * 16,
+                      out_features=output_shape)
+        )
+
+    def forward(self, x: torch.Tensor) -&gt; torch.Tensor:
+        &quot;&quot;&quot;
+        前向传播
+
+        参数:
+            x (torch.Tensor): 输入张量，形状：(batch_size, input_channels, height, width)。
+
+        返回:
+            torch.Tensor: 输出张量，形状：(batch_size, output_shape)。
+        &quot;&quot;&quot;
+        return self.classifier(self.block_2(self.block_1(x)))
+
+</code></pre>
+</details>
+<h2 id="engine.py%EF%BC%9A%E8%AE%AD%E7%BB%83%E5%92%8C%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%9E%8B">engine.py：训练和测试模型</h2>
+<p>在前面编写了几个训练函数：</p>
+<ul>
+<li><code>train_step()</code>：接受一个模型、一个 DataLoader、一个损失函数和一个优化器，并在 DataLoader 上训练一个 step。</li>
+<li><code>test_step</code>：接受一个模型、一个 DataLoader 和一个损失函数，并在 DataLoader 上测试模型。</li>
+<li><code>train()</code>：执行 <code>train_step()</code> 和 <code>test_step()</code>。并返回一个结果字典。</li>
+</ul>
+<details>
+<summary>engine.py</summary>
+<p><em>需要下载 tqdm 包。</em></p>
+
+<pre class="language-python"><code class="language-python">&quot;&quot;&quot;
+@file: engine.py
+@brief: PyTorch模型的训练和测试函数
+@author: -
+@date: 2025-02-13
+&quot;&quot;&quot;
+
+import torch
+
+from tqdm.auto import tqdm
+from typing import Dict, List, Tuple
+
+
+def train_step(model: torch.nn.Module,
+               dataloader: torch.utils.data.DataLoader,
+               loss_fn: torch.nn.Module,
+               optimizer: torch.optim.Optimizer,
+               device: torch.device) -&gt; Tuple[float, float]:
+    &quot;&quot;&quot;
+    模型逐步训练
+
+    参数:
+        model: 要训练的模型
+        dataloader: 用于训练的 DataLoader
+        loss_fn: 损失函数
+        optimizer: 优化器
+        device: 设备 (e.g. GPU or CPU)
+
+    返回值:
+        包含训练损失和正确率的元组
+    &quot;&quot;&quot;
+    model.train()
+
+    train_loss, train_acc = 0, 0
+
+    for batch, (X, y) in enumerate(dataloader):
+        X, y = X.to(device), y.to(device)
+
+        y_pred = model(X)
+
+        loss = loss_fn(y_pred, y)
+        train_loss += loss.item()
+
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        y_pred_class = torch.argmax(torch.softmax(y_pred, dim=1), dim=1)
+        train_acc += (y_pred_class == y).sum().item() / len(y_pred)
+
+    train_loss = train_loss / len(dataloader)
+    train_acc = train_acc / len(dataloader)
+    return train_loss, train_acc
+
+
+def test_step(model: torch.nn.Module,
+              dataloader: torch.utils.data.DataLoader,
+              loss_fn: torch.nn.Module,
+              device: torch.device) -&gt; Tuple[float, float]:
+    &quot;&quot;&quot;
+    模型逐步测试
+
+    参数:
+        model: 要测试的模型
+        dataloader: 用于测试数据的 DataLoader
+        loss_fn: 损失函数
+        device: 设备 (e.g. GPU or CPU)
+
+    返回值:
+        包含训练损失和正确率的元组
+    &quot;&quot;&quot;
+    model.eval()
+
+    test_loss, test_acc = 0, 0
+
+    with torch.inference_mode():
+        for batch, (X, y) in enumerate(dataloader):
+            X, y = X.to(device), y.to(device)
+
+            test_pred_logits = model(X)
+
+            loss = loss_fn(test_pred_logits, y)
+            test_loss += loss.item()
+
+            test_pred_labels = test_pred_logits.argmax(dim=1)
+            test_acc += ((test_pred_labels == y).sum().item() / len(test_pred_labels))
+
+    test_loss = test_loss / len(dataloader)
+    test_acc = test_acc / len(dataloader)
+    return test_loss, test_acc
+
+
+def train(model: torch.nn.Module,
+          train_dataloader: torch.utils.data.DataLoader,
+          test_dataloader: torch.utils.data.DataLoader,
+          optimizer: torch.optim.Optimizer,
+          loss_fn: torch.nn.Module,
+          epochs: int,
+          device: torch.device) -&gt; Dict[str, List]:
+    &quot;&quot;&quot;
+    训练模型多个 epoch
+
+    参数:
+        model: 训练的模型
+        train_dataloader: 训练数据的 DataLoader
+        test_dataloader: 测试数据的 DataLoader
+        optimizer: 优化器
+        loss_fn: 损失函数
+        epochs: 训练轮数
+        device: 设备 (e.g. GPU or CPU)
+
+    返回值:
+        包含训练和测试损失和正确率的字典
+    &quot;&quot;&quot;
+    results = {&quot;train_loss&quot;: [],
+               &quot;train_acc&quot;: [],
+               &quot;test_loss&quot;: [],
+               &quot;test_acc&quot;: []
+               }
+
+    for epoch in tqdm(range(epochs)):
+        train_loss, train_acc = train_step(model=model,
+                                           dataloader=train_dataloader,
+                                           loss_fn=loss_fn,
+                                           optimizer=optimizer,
+                                           device=device)
+        test_loss, test_acc = test_step(model=model,
+                                        dataloader=test_dataloader,
+                                        loss_fn=loss_fn,
+                                        device=device)
+
+        print(
+            f&quot;\nEpoch: {epoch+1} | &quot;
+            f&quot;train_loss: {train_loss:.4f} | &quot;
+            f&quot;train_acc: {train_acc:.4f} | &quot;
+            f&quot;test_loss: {test_loss:.4f} | &quot;
+            f&quot;test_acc: {test_acc:.4f}&quot;
+        )
+
+        results[&quot;train_loss&quot;].append(train_loss)
+        results[&quot;train_acc&quot;].append(train_acc)
+        results[&quot;test_loss&quot;].append(test_loss)
+        results[&quot;test_acc&quot;].append(test_acc)
+
+    return results
+
+</code></pre>
+</details>
+<h2 id="utils.py%EF%BC%9A%E5%AE%9E%E7%94%A8%E5%87%BD%E6%95%B0%E9%9B%86%E5%90%88">utils.py：实用函数集合</h2>
+<p>通常情况下，在训练期间或训练后需要保存模型。</p>
+<ul>
+<li>将 helper 函数存储在名为 <code>utils.py</code> （utilities的缩写）的文件中。</li>
+</ul>
+<details>
+<summary>utils.py</summary>
+
+<pre class="language-python"><code class="language-python">&quot;&quot;&quot;
+@file: utils.py
+@brief: 包含实用函数
+@author: -
+@date: 2025-02-13
+&quot;&quot;&quot;
+
+import torch
+from pathlib import Path
+from typing import Union
+
+
+def save_model(model: torch.nn.Module,
+               target_dir: str,
+               model_name: str):
+    &quot;&quot;&quot;
+    保存模型
+
+    参数:
+        model (torch.nn.Module): 要保存的模型。
+        target_dir (str): 保存模型的目标目录。
+        model_name (str): 保存的模型文件的名称。
+
+    异常:
+        断言错误: 如果 model_name 不以.pt或. pth结尾。
+    &quot;&quot;&quot;
+    target_dir_path = Path(target_dir)
+    target_dir_path.mkdir(parents=True, exist_ok=True)
+
+    assert model_name.endswith(&quot;.pth&quot;) or model_name.endswith(&quot;.pt&quot;), &quot;model_name should end with .pt or .pth&quot;
+    model_save_path = target_dir_path / model_name
+
+    print(f&quot;[INFO] Saving model to: {model_save_path}&quot;)
+    torch.save(obj=model.state_dict(),
+               f=model_save_path)
+
+</code></pre>
+</details>
+<h2 id="train.py%EF%BC%9A%E8%AE%AD%E7%BB%83%E3%80%81%E8%AF%84%E4%BC%B0%E5%92%8C%E4%BF%9D%E5%AD%98%E6%A8%A1%E5%9E%8B">train.py：训练、评估和保存模型</h2>
+<p>在其它项目里，经常会遇到将其所有功能组合在一个 <code>train.py</code> 文件中。</p>
+<p>在这里的 <code>train.py</code> 文件中，将结合我们创建的其他 Python脚本的所有功能，并使用它来训练模型。</p>
+<p>有以下步骤：</p>
+<ol>
+<li>从目录中导入 <code>data_setup</code>、<code>engine</code>、<code>model</code>、<code>utils</code> 等各种依赖项。</li>
+<li>设置各种超参数，如批量大小，epoch数，学习率和隐藏单元数（这些可以在将来通过 Python 的 argparse 设置）。</li>
+<li>设置训练和测试目录。</li>
+<li>设置使用设备。</li>
+<li>创建必要的数据转换。</li>
+<li>使用 <code>data_setup.py</code> 创建 DataLoader。</li>
+<li>使用 <code>model.py</code> 创建模型。</li>
+<li>设置损失函数和优化器。</li>
+<li>使用 <code>engine.py</code> 训练模型。</li>
+<li>使用 <code>utils.py</code> 保存模型。</li>
+</ol>
+<details>
+<summary>train.py</summary>
+
+<pre class="language-python"><code class="language-python">&quot;&quot;&quot;
+@file: train.py
+@brief: 训练模型
+@author: -
+@date: 2025-02-13
+&quot;&quot;&quot;
+
+import os
+import torch
+import data_setup, engine, model, utils
+
+from torchvision import transforms
+
+# 训练超参数
+NUM_EPOCHS = 5
+BATCH_SIZE = 32
+HIDDEN_UNITS = 10
+LEARNING_RATE = 0.001
+
+# 数据路径
+train_dir = &quot;../data/pizza_steak_sushi/train&quot;
+test_dir = &quot;../data/pizza_steak_sushi/test&quot;
+
+# 训练设备
+device = &quot;cuda&quot; if torch.cuda.is_available() else &quot;cpu&quot;
+
+if __name__ == &quot;__main__&quot;:
+    # 数据预处理
+    train_transform = transforms.Compose([
+        transforms.Resize((64, 64)),
+        transforms.ToTensor(),
+    ])
+
+    # 创建数据加载器
+    train_dataloader, test_dataloader, class_names = data_setup.create_dataloaders(
+        train_dir=train_dir,
+        test_dir=test_dir,
+        transform=train_transform,
+        batch_size=BATCH_SIZE,
+    )
+
+    # 创建模型
+    model = model.TinyVGG(
+        input_channels=3,
+        hidden_units=HIDDEN_UNITS,
+        output_shape=len(class_names),
+    ).to(device)
+
+    # 设置损失函数和优化器
+    loss_fn = torch.nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(params=model.parameters(),
+                                lr=LEARNING_RATE)
+
+    # 启动训练
+    engine.train(model=model,
+                train_dataloader=train_dataloader,
+                test_dataloader=test_dataloader,
+                optimizer=optimizer,
+                loss_fn=loss_fn,
+                epochs=NUM_EPOCHS,
+                device=device)
+
+    # 保存模型
+    utils.save_model(model=model,
+                    target_dir=&quot;models&quot;,
+                    model_name=&quot;tinyvgg_model.pth&quot;)
+
+</code></pre>
+</details>
+<p><em>可研究 <code>argparse</code> 的使用优化。</em></p>
+<p>测试调用：</p>
+
+<pre class="language-bat"><code class="language-bat">python .\train.py
+  0%|                                                                                 | 0/5 [00:00&lt;?, ?it/s] 
+Epoch: 1 | train_loss: 1.1113 | train_acc: 0.3047 | test_loss: 1.0953 | test_acc: 0.3400
+ 20%|██████████████▌                                                          | 1/5 [00:18&lt;01:14, 18.60s/it]
+Epoch: 2 | train_loss: 1.1072 | train_acc: 0.2969 | test_loss: 1.0744 | test_acc: 0.4233
+ 40%|█████████████████████████████▏                                           | 2/5 [00:36&lt;00:55, 18.45s/it]
+Epoch: 3 | train_loss: 1.0931 | train_acc: 0.4141 | test_loss: 1.0908 | test_acc: 0.3617
+ 60%|███████████████████████████████████████████▊                             | 3/5 [00:55&lt;00:36, 18.45s/it] 
+Epoch: 4 | train_loss: 1.0891 | train_acc: 0.4180 | test_loss: 1.0931 | test_acc: 0.3722
+ 80%|██████████████████████████████████████████████████████████▍              | 4/5 [01:13&lt;00:18, 18.46s/it] 
+Epoch: 5 | train_loss: 1.0622 | train_acc: 0.4766 | test_loss: 1.0636 | test_acc: 0.4621
+100%|█████████████████████████████████████████████████████████████████████████| 5/5 [01:32&lt;00:00, 18.43s/it] 
+[INFO] Saving model to: models\tinyvgg_model.pth
+</code></pre>
+
+                        
+                    </div>
+                </div>
+                <div id="previous_next">
+                    <div id="previous">
+                        
+                        <a href="/StyleTransfer/ref_and_notes/pytorch_custom_datasets.html">
+                            <span class="icon"></span>
+                            <span class="label">PyTorch 中自定义数据集</span>
+                        </a>
+                        
+                    </div>
+                    <div id="next">
+                        
+                        <a href="/StyleTransfer/ref_and_notes/gan.html">
+                            <span class="label">生成对抗网络 GAN</span>
+                            <span class="icon"></span>
+                        </a>
+                        
+                    </div>
+                </div>
+                <div id="comments-container"></div>
+            </div>
+            <div id="toc_wrapper">
+                <div id="toc">
+                    <div id="toc_content">
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="to_top" href="#"></a>
+    <div id="doc_footer">
+        <div id="footer">
+            <div id="footer_top">
+                <ul>
+<li><a></a><ul><li><a target="_blank" href="/StyleTransfer/#"></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <div id="footer_bottom">
+                <ul>
+<li><a target="_blank" href="https://github.com/teedoc/teedoc">Generated by teedoc - Fingsinz - 2024.12.29</a></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+        <script src="/StyleTransfer/teedoc-plugin-markdown-parser/mermaid.min.js"></script>
+    
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+        <script src="/StyleTransfer/static/js/theme_default/tocbot.min.js"></script>
+    
+        <script src="/StyleTransfer/static/js/theme_default/main.js"></script>
+    
+        <script src="/StyleTransfer/static/js/theme_default/viewer.min.js"></script>
+    
+        <script src="/StyleTransfer/static/css/theme_default/prism.min.js"></script>
+    
+        <script src="/StyleTransfer/static/js/search/search_main.js"></script>
+    
+        <script src="/StyleTransfer/static/js/custom.js"></script>
+    
+</body>
+
+</html>

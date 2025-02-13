@@ -14,5 +14,7 @@ items:
         file: pytorch_computer_vision.ipynb
     -   label: PyTorch 中自定义数据集
         file: pytorch_custom_datasets.ipynb
+    -   label: PyTorch 模块化
+        file: pytorch_modular.md
 -   label: 生成对抗网络 GAN
     file: gan.md

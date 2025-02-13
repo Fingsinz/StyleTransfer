@@ -43,14 +43,26 @@
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/pytorch_basic_workflow.html</loc>
-            <lastmod>2025-02-08</lastmod>
+            <loc>https:///StyleTransfer/ref_and_notes/pytorch_install.html</loc>
+            <lastmod>2025-02-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/pytorch_classification.html</loc>
-            <lastmod>2025-02-10</lastmod>
+            <loc>https:///StyleTransfer/ref_and_notes/pytorch_modular.html</loc>
+            <lastmod>2025-02-13</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/pytorch_tensor.html</loc>
+            <lastmod>2025-02-07</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/index.html</loc>
+            <lastmod>2025-01-16</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -67,20 +79,14 @@
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/pytorch_install.html</loc>
-            <lastmod>2025-02-07</lastmod>
+            <loc>https:///StyleTransfer/ref_and_notes/pytorch_basic_workflow.html</loc>
+            <lastmod>2025-02-08</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/pytorch_tensor.html</loc>
-            <lastmod>2025-02-07</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https:///StyleTransfer/ref_and_notes/index.html</loc>
-            <lastmod>2025-01-16</lastmod>
+            <loc>https:///StyleTransfer/ref_and_notes/pytorch_classification.html</loc>
+            <lastmod>2025-02-10</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
