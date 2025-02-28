@@ -12,8 +12,8 @@ class: heading_no_counter
     - 理解基本理论
     - 代码复现（ResNet-9/50）
 2. 学习 VGG 网络
-3. CycleGAN
-4. 3 级金字塔判别器（PatchGAN）
+3. 3 级金字塔判别器（PatchGAN）
+4. CycleGAN
 5. 学习 PyTorch 框架(2)
 	- [ ] 迁移学习
     - [ ] 实验跟踪
