@@ -8,10 +8,18 @@ class: heading_no_counter
 
 ### TODO
 
-1. 学习 PyTorch 框架，figure out the functions of PyTorch。
-2. 学习 U-Net 网络。
-3. ......
-
+1. 学习 ResNet 残差网络以及部分变体：[Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
+    - 理解基本理论
+    - 代码复现（ResNet-9/50）
+2. 学习 VGG 网络
+3. CycleGAN
+4. 3 级金字塔判别器（PatchGAN）
+5. 学习 PyTorch 框架(2)
+	- [ ] 迁移学习
+    - [ ] 实验跟踪
+    - [ ] 论文复制
+    - [ ] 模型部署
+6. ......
 
 ### 2024.12.29
 
@@ -24,17 +32,17 @@ class: heading_no_counter
 
 ### 2025.02.01~2025.02.04
 
-- [x] 完成阅读论文 《Generative Adversarial Nets》，做了个[笔记和实验](/ref_and_note/GAN.html)。
+- [x] 完成阅读论文《Generative Adversarial Nets》，做了个[笔记和实验](/ref_and_note/GAN.html)。
 
-### 2025.02.07~
+### 2025.02.07~2025.02.13
 
-- [ ] 学习 PyTorch 框架。
-    - [x] PyTorch 张量操作、模型搭建。
+- [x] 学习 PyTorch 框架 (1)
+    - [x] PyTorch 张量操作、模型搭建
     - [x] 基础分类模型
     - [x] 计算机视觉基础
     - [x] 自定义数据集
     - [x] 模块化
-    - [ ] 迁移学习
-    - [ ] 实验跟踪
-    - [ ] 论文复制
-    - [ ] 模型部署
+
+### 2025.02.26~2025.02.28
+
+- [x] 学习 U-Net 网络，完成阅读论文《U-Net Convolutional Networks for Biomedical Image Segmentation》
