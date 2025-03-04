@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-            <loc>https:///StyleTransfer/doc1/index.html</loc>
-            <lastmod>2022-09-01</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
             <loc>https:///StyleTransfer/supporting/background.html</loc>
             <lastmod>2025-01-08</lastmod>
             <changefreq>weekly</changefreq>
@@ -37,14 +31,20 @@
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/gan.html</loc>
-            <lastmod>2025-02-01</lastmod>
+            <loc>https:///StyleTransfer/ref_and_notes/unet.html</loc>
+            <lastmod>2025-02-26</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/unet.html</loc>
-            <lastmod>2025-02-26</lastmod>
+            <loc>https:///StyleTransfer/ref_and_notes/index.html</loc>
+            <lastmod>2025-01-16</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/resnet.html</loc>
+            <lastmod>2025-03-02</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -67,20 +67,8 @@
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/index.html</loc>
-            <lastmod>2025-01-16</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https:///StyleTransfer/ref_and_notes/pytorch_computer_vision.html</loc>
-            <lastmod>2025-02-11</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https:///StyleTransfer/ref_and_notes/pytorch_custom_datasets.html</loc>
-            <lastmod>2025-02-12</lastmod>
+            <loc>https:///StyleTransfer/ref_and_notes/gan.html</loc>
+            <lastmod>2025-02-01</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -93,6 +81,18 @@
         <url>
             <loc>https:///StyleTransfer/ref_and_notes/pytorch_classification.html</loc>
             <lastmod>2025-02-10</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/pytorch_computer_vision.html</loc>
+            <lastmod>2025-02-11</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/pytorch_custom_datasets.html</loc>
+            <lastmod>2025-02-12</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>

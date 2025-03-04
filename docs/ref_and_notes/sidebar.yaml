@@ -20,3 +20,6 @@ items:
     file: gan.md
 -   label: U-Net 卷积网络
     file: unet.md
+-   label: 残差网络 ResNet
+    file: resnet.md
+
