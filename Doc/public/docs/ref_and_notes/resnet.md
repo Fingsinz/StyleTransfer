@@ -2,7 +2,7 @@
 title: 残差网络
 keywords: ResNet
 desc: ResNet文献及笔记
-date: 2025-02-26
+date: 2025-03-02
 id: ref_ResNet
 ---
 
