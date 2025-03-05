@@ -22,4 +22,6 @@ items:
     file: unet.md
 -   label: 残差网络 ResNet
     file: resnet.md
+-   label: VGG 卷积网络
+    file: vgg.md
 

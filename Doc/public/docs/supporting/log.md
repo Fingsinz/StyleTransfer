@@ -18,17 +18,25 @@ class: heading_no_counter
     - [ ] 模型部署
 5. ......
 
+### 2025.03.05
+
+- [x] 学习 VGG 网络架构，完成阅读论文《Very Deep Convolutional Networks for Large-Scale Image Recognition》
+    - 首次系统性地研究了卷积神经网络（CNN）深度对大规模图像识别任务的影响，并提出了经典的 VGG 网络架构，其中 VGG-16、VGG-19 效果比较好。
+    - 使用 3 × 3 小卷积核堆叠替代大卷积核，减少参数量并引入更多非线性因素
+    - 通过浅层网络预训练初始化深层网络的前几层和全连接层，加速收敛并缓解梯度不稳定问题
+    - [VGG 笔记](../ref_and_notes/vgg.md)
 
 ### 2025.03.02~2025.03.04
 
 - [x] 学习残差网络，完成阅读论文《Deep Residual Learning for Image Recognition》
-    - 残差块
+    - 提出了深度残差学习框架（ResNet），通过引入残差块（Residual Block）和快捷连接（Shortcut Connection），解决了深度神经网络训练中的退化问题（随着深度增加，训练误差不降反升）
     - ResNet-9、ResNet-18、ResNet-34、ResNet-50、ResNet-101、ResNet-152
     - [ResNet 笔记](../ref_and_notes/resnet.md)
 
 ### 2025.02.26~2025.02.28
 
 - [x] 学习 U-Net 网络，完成阅读论文《U-Net Convolutional Networks for Biomedical Image Segmentation》
+    - 提出了一种名为 U-Net 的卷积神经网络架构，专为生物医学图像分割任务设计
     - 收缩路径（卷积）、扩展路径（上卷积）
     - 权重图与权重初始策略
     - [U-Net 笔记](../ref_and_notes/unet.md)
