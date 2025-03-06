@@ -8,8 +8,8 @@ class: heading_no_counter
 
 ### TODO
 
-1. 学习 VGG 网络
-2. 3 级金字塔判别器（PatchGAN）
+1. 《Image-to-Image Translation with Conditional Adversarial Networks》提出 GANs 统一框架、基础 PatchGAN
+2. 《High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs》提出 3 级金字塔判别器（PatchGAN）
 3. CycleGAN
 4. 学习 PyTorch 框架(2)
 	- [ ] 迁移学习
