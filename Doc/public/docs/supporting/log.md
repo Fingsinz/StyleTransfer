@@ -18,6 +18,12 @@ class: heading_no_counter
     - [ ] 模型部署
 5. ......
 
+### 2025.03.06~2025.03.10
+
+- [ ] 了解 cGAN
+- [ ] 了解 PatchGAN 和 三级金字塔 PatchGAN
+- [ ] 理解 pytorch-CycleGAN-and-pix2pix 仓库中 pip2pix 部分
+
 ### 2025.03.05
 
 - [x] 学习 VGG 网络架构，完成阅读论文《Very Deep Convolutional Networks for Large-Scale Image Recognition》

@@ -24,4 +24,6 @@ items:
     file: resnet.md
 -   label: VGG 卷积网络
     file: vgg.md
+-   label: cGAN 简介
+    file: cgan.md
 
