@@ -3,16 +3,33 @@ title: 参考文献及笔记
 keywords: 
 desc: 参考文献阅读及其代码测试
 date: 2025-01-16
+class: heading_no_counter
 ---
 
-1. [GAN——Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)
+### TODO
 
-2. [U-Net: Convolutional Networks for Biomedical Image Segmentation](https://arxiv.org/abs/1505.04597)
+1. 《Image-to-Image Translation with Conditional Adversarial Networks》提出 GANs 统一框架、基础 PatchGAN
+2. 《High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs》提出 3 级金字塔判别器（PatchGAN）
+3. CycleGAN
+4. 学习 PyTorch 框架(2)
+	- [ ] 迁移学习
+    - [ ] 实验跟踪
+    - [ ] 论文复制
+    - [ ] 模型部署
+5. ......
 
-3. [ResNet——Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
+### 涉及文献
 
-4. [VGG——Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/abs/1409.1556)
+1. [VGG——Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/abs/1409.1556)
 
-5. [PatchGAN 起源 —— Image-to-Image Translation with Conditional Adversarial Networks](https://openaccess.thecvf.com/content_cvpr_2017/papers/Isola_Image-To-Image_Translation_With_CVPR_2017_paper.pdf)
+2. [ResNet——Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
 
-6. [将PatchGAN扩展为多尺度（3级金字塔）—— High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs](https://arxiv.org/abs/1711.11585)
+3. [U-Net: Convolutional Networks for Biomedical Image Segmentation](https://arxiv.org/abs/1505.04597)
+
+4. [GAN——Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)
+
+5. [Conditional Generative Adversarial Nets](https://arxiv.org/abs/1411.1784)
+
+6. [PatchGAN 起源 —— Image-to-Image Translation with Conditional Adversarial Networks](https://openaccess.thecvf.com/content_cvpr_2017/papers/Isola_Image-To-Image_Translation_With_CVPR_2017_paper.pdf)
+
+7. [将PatchGAN扩展为多尺度（3级金字塔）—— High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs](https://arxiv.org/abs/1711.11585)
