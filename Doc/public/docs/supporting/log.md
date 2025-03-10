@@ -9,6 +9,7 @@ class: heading_no_counter
 ### 2025.03.06~2025.03.10
 
 - [x] 了解 cGAN
+- [x] 了解 pix2pix 中的 70×70 PatchGAN
 - [x] 理解 pytorch-CycleGAN-and-pix2pix 仓库中 pip2pix model 部分
 
 ### 2025.03.05
