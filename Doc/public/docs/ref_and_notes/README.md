@@ -33,3 +33,8 @@ class: heading_no_counter
 6. [PatchGAN 起源 —— Image-to-Image Translation with Conditional Adversarial Networks](https://openaccess.thecvf.com/content_cvpr_2017/papers/Isola_Image-To-Image_Translation_With_CVPR_2017_paper.pdf)
 
 7. [将PatchGAN扩展为多尺度（3级金字塔）—— High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs](https://arxiv.org/abs/1711.11585)
+
+
+### 风格迁移实战代码参考
+
+1. Image Style Transfer Using Convolutional Neural Networks：[https://github.com/b06b01073/style-transfer/tree/main](https://github.com/b06b01073/style-transfer/tree/main)
