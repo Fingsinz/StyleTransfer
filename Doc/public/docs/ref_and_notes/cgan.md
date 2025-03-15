@@ -1,5 +1,5 @@
 ---
-title: cGAN 简介
+title: cGAN：条件 GAN
 keywords: cGAN
 desc: cGAN 简介
 date: 2025-03-06

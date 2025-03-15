@@ -1,5 +1,5 @@
 ---
-title: 生成对抗网络
+title: GAN：生成对抗网络
 keywords: GAN
 desc: GAN文献及笔记
 date: 2025-02-01

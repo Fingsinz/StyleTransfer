@@ -8,15 +8,13 @@ class: heading_no_counter
 
 ### TODO
 
-1. 《Image-to-Image Translation with Conditional Adversarial Networks》提出 GANs 统一框架、基础 PatchGAN
-2. 《High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs》提出 3 级金字塔判别器（PatchGAN）
-3. CycleGAN
-4. 学习 PyTorch 框架(2)
+1. CycleGAN
+2. 学习 PyTorch 框架(2)
 	- [ ] 迁移学习
     - [ ] 实验跟踪
     - [ ] 论文复制
     - [ ] 模型部署
-5. ......
+3. ......
 
 ### 涉及文献
 
