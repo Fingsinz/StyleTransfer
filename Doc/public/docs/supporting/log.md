@@ -6,6 +6,12 @@ date: 2024-12-29
 class: heading_no_counter
 ---
 
+### 2025.03.11~2025.03.15
+
+- [x] 阅读《High-Resolution Image Synthesis and Semantic Manipulation with cGANs》
+- [x] 了解 pix2pixHD 中的三级判别器和 Coarse-to-Fine Generator。
+- [x] 理解 pix2pixHD 仓库中的部分代码。
+
 ### 2025.03.06~2025.03.10
 
 - [x] 了解 cGAN
