@@ -1,6 +1,6 @@
 items:
 -   label: PyTorch 框架
-    collapse: true
+    collapsed: false
     items:
     -   label: PyTorch 环境安装
         file: pytorch_install.md
@@ -16,12 +16,25 @@ items:
         file: pytorch_custom_datasets.ipynb
     -   label: PyTorch 模块化
         file: pytorch_modular.md
--   label: 生成对抗网络 GAN
-    file: gan.md
--   label: U-Net 卷积网络
-    file: unet.md
--   label: 残差网络 ResNet
-    file: resnet.md
--   label: VGG 卷积网络
-    file: vgg.md
+
+-   label: 理论学习
+    collapsed: false
+    items:
+    -   label: VGG 卷积网络
+        file: vgg.md
+    -   label: 残差网络 ResNet
+        file: resnet.md
+    -   label: U-Net 卷积网络
+        file: unet.md
+    -   label: 生成对抗网络 GAN
+        file: gan.md
+    -   label: cGAN 简介
+        file: cgan.md
+    -   label: PatchGAN 到多尺度 PatchGAN
+        file: patchgan.md
+
+-   label: 风格迁移实战
+    collapsed: false
+    items:
+    -   label: Image Style Transfer Using Convolutional Neural Networks
 
