@@ -8,7 +8,7 @@ class: heading_no_counter
 
 ### TODO
 
-1. CycleGAN
+1. Meta Networks for Neural Style Transfer
 2. 学习 PyTorch 框架(2)
 	- [ ] 迁移学习
     - [ ] 实验跟踪
@@ -32,6 +32,9 @@ class: heading_no_counter
 
 7. [将PatchGAN扩展为多尺度（3级金字塔）—— High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs](https://arxiv.org/abs/1711.11585)
 
+8. [Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://arxiv.org/abs/1703.10593)
+
+9. [Meta Networks for Neural Style Transfer](https://arxiv.org/abs/1709.04111)
 
 ### 风格迁移实战代码参考
 

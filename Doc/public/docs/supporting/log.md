@@ -6,6 +6,12 @@ date: 2024-12-29
 class: heading_no_counter
 ---
 
+### 2025.03.16~2025.03.17
+
+- [x] 阅读《Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks》
+- [x] 了解 CycleGAN 的基本架构。
+- [x] 复现论文。
+
 ### 2025.03.11~2025.03.15
 
 - [x] 阅读《High-Resolution Image Synthesis and Semantic Manipulation with cGANs》
