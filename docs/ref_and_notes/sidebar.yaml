@@ -22,16 +22,18 @@ items:
     items:
     -   label: VGG 卷积网络
         file: vgg.md
-    -   label: 残差网络 ResNet
+    -   label: ResNet：残差网络
         file: resnet.md
     -   label: U-Net 卷积网络
         file: unet.md
-    -   label: 生成对抗网络 GAN
+    -   label: GAN：生成对抗网络
         file: gan.md
-    -   label: cGAN 简介
+    -   label: cGAN：条件 GAN
         file: cgan.md
     -   label: PatchGAN 到多尺度 PatchGAN
         file: patchgan.md
+    -   label: CycleGAN：循环GAN
+        file: cyclegan.md
 
 -   label: 风格迁移实战
     collapsed: false
