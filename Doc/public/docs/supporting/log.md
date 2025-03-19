@@ -11,18 +11,21 @@ class: heading_no_counter
 - [x] 阅读《Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks》
 - [x] 了解 CycleGAN 的基本架构。
 - [x] 复现论文。
+- [CycleGAN：循环 GAN](../ref_and_notes/cyclegan.md)
 
 ### 2025.03.11~2025.03.15
 
 - [x] 阅读《High-Resolution Image Synthesis and Semantic Manipulation with cGANs》
 - [x] 了解 pix2pixHD 中的三级判别器和 Coarse-to-Fine Generator。
 - [x] 理解 pix2pixHD 仓库中的部分代码。
+- [PatchGAN 到 Multi-Scale PatchGAN](../ref_and_notes/patchgan.md)
 
 ### 2025.03.06~2025.03.10
 
 - [x] 了解 cGAN
 - [x] 了解 pix2pix 中的 70×70 PatchGAN
 - [x] 理解 pytorch-CycleGAN-and-pix2pix 仓库中 pip2pix model 部分
+- [cGAN：条件 GAN](../ref_and_notes/cgan.md)
 
 ### 2025.03.05
 

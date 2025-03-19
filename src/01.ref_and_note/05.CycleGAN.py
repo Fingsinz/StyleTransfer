@@ -11,6 +11,7 @@ from torch.utils.data import DataLoader, Dataset
 
 from tqdm import tqdm
 import swanlab
+import time
 
 def weight_init_normal(m):
     classname = m.__class__.__name__
@@ -240,8 +241,8 @@ class CycleGAN(nn.Module):
                 "cyclegan_train_loss_identity": loss_identity_sum / len(self.train_dataloader),
                 "cyclegan_train_lr": self.generator_lr_scheduler.get_last_lr()[0]
             })  
-            
-            if (epoch + 1) % 10 == 0:
+            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()) + f"\t {epoch + 1} / {config['epochs']}")
+            if (epoch + 1) % 2 == 0:
                 save_model(self, ".", f"cyclegan_epoch_{epoch + 1}.pth")
                 self.test()
 
@@ -360,7 +361,7 @@ if __name__ == '__main__':
     
     run = swanlab.init(
         project="StyleTransfer",
-        experiment_name="CycleGAN_demo",
+        experiment_name="CycleGAN_demo_200",
         description="CycleGAN on monet2photo",
         config=config
     )
