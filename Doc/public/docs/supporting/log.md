@@ -6,6 +6,14 @@ date: 2024-12-29
 class: heading_no_counter
 ---
 
+### 2025.03.19~2025.03.26
+
+- [x] 03.19 阅读《Meta Networks for Neural Style Transfer》
+- [x] 03.23 了解 MetaNet 思想
+- [x] 03.24 复现 MetaNet
+- [x] 03.25 ~ 03.26 代码实验 demo，代码分析，弄清 MetaNet 结构
+- [MetaNet](../ref_and_notes/metanet.md)
+
 ### 2025.03.16~2025.03.17
 
 - [x] 阅读《Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks》

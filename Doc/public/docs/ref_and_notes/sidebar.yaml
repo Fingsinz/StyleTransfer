@@ -34,6 +34,8 @@ items:
         file: patchgan.md
     -   label: CycleGAN：循环GAN
         file: cyclegan.md
+    -   label: Meta Networks
+        file: metanet.md
 
 -   label: 风格迁移实战
     collapsed: false
