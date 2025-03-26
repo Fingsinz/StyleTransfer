@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+
+<html lang="zh" id="MetaNets" class="">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="keywords" content="Meta Networks">
+    
+    
+    <meta name="description" content="Meta Networks">
+    
+    <meta name="generator" content="teedoc">
+    <meta name="theme" content="teedoc-plugin-theme-default">
+    
+        
+        <meta name="markdown-generator" content="teedoc-plugin-markdown-parser">
+        
+        <script>
+MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}};
+</script>
+        
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+        <script src="/StyleTransfer/static/js/theme_default/pre_main.js"></script>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/prism.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/viewer.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/dark.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/light.css" type="text/css"/>
+        
+        <script src="/StyleTransfer/static/js/theme_default/jquery.min.js"></script>
+        
+        <script src="/StyleTransfer/static/js/theme_default/split.js"></script>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/search/style.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/custom.css" type="text/css"/>
+        
+        <meta name="html-generator" content="teedoc-plugin-jupyter-notebook-parser">
+        
+    
+    
+    <title>Meta Networks - Style Transfer - Fingsinz</title>
+    
+    <script type="text/javascript">js_vars = {}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2025-03-19", "update": [], "ts": 1742313600, "author": "", "brief": "", "cover": "", "id": "MetaNets"}</script>
+</head>
+
+
+<body class="type_doc">
+    
+    <div id="navbar">
+        <div id="navbar_menu">
+            <a class="site_title" href="/StyleTransfer/">
+                
+                
+                    <h2>Style Transfer By Fingsinz</h2>
+                
+        </a>
+            <a id="navbar_menu_btn"></a>
+        </div>
+        <div id="navbar_items">
+            <div>
+                <ul id="nav_left">
+<li class=""><a  href="/StyleTransfer/supporting/">辅助材料</a></li>
+<li class="active"><a  href="/StyleTransfer/ref_and_notes/">文献学习 & 笔记</a></li>
+<li class=""><a  href="/StyleTransfer/paper/">论文正文</a></li>
+</ul>
+
+            </div>
+            <div>
+                <ul id="nav_right">
+</ul>
+
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">搜索</span>
+                            <div id="search_hints">
+                                <span id="search_input_hint">输入关键词，多关键词空格隔开</span>
+                                <span id="search_loading_hint">正在加载，请稍候。。。</span>
+                                <span id="search_download_err_hint">下载文件失败，请刷新重试或检查网络</span>
+                                <span id="search_other_docs_result_hint">来自其它文档的结果</span>
+                                <span id="search_curr_doc_result_hint">当前文档搜索结果</span>
+                            </div></a></li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="sidebar_wrapper">
+            <div id="sidebar">
+                <div id="sidebar_title">
+                    
+                </div>
+                <ul class="show">
+<li class="not_active no_link"><a><span class="label">PyTorch 框架</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_install.html"><span class="label">PyTorch 环境安装</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_tensor.html"><span class="label">Tensor 张量</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_basic_workflow.html"><span class="label">PyTorch 基本工作流</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_classification.html"><span class="label">PyTorch 分类模型</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_computer_vision.html"><span class="label">PyTorch 中的计算机视觉</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_custom_datasets.html"><span class="label">PyTorch 中自定义数据集</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_modular.html"><span class="label">PyTorch 模块化</span><span class=""></span></a></li>
+</ul>
+</li>
+<li class="active_parent no_link"><a><span class="label">理论学习</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/vgg.html"><span class="label">VGG 卷积网络</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/resnet.html"><span class="label">ResNet：残差网络</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/unet.html"><span class="label">U-Net 卷积网络</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/gan.html"><span class="label">GAN：生成对抗网络</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cgan.html"><span class="label">cGAN：条件 GAN</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/patchgan.html"><span class="label">PatchGAN 到多尺度 PatchGAN</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cyclegan.html"><span class="label">CycleGAN：循环GAN</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/StyleTransfer/ref_and_notes/metanet.html"><span class="label">Meta Networks</span><span class=""></span></a></li>
+</ul>
+</li>
+<li class="not_active no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active no_link"><a><span class="label">Image Style Transfer Using Convolutional Neural Networks</span><span class=""></span></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+        <div id="article">
+            <div id="menu_wrapper">
+                <div id="menu">
+                </div>
+            </div>
+            <div id="content_wrapper">
+                <div id="content_body">
+                    <div id="article_head">
+                        <div id="article_title">
+                            
+                            <h1>Meta Networks</h1>
+                            
+                        </div>
+                        <div id="article_tags">
+                            <ul>
+                            
+                            </ul>
+                        </div>
+                        <div id="article_info">
+                        <div id="article_info_left">
+                            <span class="article_author">
+                                
+                            </span>
+                            
+                                <span class="article_date" title="最后修改日期： 2025-03-19">
+                                    2025-03-19
+                                </span>
+                            
+                        </div>
+                        <div id="article_info_right">
+                            
+                        </div>
+                        </div>
+                    </div>
+                    <div id="article_tools">
+                        <span></span>
+                        <span id="toc_btn"></span>
+                    </div>
+                    <div id="update_history">
+                        
+                    </div>
+                    <div id="article_content">
+                        
+                            <p><a href="https://arxiv.org/abs/1709.04111"  target="_blank">Meta Networks for Neural Style Transfer</a></p>
+<p><em>Shen F , Yan S , Zeng G .Meta Networks for Neural Style Transfer[J].  2017.DOI:10.48550/arXiv.1709.04111.</em></p>
+<blockquote>
+<p>In this paper we propose a new method to get the specified network parameters through one time feed-forward propagation of the meta networks and explore the application to neural style transfer. Recent works on style transfer typically need to train image transformation networks for every new style, and the style is encoded in the network parameters by enormous iterations of stochastic gradient descent. To tackle these issues, we build a meta network which takes in the style image and produces a corresponding image transformations network directly. Compared with optimization-based methods for every style, our meta networks can handle an arbitrary new style within 19 ms seconds on one modern GPU card. The fast image transformation network generated by our meta network is only 449KB, which is capable of real-time executing on a mobile device. We also investigate the manifold of the style transfer networks by operating the hidden features from meta networks. Experiments have well validated the effectiveness of our method. Code and trained models has been released <a href="https://github.com/FalongShen/styletransfer"  target="_blank">https://github.com/FalongShen/styletransfer</a>.</p>
+</blockquote>
+<p><strong>摘要</strong>：在本文中，我们提出了一种通过元网络的一次性前馈传播获得指定网络参数的新方法，并探讨了该方法在神经风格迁移中的应用。目前的风格迁移研究通常需要针对每一种新风格训练图像变换网络，并且通过大量的随机梯度下降迭代将风格编码到网络参数中。为了解决这些问题，我们<strong>构建了一个元网络，该网络接收风格图像并直接产生相应的图像转换网络</strong>。与针对每种风格的基于优化的方法相比，我们的元网络可以在一张现代 GPU 卡上花费 19 毫秒内处理任意新风格。我们的元网络生成的快速图像变换网络只有 449KB，能够在移动设备上实时执行。我们还通过操作元网络中的隐藏特征来研究风格转换网络的多样性。实验验证了该方法的有效性。代码和训练过的模型发布在：<a href="https://github.com/FalongShen/styletransfer%E3%80%82"  target="_blank">https://github.com/FalongShen/styletransfer%E3%80%82</a></p>
+<p>文章贡献如下：</p>
+<ul>
+<li>提供一个元网络来生成特定的网络，从而解决网络生成任务。<strong>元网络在一次前馈传播中接受新风格图像并生成对应图像的图像变换网络</strong>。</li>
+<li>为风格迁移提供更显式的表示，使得纹理合成和纹理生成更自然。</li>
+<li>与基于 SGD 的方法相比，元网络生成的网络在性能相似的情况下，速度提高了几个数量级。</li>
+<li>为神经风格迁移算法提供了一个新的视角，这表明卷积神经网络可以应用于优化问题。</li>
+</ul>
+<h2 id="%E8%B6%85%E7%BD%91%E7%BB%9C%E5%92%8C%E5%85%83%E7%BD%91%E7%BB%9C">超网络和元网络</h2>
+<p>超网络：一种为大型网络生成权值的小网络，生成过程相对静态。</p>
+<ul>
+<li>HyperNEAT（Stanley， D’Ambrosio, and Gauci 2009）采用一组虚拟坐标来产生权重。</li>
+<li>Ha 等人（Ha, Dai, and Le 2016）提出使用静态超网络为卷积神经网络生成权重，并使用动态超网络为循环网络生成权重，他们将超网络作为宽松的权重共享形式。</li>
+</ul>
+<p>元网络：一种利用神经网络来生成其他网络参数的技术，生成目标网络方面更为全面和灵活。</p>
+<ul>
+<li>Munkhdalai等人（Munkhdalai and Yu 2017）提出了一种通过快速参数化实现一次性分类的元网络，用于快速泛化。</li>
+</ul>
+<p>元网络的工作（Mitchell, Thrun, and others 1993; Vilalta and Drissi 2002）采用了两级学习，分别是 跨任务执行的元级（meta-level）模型的缓慢学习 和 在每个任务内执行的基本级（base-level）模型的快速学习。</p>
+<p>论文通过三个逐步递进的 Situation 构建元网络的数学基础，核心目标是从传统优化问题过渡到动态网络生成。令 $f(x)$ 和 $h(x)$ 为固定可微函数，$\vert\vert \cdot \vert\vert$ 为正则化。考虑优化问题：</p>
+$$
+\vert\vert f(x) - f(a) \vert\vert + \lambda\vert\vert h(x)-h(b) \vert\vert\tag{1}
+$$<p>有三种情况，取决于 $a$ 和 $b$ 是固定的还是可变的。</p>
+<h3 id="Situation-1%3A-%E5%9B%BA%E5%AE%9A-%24a%24-%E5%92%8C-%24b%24">Situation 1: 固定 $a$ 和 $b$</h3>
+<p>如果 $f(x)$ 和 $h(x)$ 是凸函数，式 (1) 是一个典型的关于 $x$ 的凸优化问题，我们可以直接用梯度下降法求出最优的 $x$。</p>
+$$
+\arg\min_x \vert\vert f(x) - f(a_0) \vert\vert + \lambda\vert\vert h(x)-h(b_0) \vert\vert\tag{2}
+$$<p>该情况下，定义为输入固定的内容 $a=a_0$ 和固定的风格图像 $b=b_0$。通过优化生成图像 $x$。上式中，$f(x)$ 表示内容感知函数，$h(x)$ 表示风格感知函数。</p>
+<ul>
+<li>解决办法是通过梯度下降直接优化生成图像 $x$。</li>
+</ul>
+<h3 id="Situation-2%3A-%24a%24-%E5%8F%AF%E5%8F%98%EF%BC%8C%24b%24-%E5%9B%BA%E5%AE%9A">Situation 2: $a$ 可变，$b$ 固定</h3>
+<p>对于任意给定的 $a$，根据情况 1，存在一个对应的 $x$ 满足这个函数。也就是说，总是存在一个映射函数：</p>
+$$
+\mathcal{N}: a \vert\rightarrow x\tag{3}
+$$<p>将映射函数表示为深度神经网络 $\mathcal{N}(a;w)$，由 $w$ 参数化。现在考虑经验风险最小化（ERM）问题来寻找最优映射函数：</p>
+$$
+\arg\min_w \sum_a \vert\vert f(x) - f(a) \vert\vert + \lambda\vert\vert h(x) - h(b_0) \vert\vert\tag{4}
+$$<p>其中，$x=\mathcal{N}(a;w)$。然而，这种情况下难以优化 $\mathcal{N}(\cdot;w)$。函数 $f(\cdot)$ 对于决定 SGD 是否可以逼近最优映射函数也很重要。</p>
+<p>该情况下，定义为输入可变的内容 $a$ 和固定的风格图像 $b=b_0$。希望找到一个映射函数 $\mathcal{N}(a;w)$，直接生成风格化图像 $x=\mathcal{N}(a;w)$，最小化所有内容图像的期望损失。</p>
+<ul>
+<li>解决办法是训练一个 CNN（$\mathcal{N}(a;w)$），参数 $w$ 通过 SGD 优化，学习内容图像到风格化图像的映射。</li>
+<li>将优化变量从图像 $x$ 转换为网络参数 $w$；网络 $\mathcal{N}$ 隐含编码了风格信息，但仅适用于单一固定风格。</li>
+</ul>
+<h3 id="Situation-3%3A-%24a%24-%E5%92%8C-%24b%24-%E9%83%BD%E5%8F%AF%E5%8F%98">Situation 3: $a$ 和 $b$ 都可变</h3>
+<p>对于任意给定的 $b$，根据情况 2，存在一个映射函数，使得在给定 $a$ 的情况下找到接近最优的 $x$。假设这个最优映射函数由 $\mathcal{N}(\cdot;w)$ 中的 $w$ 参数化，可以通过 SGD 处理。在这种情况下，映射函数：</p>
+$$
+meta\mathcal{N}: b\vert\rightarrow \mathcal{N}(\cdot;w)\tag{5}
+$$<p>与情况 2 类似，再次将此映射函数表示为由 $\theta$ 参数化的深度神经网络 $meta\mathcal{N}(b;\theta)$。该网络将 $b$ 作为输入，产生一个近似式 (2) 的最优网络。与 SGD 的迭代求解不同，元网络只需要一个前馈传播来找到接近最优的网络。</p>
+<p>为了优化网络中的 $\theta$，考虑以下经验风险最小化（ERM）问题：</p>
+$$
+\arg\min_\theta \sum_b\sum_a \vert\vert f(x) - f(a) \vert\vert + \lambda\vert\vert h(x) - h(b) \vert\vert\tag{6}
+$$<p>其中，$x=\mathcal{N}(a;w)$，$w=meta\mathcal{N}(b;\theta)$。对于每一个给定的 $b$，都存在一个最优的 $w$，因此训练阶段需要 SGD 的迭代来更新元网络参数 $\theta$，以此为每个给定的 $b$ 产生一个合适的 $w$。</p>
+<p>该情况下，定义为输入可变的内容 $a$ 和可变的风格图像 $b$。构建元网络 $meta\mathcal{N}(b;\theta)$，输入风格图像 $b$，生成对应的图像转换网络参数 $w$。</p>
+<ul>
+<li>解决办法是通过预训练模型提取风格图像 $b$ 的特征，再使用全连接层将风格特征映射为图像转换网络的参数 $w$。训练上使用大量风格和内容图像联合优化元网络的参数 $\theta$，使其泛化能力强。</li>
+<li>将优化变量从网络参数 $w$ 转换为元网络参数 $\theta$，实现从风格到网络参数的端到端映射。本质上，元网络 $Meta\mathcal{N}$ 是一个高阶函数，学习如何生成适应不同风格的低阶函数（图像转换网络）。</li>
+</ul>
+<h2 id="%E9%A3%8E%E6%A0%BC%E8%BF%81%E7%A7%BB">风格迁移</h2>
+<h3 id="%E5%9B%BA%E5%AE%9A%E5%86%85%E5%AE%B9%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9B%BA%E5%AE%9A%E9%A3%8E%E6%A0%BC%E8%BF%81%E7%A7%BB">固定内容图像的固定风格迁移</h3>
+<p>对于给定图像对 $I_s$ 和 $I_c$，目标是找到一个将 $I_s$ 的风格和 $I_c$ 的内容结合后感知损失函数最小的最优图像 $I$：</p>
+$$
+\min_I\left(
+    \lambda_c \vert\vert \mathbf{CP}(I;w_f) - \mathbf{CP}(I_c;w_f) \vert\vert _2^2 + 
+    \lambda_s \vert\vert \mathbf{SP}(I;w_f) - \mathbf{SP}(I_s;w_f) \vert\vert _2^2
+    \tag{7}
+\right)
+$$<p>其中，</p>
+<ul>
+<li>$\mathbf{SP}(\cdot;w_f)$ 和 $\mathbf{CP}(\cdot;w_f)$ 是基于预训练深度神经网络的感知函数，由固定权重 $w_f$ 参数化，分别代表风格感知器和内容感知器。</li>
+<li>$\lambda_s$ 和 $\lambda_c$ 控制风格和内容的权重。</li>
+</ul>
+<p>根据情况 1，将梯度下降应用于整个网络，并利用反向传播的梯度信息合成图像，最小化损失函数。这种方法为任何给定的风格图像生成高质量的结果，但需要数百次优化迭代来获得每个样本的收敛结果，这带来了很大的计算负担。</p>
+<h3 id="%E4%BB%BB%E6%84%8F%E5%86%85%E5%AE%B9%E5%9B%BE%E5%83%8F%E7%9A%84%E5%9B%BA%E5%AE%9A%E9%A3%8E%E6%A0%BC%E8%BF%81%E7%A7%BB">任意内容图像的固定风格迁移</h3>
+<p>这个阶段的图像变换网络基于大型自然图像数据集，通过反向传播利用参数的梯度上进行优化:</p>
+$$
+\min_w\sum_{I_c}\left(
+    \lambda_c \vert\vert \mathbf{CP}(I_w;w_f) - \mathbf{CP}(I_c;w_f) \vert\vert _2^2 + 
+    \lambda_s \vert\vert \mathbf{SP}(I_w;w_f) - \mathbf{SP}(I_s;w_f) \vert\vert _2^2
+    \tag{8}
+\right)
+$$<p>其中，$I_w=\mathcal{N}(I_c;w)$，$\mathcal{N}$ 是由 $w$ 参数化的图像变换网络。</p>
+<p>$I_s$ 的风格编码在 $w$ 中。对于一个新的内容图像，只需要通过变换网络进行前向传播来生成对应的图像。</p>
+<h3 id="%E5%9B%BA%E5%AE%9A%E5%86%85%E5%AE%B9%E5%9B%BE%E5%83%8F%E7%9A%84%E4%BB%BB%E6%84%8F%E9%A3%8E%E6%A0%BC%E8%BF%81%E7%A7%BB">固定内容图像的任意风格迁移</h3>
+<p>如前所述情况 2，对于某些特定条件，存在一个由 CNN 参数化的直接映射来逼近损失的近最优解。</p>
+<p>考虑对称性问题，对于固定内容图像，尝试找到每个样式图像的转移图像：</p>
+$$
+\min_w\sum_{I_s}\left(
+    \lambda_c \vert\vert \mathbf{CP}(I_w;w_f) - \mathbf{CP}(I_c;w_f) \vert\vert _2^2 + 
+    \lambda_s \vert\vert \mathbf{SP}(I_w;w_f) - \mathbf{SP}(I_s;w_f) \vert\vert _2^2
+    \tag{9}
+\right)
+$$<p>其中，$I_w=\mathcal{N}(I_c;w)$。</p>
+<p>但是，已经发现它无法找到正确的映射。图像变换网络只给出样式图像作为传输图像，这表明直接映射来接近梯度下降解并不是那么简单。</p>
+<h3 id="%E4%BB%BB%E6%84%8F%E5%86%85%E5%AE%B9%E5%9B%BE%E5%83%8F%E7%9A%84%E4%BB%BB%E6%84%8F%E9%A3%8E%E6%A0%BC%E8%BF%81%E7%A7%BB">任意内容图像的任意风格迁移</h3>
+<p>如情况 3 所示，通过下式得到转换网络 $\mathcal{N}(\cdot;w)$：</p>
+$$
+Meta\mathcal{N}: I_s\vert\rightarrow \mathcal{N}(I_s;w)\tag{10}
+$$<p>元网络由 $\theta$ 参数化，且通过内容图像数据集和风格图像数据集进行优化：</p>
+$$
+\min_{\theta}\sum_{I_c,I_s}\left(
+    \lambda_c \vert\vert \mathbf{CP}(I_{w_\theta};w_f) - \mathbf{CP}(I_c;w_f) \vert\vert ^2_2 +
+    \lambda_s \vert\vert \mathbf{SP}(I_{w_\theta};w_f) - \mathbf{SP}(I_s;w_f) \vert\vert ^2_2
+\right)\tag{11}
+$$<p>其中，$I_{w_{\theta}}=\mathcal{N}(I_c;w_{\theta})$，$w_{\theta}=Meta\mathcal{N}(I_s;\theta)$。</p>
+<p>风格图像 $I_s$ 作为损失函数中的监督目标，同时作为元网络的输入特征。</p>
+<ul>
+<li>即元网络以风格图像为输入，生成一个能够将内容图像向风格图像传递的网络。</li>
+</ul>
+<h2 id="%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84">网络结构</h2>
+<h3 id="%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84">图像转换网络结构</h3>
+<p>论文中的表 2：</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">网络层</th>
+  <th style="text-align:center">输出形状</th>
+  <th style="text-align:center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">输入层</td>
+  <td style="text-align:center">3 × 256 × 256</td>
+  <td style="text-align:center"></td>
+</tr>
+<tr>
+  <td style="text-align:center">反射填充层 (40 × 40)</td>
+  <td style="text-align:center">3 × 336 × 336</td>
+  <td style="text-align:center"></td>
+</tr>
+<tr>
+  <td style="text-align:center">8 × 9 × 9 conv，stride 1</td>
+  <td style="text-align:center">8 × 336 × 336</td>
+  <td style="text-align:center">与 MetaNet 一同训练，在推理阶段是固定的</td>
+</tr>
+<tr>
+  <td style="text-align:center">16 × 3 × 3 conv，stride 2</td>
+  <td style="text-align:center">16 × 168 × 168</td>
+  <td style="text-align:center">在推理阶段由元网络生成</td>
+</tr>
+<tr>
+  <td style="text-align:center">32 × 3 × 3 conv，stride 2</td>
+  <td style="text-align:center">32 × 84 × 84</td>
+  <td style="text-align:center">在推理阶段由元网络生成</td>
+</tr>
+<tr>
+  <td style="text-align:center">残差块，32 个卷积核</td>
+  <td style="text-align:center">32 × 80 × 80</td>
+  <td style="text-align:center">在推理阶段由元网络生成</td>
+</tr>
+<tr>
+  <td style="text-align:center">残差块，32 个卷积核</td>
+  <td style="text-align:center">32 × 76 × 76</td>
+  <td style="text-align:center">在推理阶段由元网络生成</td>
+</tr>
+<tr>
+  <td style="text-align:center">残差块，32 个卷积核</td>
+  <td style="text-align:center">32 × 72 × 72</td>
+  <td style="text-align:center">在推理阶段由元网络生成</td>
+</tr>
+<tr>
+  <td style="text-align:center">残差块，32 个卷积核</td>
+  <td style="text-align:center">32 × 68 × 68</td>
+  <td style="text-align:center">在推理阶段由元网络生成</td>
+</tr>
+<tr>
+  <td style="text-align:center">残差块，32 个卷积核</td>
+  <td style="text-align:center">32 × 64 × 64</td>
+  <td style="text-align:center">在推理阶段由元网络生成</td>
+</tr>
+<tr>
+  <td style="text-align:center">16 × 3 × 3 conv，stride 2</td>
+  <td style="text-align:center">16 × 128 × 128</td>
+  <td style="text-align:center">在推理阶段由元网络生成</td>
+</tr>
+<tr>
+  <td style="text-align:center">8 × 3 × 3 conv，stride 2</td>
+  <td style="text-align:center">8 × 256 × 256</td>
+  <td style="text-align:center">在推理阶段由元网络生成</td>
+</tr>
+<tr>
+  <td style="text-align:center">3 × 9 × 9 conv，stride 1</td>
+  <td style="text-align:center">3 × 256 × 256</td>
+  <td style="text-align:center">与 MetaNet 一同训练，在推理阶段是固定的</td>
+</tr>
+</tbody>
+</table>
+<p><em>除了第一个和最后一个之外，每个 conv 层后面都有一个实例 batchnorm 层和一个 relu 层，为清楚起见，表中省略了这些层。</em></p>
+<h3 id="%E6%95%B4%E4%BD%93%E6%A8%A1%E5%9E%8B%E7%BB%93%E6%9E%84">整体模型结构</h3>
+<p>网络结构如下：</p>
+<p><img src="../static/images/Meta/fig1.png" alt="" /></p>
+<h4 id="%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E%E6%8D%9F%E5%A4%B1%E8%AE%A1%E7%AE%97">特征提取与损失计算</h4>
+<p>风格图像输入到预训练的 VGG16 模型中，提取出高层次风格特征，计算均值和标准差，拼接成风格特征向量。</p>
+<p>对于内容损失计算：输入内容图像，取 VGG16 的 <code>relu3_3</code> 层的特征图作为内容特征，计算生成图像与内容图像在该层特征图的距离。</p>
+<p>对于风格损失计算：输入风格图像，取 VGG16 的 <code>relu1_2</code>、<code>relu2_2</code>、<code>relu3_3</code>、<code>relu4_3</code> 层的输出作为风格特征，计算风格损失。</p>
+<h4 id="%E5%8F%82%E6%95%B0%E7%94%9F%E6%88%90%EF%BC%88%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82%EF%BC%89">参数生成（全连接层）</h4>
+<ol>
+<li>风格特征通过两个全连接层，将高维的风格特征映射到生成图像转换网络（TransformNet）所需的各个卷积层滤波器参数上。</li>
+<li>每个卷积层的参数由独立的 128 维子向量生成，按照上述图像转换网络，生成的卷积层有 14 层，故总隐藏向量维度为 $14 \times 128 = 1792$。</li>
+</ol>
+<p>详见 <a href="#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E-MetaNet-%E7%BD%91%E7%BB%9C%E8%AE%A1%E7%AE%97"  >特征提取与 MetaNet 网络计算</a>。</p>
+<h4 id="%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2%E7%BD%91%E7%BB%9C">图像转换网络</h4>
+<p>依次为：反射填充、下采样卷积、残差块、上采样转置卷积。详见 <a href="#%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2%E7%BD%91%E7%BB%9C-TransformNet"  >图像转换网络</a>。</p>
+<h2 id="%E8%AE%AD%E7%BB%83%E7%AD%96%E7%95%A5">训练策略</h2>
+<p>神经风格迁移的元网络小批量随机梯度下降训练。在实验中使用 $k = 20$ 和 $m = 8$。</p>
+<ul>
+<li>for epoch of epochs do<ul>
+<li>取样风格图像 $I_s$。</li>
+<li>for k steps do<ul>
+<li>对元网络进行前馈传播，得到变换网络：$w \leftarrow meta\mathcal{N}(I_s;\theta)$。</li>
+<li>小批次取样 $m$ 个内容输入图像 $\{I_c^{(1)}, ..., I_c^{(m)}\}$。</li>
+<li>对变换网络进行前馈传播，得到变换后的图像。</li>
+<li>按式 (12) 计算内容损失和样式损失以及更新 $\theta$</li>
+</ul>
+</li>
+<li>end for</li>
+</ul>
+</li>
+<li>end for</li>
+</ul>
+$$
+\nabla_{\theta}\sum_{I_c}\left(
+    \lambda_c \vert\vert \mathbf{CP}(I) - \mathbf{CP}(I_c) \vert\vert ^2_2 +
+    \lambda_s \vert\vert \mathbf{SP}(I) - \mathbf{SP}(I_c) \vert\vert ^2_2
+\right)\tag{12}
+$$<h2 id="%E8%AE%BA%E6%96%87%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C">论文实验结果</h2>
+<p>文献中主要对比了以下四类神经风格迁移方法：</p>
+<ol>
+<li>Gatys 等人的梯度下降优化方法（2015）</li>
+<li>Johnson 等人的逐风格训练方法（2016）</li>
+<li>AdaIN（自适应实例归一化）方法（Huang &amp; Belongie, 2017）</li>
+<li>本文提出的元网络方法</li>
+</ol>
+<p>对比指标与结果：</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">方法</th>
+  <th style="text-align:center">编码时间</th>
+  <th style="text-align:center">图像转换时间</th>
+  <th style="text-align:center">模型大小</th>
+  <th style="text-align:center">支持风格数</th>
+  <th style="text-align:center">核心优势与限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">Gatys (梯度下降)</td>
+  <td style="text-align:center">N/A</td>
+  <td style="text-align:center">9.52s</td>
+  <td style="text-align:center">N/A</td>
+  <td style="text-align:center">∞ (任意风格)</td>
+  <td style="text-align:center">灵活但速度极慢，无法实时应用</td>
+</tr>
+<tr>
+  <td style="text-align:center">Johnson (逐风格训练)</td>
+  <td style="text-align:center">4小时/风格</td>
+  <td style="text-align:center">15ms</td>
+  <td style="text-align:center">7MB/风格</td>
+  <td style="text-align:center">1</td>
+  <td style="text-align:center">单风格快速生成，但需逐风格训练</td>
+</tr>
+<tr>
+  <td style="text-align:center">AdaIN (统计量对齐)</td>
+  <td style="text-align:center">27ms</td>
+  <td style="text-align:center">18ms</td>
+  <td style="text-align:center">25MB</td>
+  <td style="text-align:center">∞</td>
+  <td style="text-align:center">支持多风格，但依赖VGG编码器，模型较大</td>
+</tr>
+<tr>
+  <td style="text-align:center">元网络</td>
+  <td style="text-align:center">19ms</td>
+  <td style="text-align:center">15ms</td>
+  <td style="text-align:center">449KB</td>
+  <td style="text-align:center">∞</td>
+  <td style="text-align:center">快速生成任意风格，模型轻量化，无需重训练</td>
+</tr>
+</tbody>
+</table>
+<h2 id="%E4%BB%A3%E7%A0%81-Demo-%E5%88%86%E6%9E%90">代码 Demo 分析</h2>
+<p>Reference: <a href="https://ypw.io/style-transfer/"  target="_blank">https://ypw.io/style-transfer/</a></p>
+<h3 id="%E5%8D%B7%E7%A7%AF%E5%9D%97%E6%9E%84%E5%BB%BA-ConvLayer">卷积块构建 ConvLayer</h3>
+<p>构建包含反射填充、卷积、实例归一化和 ReLU 的卷积块。</p>
+<p><strong>用于区分权值是可训练的参数还是由 MetaNet 生成的参数。</strong></p>
+
+<pre class="language-python"><code class="language-python">def ConvLayer(in_channels, out_channels, kernel_size=3, stride=1,
+              upsample=None, instance_norm=True, relu=True,
+              trainable=False):
+    layers = []
+    if upsample:
+        layers.append(nn.Upsample(mode='nearest', scale_factor=upsample))
+
+    layers.append(nn.ReflectionPad2d(kernel_size // 2))  # 填充以保持空间维度
+
+    if trainable:
+        layers.append(nn.Conv2d(
+            in_channels, out_channels, kernel_size, stride))
+    else:
+        layers.append(MyConv2D(
+            in_channels, out_channels, kernel_size, stride))
+
+    if instance_norm:
+        layers.append(nn.InstanceNorm2d(out_channels))
+
+    if relu:
+        layers.append(nn.ReLU(inplace=True))
+
+    return layers
+</code></pre>
+<ul>
+<li><code>trainable</code> 参数决定使用 <code>nn.Conv2d</code>（可训练）或 <code>MyConv2D</code>（参数由 MetaNet 生成）。</li>
+<li>上采样采用最近邻插值。</li>
+</ul>
+<h3 id="%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%B7%E7%A7%AF%E5%B1%82-MyConv2D">自定义卷积层 MyConv2D</h3>
+<p><strong>将传统卷积层的权重替换为外部生成的参数，实现动态风格适配。</strong></p>
+<ul>
+<li>权重和偏置初始化为零，固定不可训练。用于 TransformNet 中，其参数由 MetaNet 动态生成。</li>
+</ul>
+
+<pre class="language-python"><code class="language-python">class MyConv2D(nn.Module):
+    def __init__(self, in_channels, out_channels, kernel_size=3, stride=1):
+        super(MyConv2D, self).__init__()
+
+        self.weight = torch.zeros(
+            out_channels, in_channels, kernel_size, kernel_size
+        ).to(config[&quot;device&quot;])
+        self.bias = torch.zeros(out_channels).to(config[&quot;device&quot;])
+
+        self.in_channels = in_channels
+        self.out_channels = out_channels
+        self.kernel_size = (kernel_size, kernel_size)
+        self.stride = (stride, stride)
+
+    def forward(self, x):
+        return F.conv2d(x, self.weight, self.bias, self.stride)
+
+    def extra_repr(self):
+        s = ('{in_channels}, {out_channels}, kernel_size={kernel_size}'
+             ', stride={stride}')
+        return s.format(**self.__dict__)
+</code></pre>
+<ul>
+<li>当设置 <code>trainable=False</code> 时，使用 <code>MyConv2D</code>。</li>
+</ul>
+<h3 id="%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2%E7%BD%91%E7%BB%9C-TransformNet">图像转换网络 TransformNet</h3>
+
+<pre class="language-python"><code class="language-python">class TransformNet(nn.Module):
+    def __init__(self, base=8):
+        super(TransformNet, self).__init__()
+        self.base = base
+        self.weights = []
+        self.downsampling = nn.Sequential(
+            *ConvLayer(3, base, kernel_size=9, trainable=True),
+            *ConvLayer(base, base * 2, kernel_size=3, stride=2),
+            *ConvLayer(base * 2, base * 4, kernel_size=3, stride=2)
+        )
+        self.residuals = nn.Sequential(*[ResidualBlock(base*4) for _ in range(5)])
+        self.upsampling = nn.Sequential(
+            *ConvLayer(base * 4, base * 2, kernel_size=3, upsample=2),
+            *ConvLayer(base * 2, base, kernel_size=3, upsample=2),
+            *ConvLayer(base, 3, kernel_size=9, instance_norm=False, relu=False, trainable=True)
+        )
+        self.get_param_dict()
+
+    def forward(self, x):
+        y = self.downsampling(x)
+        y = self.residuals(y)
+        y = self.upsampling(y)
+        return y
+</code></pre>
+<ul>
+<li>结构：<code>下采样 → 残差块 → 上采样</code></li>
+</ul>
+
+<pre class="language-python"><code class="language-python">    def get_param_dict(self):
+        param_dict = defaultdict(int)
+        def dfs(module, name):
+            for _name, layer in module.named_children():
+                dfs(layer, '%s.%s' % (name, _name) if name != '' else _name)
+            if isinstance(module, MyConv2D):
+                param_dict[name] += int(np.prod(module.weight.shape))
+                param_dict[name] += int(np.prod(module.bias.shape))
+        dfs(self, '')
+        return param_dict
+</code></pre>
+<ul>
+<li>深度优先搜索遍历网络，递归访问所有子模块：通过 <code>module.named_children()</code> 遍历每一层。<ul>
+<li>构建层级名称：例如，<code>downsampling.0</code> 表示 <code>self.downsampling</code> 中的第一个子模块。</li>
+</ul>
+</li>
+<li>如果是需要生成的参数的层，计算权值数量，累加到字典中。</li>
+</ul>
+
+<pre class="language-python"><code class="language-python">    def set_my_attr(self, name, value):
+        target = self
+        for x in name.split('.'):
+            if x.isnumeric():
+                target = target.__getitem__(int(x))
+            else:
+                target = getattr(target, x)
+        n_weight = np.prod(target.weight.shape)
+        target.weight = value[:n_weight].view(target.weight.shape)
+        target.bias = value[n_weight:].view(target.bias.shape)
+</code></pre>
+<ul>
+<li>解析层级名称，如 <code>residuals.0.conv1</code>，表示第 1 个 残差块中的 <code>conv1</code> 层。</li>
+<li><code>value</code> 表示元网络生成的参数向量。</li>
+<li>根据 <code>target.weight.shape</code> 累乘计算权重参数数量，截取前 <code>n_weight</code> 部分为权重，剩余部分为偏置。</li>
+</ul>
+
+<pre class="language-python"><code class="language-python">    def set_weights(self, weights, i=0):
+        for name, param in weights.items():
+            self.set_my_attr(name, weights[name][i])
+</code></pre>
+<ul>
+<li>输入 <code>weights</code>：由元网络生成的参数字典，键为层名（如 <code>downsampling.0</code>），值为参数张量。</li>
+<li>遍历字典，对每个层名调用 <code>set_my_attr</code>，将参数填充到层。</li>
+<li><code>i=0</code> 表示支持批量处理时的索引（默认取第 0 个样本的参数）。</li>
+</ul>
+<p>对该网络进行 <code>torchsummary</code> 的 <code>summary()</code> 分析总结：</p>
+<table>
+    <th>结构</th>
+    <th>层</th>
+    <th>Shape</th>
+    <tr>
+        <td rowspan="4">下采样 1</td>
+        <td>ReflectionPad2d-1</td>
+        <td>[-1, 3, 264, 264]</td>
+    </tr>
+    <tr>
+        <td>Conv2d-2</td>
+        <td>[-1, 32, 256, 256]</td>
+    </tr>
+    <tr>
+        <td>InstanceNorm2d-3</td>
+        <td>[-1, 32, 256, 256]</td>
+    </tr>
+    <tr>
+        <td>ReLU-4</td>
+        <td>[-1, 32, 256, 256]</td>
+    </tr>
+    <tr>
+        <td colspan="3" align="center">......</td>
+    </tr>
+    <tr>
+        <td rowspan="7">残差块 1</td>
+        <td>ReflectionPad2d-13</td>
+        <td>[-1, 128, 66, 66]</td>
+    </tr>
+    <tr>
+        <td>MyConv2D-14</td>
+        <td>[-1, 128, 64, 64]</td>
+    </tr>
+    <tr>
+        <td>InstanceNorm2d-15</td>
+        <td>[-1, 128, 64, 64]</td>
+    </tr>
+    <tr>
+        <td>ReLU-16</td>
+        <td>[-1, 128, 64, 64]</td>
+    </tr>
+    <tr>
+        <td>ReflectionPad2d-17</td>
+        <td>[-1, 128, 66, 66]</td>
+    </tr>
+    <tr>
+        <td>MyConv2D-18</td>
+        <td>[-1, 128, 64, 64]</td>
+    </tr>
+    <tr>
+        <td>InstanceNorm2d-19</td>
+        <td>[-1, 128, 64, 64]</td>
+    </tr>
+    <tr>
+        <td colspan="3" align="center">......</td>
+    </tr>
+    <tr>
+        <td rowspan="5">上采样 1</td>
+        <td>Upsample-53</td>
+        <td>[-1, 128, 128, 128]</td>
+    </tr>
+    <tr>
+        <td>ReflectionPad2d-54</td>
+        <td>[-1, 128, 130, 130]</td>
+    </tr>
+    <tr>
+        <td>MyConv2D-55</td>
+        <td>[-1, 64, 128, 128]</td>
+    </tr>
+    <tr>
+        <td>InstanceNorm2d-56</td>
+        <td>[-1, 64, 128, 128]</td>
+    </tr>
+    <tr>
+        <td>ReLU-57</td>
+        <td>[-1, 64, 128, 128]</td>
+    </tr>
+    <tr>
+        <td colspan="3" align="center">......</td>
+    </tr>
+</table>
+<details>
+<summary>原输出</summary>
+
+<pre class="language-none"><code class="language-none">----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+   ReflectionPad2d-1          [-1, 3, 264, 264]               0
+            Conv2d-2         [-1, 32, 256, 256]           7,808
+    InstanceNorm2d-3         [-1, 32, 256, 256]               0
+              ReLU-4         [-1, 32, 256, 256]               0
+   ReflectionPad2d-5         [-1, 32, 258, 258]               0
+          MyConv2D-6         [-1, 64, 128, 128]          18,496
+    InstanceNorm2d-7         [-1, 64, 128, 128]               0
+              ReLU-8         [-1, 64, 128, 128]               0
+   ReflectionPad2d-9         [-1, 64, 130, 130]               0
+         MyConv2D-10          [-1, 128, 64, 64]          73,856
+   InstanceNorm2d-11          [-1, 128, 64, 64]               0
+             ReLU-12          [-1, 128, 64, 64]               0
+  ReflectionPad2d-13          [-1, 128, 66, 66]               0
+         MyConv2D-14          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-15          [-1, 128, 64, 64]               0
+             ReLU-16          [-1, 128, 64, 64]               0
+  ReflectionPad2d-17          [-1, 128, 66, 66]               0
+         MyConv2D-18          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-19          [-1, 128, 64, 64]               0
+    ResidualBlock-20          [-1, 128, 64, 64]               0
+  ReflectionPad2d-21          [-1, 128, 66, 66]               0
+         MyConv2D-22          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-23          [-1, 128, 64, 64]               0
+             ReLU-24          [-1, 128, 64, 64]               0
+  ReflectionPad2d-25          [-1, 128, 66, 66]               0
+         MyConv2D-26          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-27          [-1, 128, 64, 64]               0
+    ResidualBlock-28          [-1, 128, 64, 64]               0
+  ReflectionPad2d-29          [-1, 128, 66, 66]               0
+         MyConv2D-30          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-31          [-1, 128, 64, 64]               0
+             ReLU-32          [-1, 128, 64, 64]               0
+  ReflectionPad2d-33          [-1, 128, 66, 66]               0
+         MyConv2D-34          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-35          [-1, 128, 64, 64]               0
+    ResidualBlock-36          [-1, 128, 64, 64]               0
+  ReflectionPad2d-37          [-1, 128, 66, 66]               0
+         MyConv2D-38          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-39          [-1, 128, 64, 64]               0
+             ReLU-40          [-1, 128, 64, 64]               0
+  ReflectionPad2d-41          [-1, 128, 66, 66]               0
+         MyConv2D-42          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-43          [-1, 128, 64, 64]               0
+    ResidualBlock-44          [-1, 128, 64, 64]               0
+  ReflectionPad2d-45          [-1, 128, 66, 66]               0
+         MyConv2D-46          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-47          [-1, 128, 64, 64]               0
+             ReLU-48          [-1, 128, 64, 64]               0
+  ReflectionPad2d-49          [-1, 128, 66, 66]               0
+         MyConv2D-50          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-51          [-1, 128, 64, 64]               0
+    ResidualBlock-52          [-1, 128, 64, 64]               0
+         Upsample-53        [-1, 128, 128, 128]               0
+  ReflectionPad2d-54        [-1, 128, 130, 130]               0
+         MyConv2D-55         [-1, 64, 128, 128]          73,792
+   InstanceNorm2d-56         [-1, 64, 128, 128]               0
+             ReLU-57         [-1, 64, 128, 128]               0
+         Upsample-58         [-1, 64, 256, 256]               0
+  ReflectionPad2d-59         [-1, 64, 258, 258]               0
+         MyConv2D-60         [-1, 32, 256, 256]          18,464
+   InstanceNorm2d-61         [-1, 32, 256, 256]               0
+             ReLU-62         [-1, 32, 256, 256]               0
+  ReflectionPad2d-63         [-1, 32, 264, 264]               0
+           Conv2d-64          [-1, 3, 256, 256]           7,779
+================================================================
+Total params: 1,676,035
+Trainable params: 15,587
+Non-trainable params: 1,660,448
+----------------------------------------------------------------
+Input size (MB): 0.75
+Forward/backward pass size (MB): 460.16
+Params size (MB): 6.39
+Estimated Total Size (MB): 467.30
+----------------------------------------------------------------
+</code></pre>
+</details>
+<h3 id="%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E-MetaNet-%E7%BD%91%E7%BB%9C%E8%AE%A1%E7%AE%97">特征提取与 MetaNet 网络计算</h3>
+<p>风格图像经过 VGG16 输出的 <code>relu1_2</code>、<code>relu2_2</code>、<code>relu3_3</code>、<code>relu4_3</code> 四层特征尺寸很大。</p>
+<ul>
+<li>假设图像为 <code>(256, 256)</code>，那么 VGG16 输出的尺寸分别为 <code>(64, 256, 256)</code>、<code>(128, 128, 128)</code>、<code>(256, 64, 64)</code>、<code>(512, 32, 32)</code>。取其 Gram 矩阵，即 <code>(64, 64)</code>、<code>(128, 128)</code>、<code>(256, 256)</code>、<code>(512, 512)</code> 也是很大的。</li>
+</ul>
+<p>假如使用 512 × 512 个特征去生成 147584 个权值（残差层），那么这层全连接层的权值就是 $512\times 512\times 147584 = 386888260096$，再假设权重类型为 <code>float32</code>，则权值大小为 144GB。</p>
+<p>考虑只计算每一个卷积核输出的内容均值和标准差。</p>
+<ul>
+<li>这种情况下，特征变成 $(64 + 128 + 256 + 512) \times 2 = 1920$ 维，但是，将图像转换网络的所有权重求和再乘上特征，计算后大小也有 11.8GB，还是不现实。</li>
+</ul>
+<p>论文中提到，计算风格图像和转移图像两个特征图的均值和标准差作为风格特征。</p>
+<blockquote>
+<p>The dimension of hidden vector is 1792 without specification. The hidden features are connected with the filters of each conv layer of the network in a group manner to decrease the parameter size, which means a 128 dimensional hidden vector for each conv layer.</p>
+</blockquote>
+<p><em>隐向量的维数为 1792。将隐藏特征分组连接到网络各 conv 层的滤波器中，减小参数大小，即每个 conv 层有一个 128 维的隐藏向量。</em></p>
+
+<pre class="language-python"><code class="language-python">def mean_std(features):
+    mean_std_features = []
+    for x in features:
+        batch, C, H, W = x.shape
+        x_flat = x.view(batch, C, -1)
+        mean = x_flat.mean(dim=-1)
+        std = torch.sqrt(x_flat.var(dim=-1) + 1e-5)
+        feature = torch.cat([mean, std], dim=1)
+        mean_std_features.append(feature)
+    return torch.cat(mean_std_features, dim=-1)
+</code></pre>
+<ul>
+<li>输入VGG16提取的多层特征，计算每层特征的均值和标准差，拼接为 1920 维向量。</li>
+<li>捕捉风格图像的统计特征（类似 Gram 矩阵），用于风格损失计算。</li>
+</ul>
+<p>MetaNet 网络代码：</p>
+
+<pre class="language-python"><code class="language-python">class MetaNet(nn.Module):
+    def __init__(self, param_dict):
+        super(MetaNet, self).__init__()
+        self.param_num = len(param_dict)
+        self.hidden = nn.Linear(1920, 128 * self.param_num)
+        self.fc_dict = {}
+        for i, (name, params) in enumerate(param_dict.items()):
+            self.fc_dict[name] = i
+            setattr(self, 'fc{}'.format(i + 1), nn.Linear(128, params))
+</code></pre>
+<ul>
+<li><code>self.hidden = nn.Linear(1920, 128 * self.param_num)</code>：对应风格图像通过 VGG-16 提取的多层特征均值和标准差拼接后的维度，为每个参数层分配一个 128 维的隐藏向量。</li>
+<li><code>self.fc_dict[name] = i</code>：将参数层名称（如 &quot;<code>downsampling.0</code>&quot;）映射到索引 <code>i</code>。</li>
+<li><code>setattr(...)</code>：动态为每个参数层创建一个独立的线性层（<code>fc1</code>, <code>fc2</code>, ...），输入维度为 128，输出维度为该层所需的参数数量 <code>params</code>（如某卷积层的权重+偏置总数）。</li>
+</ul>
+
+<pre class="language-python"><code class="language-python">    def forward(self, mean_std_features):
+        hidden = F.relu(self.hidden(mean_std_features))
+        filters = {}
+        for name, i in self.fc_dict.items():
+            fc = getattr(self, 'fc{}'.format(i + 1))
+            filters[name] = fc(hidden[:, i * 128 : (i + 1) * 128])
+
+        return filters
+</code></pre>
+<ul>
+<li><code>hidden = F.relu(self.hidden(mean_std_features))</code>：根据风格图像的均值和标准差，计算隐藏向量，维度为 <code>[batch_size, 1920]</code>，并引入激活函数。</li>
+<li><code>for</code> 循环遍历 <code>fc_dict</code> 生成参数。首先根据索引 <code>i</code> 获取对应的 <code>fc</code>。然后从 <code>hidden</code> 输出中切分出该层对应的 128 维片段，接着将这 128 维向量输入线性层生成该层所需的参数，最后将参数按层名存入字典。</li>
+</ul>
+<p>对该网络进行 <code>print</code> 分析总结：</p>
+<table>
+    <th>结构</th>
+    <th>层</th>
+    <th>[in, out]</th>
+    <tr>
+        <td>隐藏层</td>
+        <td>hidden</td>
+        <td>[1920, 1792]</td>
+    </tr>
+    <tr>
+        <td rowspan="2">映射至下采样层参数</td>
+        <td>fc1</td>
+        <td>[128, 18496]</td>
+    </tr>
+    <tr>
+        <td>fc2</td>
+        <td>[128, 73856]</td>
+    </tr>
+    <tr>
+        <td rowspan="10">映射至残差块参数</td>
+        <td>fc3</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc4</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc5</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc6</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc7</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc8</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc9</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc10</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc11</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc12</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td rowspan="2">映射至上采样层参数</td>
+        <td>fc13</td>
+        <td>[128, 73792]</td>
+    </tr>
+    <tr>
+        <td>fc14</td>
+        <td>[128, 18464]</td>
+    </tr>
+</table>
+<details>
+<summary>原输出</summary>
+<p><code>print(metanet)</code>：</p>
+
+<pre class="language-none"><code class="language-none">MetaNet(
+  (hidden): Linear(in_features=1920, out_features=1792, bias=True)
+  (fc1): Linear(in_features=128, out_features=18496, bias=True)
+  (fc2): Linear(in_features=128, out_features=73856, bias=True)
+  (fc3): Linear(in_features=128, out_features=147584, bias=True)
+  (fc4): Linear(in_features=128, out_features=147584, bias=True)
+  (fc5): Linear(in_features=128, out_features=147584, bias=True)
+  (fc6): Linear(in_features=128, out_features=147584, bias=True)
+  (fc7): Linear(in_features=128, out_features=147584, bias=True)
+  (fc8): Linear(in_features=128, out_features=147584, bias=True)
+  (fc9): Linear(in_features=128, out_features=147584, bias=True)
+  (fc10): Linear(in_features=128, out_features=147584, bias=True)
+  (fc11): Linear(in_features=128, out_features=147584, bias=True)
+  (fc12): Linear(in_features=128, out_features=147584, bias=True)
+  (fc13): Linear(in_features=128, out_features=73792, bias=True)
+  (fc14): Linear(in_features=128, out_features=18464, bias=True)
+)
+</code></pre>
+<p><code>torchsummary.summary(metanet, (1920,))</code>:</p>
+
+<pre class="language-none"><code class="language-none">----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Linear-1                 [-1, 1792]       3,442,432
+            Linear-2                [-1, 18496]       2,385,984
+            Linear-3                [-1, 73856]       9,527,424
+            Linear-4               [-1, 147584]      19,038,336
+            Linear-5               [-1, 147584]      19,038,336
+            Linear-6               [-1, 147584]      19,038,336
+            Linear-7               [-1, 147584]      19,038,336
+            Linear-8               [-1, 147584]      19,038,336
+            Linear-9               [-1, 147584]      19,038,336
+           Linear-10               [-1, 147584]      19,038,336
+           Linear-11               [-1, 147584]      19,038,336
+           Linear-12               [-1, 147584]      19,038,336
+           Linear-13               [-1, 147584]      19,038,336
+           Linear-14                [-1, 73792]       9,519,168
+           Linear-15                [-1, 18464]       2,381,856
+================================================================
+Total params: 217,640,224
+Trainable params: 217,640,224
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.01
+Forward/backward pass size (MB): 12.68
+Params size (MB): 830.23
+Estimated Total Size (MB): 842.92
+----------------------------------------------------------------
+</code></pre>
+</details>
+<h2 id="%E4%BB%A3%E7%A0%81-Demo-%E7%BB%93%E6%9E%9C">代码 Demo 结果</h2>
+<p>复现代码：<a href="https://github.com/Fingsinz/StyleTransfer/blob/main/src/01.ref_and_note/06.MetaNets.py"  target="_blank">Github/01.ref_and_note/06.MetaNets</a></p>
+<table>
+    <th>示例 1</th>
+    <th>示例 2</th>
+    <tr>
+        <td><img src="../static/images/Meta/fig2.png" /></td>
+        <td><img src="../static/images/Meta/fig3.png" /></td>
+    </tr>
+</table>
+
+                        
+                    </div>
+                </div>
+                <div id="previous_next">
+                    <div id="previous">
+                        
+                        <a href="/StyleTransfer/ref_and_notes/cyclegan.html">
+                            <span class="icon"></span>
+                            <span class="label">CycleGAN：循环GAN</span>
+                        </a>
+                        
+                    </div>
+                    <div id="next">
+                        
+                    </div>
+                </div>
+                <div id="comments-container"></div>
+            </div>
+            <div id="toc_wrapper">
+                <div id="toc">
+                    <div id="toc_content">
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="to_top" href="#"></a>
+    <div id="doc_footer">
+        <div id="footer">
+            <div id="footer_top">
+                <ul>
+<li><a></a><ul><li><a target="_blank" href="/StyleTransfer/#"></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <div id="footer_bottom">
+                <ul>
+<li><a target="_blank" href="https://github.com/teedoc/teedoc">Generated by teedoc - Fingsinz - 2024.12.29</a></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+        <script src="/StyleTransfer/teedoc-plugin-markdown-parser/mermaid.min.js"></script>
+    
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+        <script src="/StyleTransfer/static/js/theme_default/tocbot.min.js"></script>
+    
+        <script src="/StyleTransfer/static/js/theme_default/main.js"></script>
+    
+        <script src="/StyleTransfer/static/js/theme_default/viewer.min.js"></script>
+    
+        <script src="/StyleTransfer/static/css/theme_default/prism.min.js"></script>
+    
+        <script src="/StyleTransfer/static/js/search/search_main.js"></script>
+    
+        <script src="/StyleTransfer/static/js/custom.js"></script>
+    
+</body>
+
+</html>

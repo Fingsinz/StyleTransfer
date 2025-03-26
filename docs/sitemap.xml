@@ -31,18 +31,6 @@
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/index.html</loc>
-            <lastmod>2025-01-16</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https:///StyleTransfer/ref_and_notes/resnet.html</loc>
-            <lastmod>2025-03-02</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
             <loc>https:///StyleTransfer/ref_and_notes/cgan.html</loc>
             <lastmod>2025-03-06</lastmod>
             <changefreq>weekly</changefreq>
@@ -50,6 +38,24 @@
         </url>
         <url>
             <loc>https:///StyleTransfer/ref_and_notes/cyclegan.html</loc>
+            <lastmod>2025-03-11</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/gan.html</loc>
+            <lastmod>2025-02-01</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/metanet.html</loc>
+            <lastmod>2025-03-19</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/patchgan.html</loc>
             <lastmod>2025-03-11</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
@@ -63,6 +69,12 @@
         <url>
             <loc>https:///StyleTransfer/ref_and_notes/vgg.html</loc>
             <lastmod>2025-03-05</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/pytorch_custom_datasets.html</loc>
+            <lastmod>2025-02-12</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -85,14 +97,14 @@
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/gan.html</loc>
-            <lastmod>2025-02-01</lastmod>
+            <loc>https:///StyleTransfer/ref_and_notes/index.html</loc>
+            <lastmod>2025-01-16</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/patchgan.html</loc>
-            <lastmod>2025-03-11</lastmod>
+            <loc>https:///StyleTransfer/ref_and_notes/resnet.html</loc>
+            <lastmod>2025-03-02</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -111,12 +123,6 @@
         <url>
             <loc>https:///StyleTransfer/ref_and_notes/pytorch_computer_vision.html</loc>
             <lastmod>2025-02-11</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https:///StyleTransfer/ref_and_notes/pytorch_custom_datasets.html</loc>
-            <lastmod>2025-02-12</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
