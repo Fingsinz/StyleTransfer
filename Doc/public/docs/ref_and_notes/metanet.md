@@ -213,6 +213,8 @@ $$
 1. 风格特征通过两个全连接层，将高维的风格特征映射到生成图像转换网络（TransformNet）所需的各个卷积层滤波器参数上。
 2. 每个卷积层的参数由独立的 128 维子向量生成，按照上述图像转换网络，生成的卷积层有 14 层，故总隐藏向量维度为 $14 \times 128 = 1792$。
 
+详见 [特征提取与 MetaNet 网络计算](#特征提取与-MetaNet-网络计算)。
+
 #### 图像转换网络
 
 依次为：反射填充、下采样卷积、残差块、上采样转置卷积。详见 [图像转换网络](#图像转换网络-TransformNet)。
@@ -292,8 +294,8 @@ def ConvLayer(in_channels, out_channels, kernel_size=3, stride=1,
     return layers
 ```
 
-> `trainable` 参数决定使用 `nn.Conv2d`（可训练）或 `MyConv2D`（参数由 MetaNet 生成）。
-> 上采样采用最近邻插值。
+- `trainable` 参数决定使用 `nn.Conv2d`（可训练）或 `MyConv2D`（参数由 MetaNet 生成）。
+- 上采样采用最近邻插值。
 
 ### 自定义卷积层 MyConv2D
 
@@ -324,7 +326,7 @@ class MyConv2D(nn.Module):
         return s.format(**self.__dict__)
 ```
 
-> 当设置 `trainable=False` 时，使用 `MyConv2D`。
+- 当设置 `trainable=False` 时，使用 `MyConv2D`。
 
 ### 图像转换网络 TransformNet
 
@@ -354,7 +356,7 @@ class TransformNet(nn.Module):
         return y
 ```
 
-> 结构：`下采样 → 残差块 → 上采样`
+- 结构：`下采样 → 残差块 → 上采样`
 
 ```python
     def get_param_dict(self):
@@ -367,7 +369,13 @@ class TransformNet(nn.Module):
                 param_dict[name] += int(np.prod(module.bias.shape))
         dfs(self, '')
         return param_dict
-    
+```
+
+- 深度优先搜索遍历网络，递归访问所有子模块：通过 `module.named_children()` 遍历每一层。
+    - 构建层级名称：例如，`downsampling.0` 表示 `self.downsampling` 中的第一个子模块。
+- 如果是需要生成的参数的层，计算权值数量，累加到字典中。
+
+```python
     def set_my_attr(self, name, value):
         target = self
         for x in name.split('.'):
@@ -378,15 +386,190 @@ class TransformNet(nn.Module):
         n_weight = np.prod(target.weight.shape)
         target.weight = value[:n_weight].view(target.weight.shape)
         target.bias = value[n_weight:].view(target.bias.shape)
+```
 
+- 解析层级名称，如 `residuals.0.conv1`，表示第 1 个 残差块中的 `conv1` 层。
+- `value` 表示元网络生成的参数向量。
+- 根据 `target.weight.shape` 累乘计算权重参数数量，截取前 `n_weight` 部分为权重，剩余部分为偏置。
+
+```python
     def set_weights(self, weights, i=0):
         for name, param in weights.items():
             self.set_my_attr(name, weights[name][i])
 ```
 
-> `get_param_dict` 方法：找出该网络所有 MyConv2D 层，计算它们需要的权值数量
-> `set_my_attr` 方法：遍历字符串（如 residuals.0.conv.1）找到对应的权值
-> `set_weights` 方法：输入权值字典，对应网络所有的 MyConv2D 层进行设置
+- 输入 `weights`：由元网络生成的参数字典，键为层名（如 `downsampling.0`），值为参数张量。
+- 遍历字典，对每个层名调用 `set_my_attr`，将参数填充到层。
+- `i=0` 表示支持批量处理时的索引（默认取第 0 个样本的参数）。
+
+对该网络进行 `torchsummary` 的 `summary()` 分析总结：
+
+<table>
+    <th>结构</th>
+    <th>层</th>
+    <th>Shape</th>
+    <tr>
+        <td rowspan="4">下采样 1</td>
+        <td>ReflectionPad2d-1</td>
+        <td>[-1, 3, 264, 264]</td>
+    </tr>
+    <tr>
+        <td>Conv2d-2</td>
+        <td>[-1, 32, 256, 256]</td>
+    </tr>
+    <tr>
+        <td>InstanceNorm2d-3</td>
+        <td>[-1, 32, 256, 256]</td>
+    </tr>
+    <tr>
+        <td>ReLU-4</td>
+        <td>[-1, 32, 256, 256]</td>
+    </tr>
+    <tr>
+        <td colspan="3" align="center">......</td>
+    </tr>
+    <tr>
+        <td rowspan="7">残差块 1</td>
+        <td>ReflectionPad2d-13</td>
+        <td>[-1, 128, 66, 66]</td>
+    </tr>
+    <tr>
+        <td>MyConv2D-14</td>
+        <td>[-1, 128, 64, 64]</td>
+    </tr>
+    <tr>
+        <td>InstanceNorm2d-15</td>
+        <td>[-1, 128, 64, 64]</td>
+    </tr>
+    <tr>
+        <td>ReLU-16</td>
+        <td>[-1, 128, 64, 64]</td>
+    </tr>
+    <tr>
+        <td>ReflectionPad2d-17</td>
+        <td>[-1, 128, 66, 66]</td>
+    </tr>
+    <tr>
+        <td>MyConv2D-18</td>
+        <td>[-1, 128, 64, 64]</td>
+    </tr>
+    <tr>
+        <td>InstanceNorm2d-19</td>
+        <td>[-1, 128, 64, 64]</td>
+    </tr>
+    <tr>
+        <td colspan="3" align="center">......</td>
+    </tr>
+    <tr>
+        <td rowspan="5">上采样 1</td>
+        <td>Upsample-53</td>
+        <td>[-1, 128, 128, 128]</td>
+    </tr>
+    <tr>
+        <td>ReflectionPad2d-54</td>
+        <td>[-1, 128, 130, 130]</td>
+    </tr>
+    <tr>
+        <td>MyConv2D-55</td>
+        <td>[-1, 64, 128, 128]</td>
+    </tr>
+    <tr>
+        <td>InstanceNorm2d-56</td>
+        <td>[-1, 64, 128, 128]</td>
+    </tr>
+    <tr>
+        <td>ReLU-57</td>
+        <td>[-1, 64, 128, 128]</td>
+    </tr>
+    <tr>
+        <td colspan="3" align="center">......</td>
+    </tr>
+</table>
+
+<details>
+<summary>原输出</summary>
+
+```
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+   ReflectionPad2d-1          [-1, 3, 264, 264]               0
+            Conv2d-2         [-1, 32, 256, 256]           7,808
+    InstanceNorm2d-3         [-1, 32, 256, 256]               0
+              ReLU-4         [-1, 32, 256, 256]               0
+   ReflectionPad2d-5         [-1, 32, 258, 258]               0
+          MyConv2D-6         [-1, 64, 128, 128]          18,496
+    InstanceNorm2d-7         [-1, 64, 128, 128]               0
+              ReLU-8         [-1, 64, 128, 128]               0
+   ReflectionPad2d-9         [-1, 64, 130, 130]               0
+         MyConv2D-10          [-1, 128, 64, 64]          73,856
+   InstanceNorm2d-11          [-1, 128, 64, 64]               0
+             ReLU-12          [-1, 128, 64, 64]               0
+  ReflectionPad2d-13          [-1, 128, 66, 66]               0
+         MyConv2D-14          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-15          [-1, 128, 64, 64]               0
+             ReLU-16          [-1, 128, 64, 64]               0
+  ReflectionPad2d-17          [-1, 128, 66, 66]               0
+         MyConv2D-18          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-19          [-1, 128, 64, 64]               0
+    ResidualBlock-20          [-1, 128, 64, 64]               0
+  ReflectionPad2d-21          [-1, 128, 66, 66]               0
+         MyConv2D-22          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-23          [-1, 128, 64, 64]               0
+             ReLU-24          [-1, 128, 64, 64]               0
+  ReflectionPad2d-25          [-1, 128, 66, 66]               0
+         MyConv2D-26          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-27          [-1, 128, 64, 64]               0
+    ResidualBlock-28          [-1, 128, 64, 64]               0
+  ReflectionPad2d-29          [-1, 128, 66, 66]               0
+         MyConv2D-30          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-31          [-1, 128, 64, 64]               0
+             ReLU-32          [-1, 128, 64, 64]               0
+  ReflectionPad2d-33          [-1, 128, 66, 66]               0
+         MyConv2D-34          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-35          [-1, 128, 64, 64]               0
+    ResidualBlock-36          [-1, 128, 64, 64]               0
+  ReflectionPad2d-37          [-1, 128, 66, 66]               0
+         MyConv2D-38          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-39          [-1, 128, 64, 64]               0
+             ReLU-40          [-1, 128, 64, 64]               0
+  ReflectionPad2d-41          [-1, 128, 66, 66]               0
+         MyConv2D-42          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-43          [-1, 128, 64, 64]               0
+    ResidualBlock-44          [-1, 128, 64, 64]               0
+  ReflectionPad2d-45          [-1, 128, 66, 66]               0
+         MyConv2D-46          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-47          [-1, 128, 64, 64]               0
+             ReLU-48          [-1, 128, 64, 64]               0
+  ReflectionPad2d-49          [-1, 128, 66, 66]               0
+         MyConv2D-50          [-1, 128, 64, 64]         147,584
+   InstanceNorm2d-51          [-1, 128, 64, 64]               0
+    ResidualBlock-52          [-1, 128, 64, 64]               0
+         Upsample-53        [-1, 128, 128, 128]               0
+  ReflectionPad2d-54        [-1, 128, 130, 130]               0
+         MyConv2D-55         [-1, 64, 128, 128]          73,792
+   InstanceNorm2d-56         [-1, 64, 128, 128]               0
+             ReLU-57         [-1, 64, 128, 128]               0
+         Upsample-58         [-1, 64, 256, 256]               0
+  ReflectionPad2d-59         [-1, 64, 258, 258]               0
+         MyConv2D-60         [-1, 32, 256, 256]          18,464
+   InstanceNorm2d-61         [-1, 32, 256, 256]               0
+             ReLU-62         [-1, 32, 256, 256]               0
+  ReflectionPad2d-63         [-1, 32, 264, 264]               0
+           Conv2d-64          [-1, 3, 256, 256]           7,779
+================================================================
+Total params: 1,676,035
+Trainable params: 15,587
+Non-trainable params: 1,660,448
+----------------------------------------------------------------
+Input size (MB): 0.75
+Forward/backward pass size (MB): 460.16
+Params size (MB): 6.39
+Estimated Total Size (MB): 467.30
+----------------------------------------------------------------
+```
+
+</details>
 
 ### 特征提取与 MetaNet 网络计算
 
@@ -417,5 +600,182 @@ def mean_std(features):
     return torch.cat(mean_std_features, dim=-1)
 ```
 
-> 输入VGG16提取的多层特征，计算每层特征的均值和标准差，拼接为 1920 维向量。
-> 捕捉风格图像的统计特征（类似 Gram 矩阵），用于风格损失计算。
+- 输入VGG16提取的多层特征，计算每层特征的均值和标准差，拼接为 1920 维向量。
+- 捕捉风格图像的统计特征（类似 Gram 矩阵），用于风格损失计算。
+
+MetaNet 网络代码：
+
+```python
+class MetaNet(nn.Module):
+    def __init__(self, param_dict):
+        super(MetaNet, self).__init__()
+        self.param_num = len(param_dict)
+        self.hidden = nn.Linear(1920, 128 * self.param_num)
+        self.fc_dict = {}
+        for i, (name, params) in enumerate(param_dict.items()):
+            self.fc_dict[name] = i
+            setattr(self, 'fc{}'.format(i + 1), nn.Linear(128, params))
+```
+
+- `self.hidden = nn.Linear(1920, 128 * self.param_num)`：对应风格图像通过 VGG-16 提取的多层特征均值和标准差拼接后的维度，为每个参数层分配一个 128 维的隐藏向量。
+- `self.fc_dict[name] = i`：将参数层名称（如 "`downsampling.0`"）映射到索引 `i`。
+- `setattr(...)`：动态为每个参数层创建一个独立的线性层（`fc1`, `fc2`, ...），输入维度为 128，输出维度为该层所需的参数数量 `params`（如某卷积层的权重+偏置总数）。
+
+```python
+    def forward(self, mean_std_features):
+        hidden = F.relu(self.hidden(mean_std_features))
+        filters = {}
+        for name, i in self.fc_dict.items():
+            fc = getattr(self, 'fc{}'.format(i + 1))
+            filters[name] = fc(hidden[:, i * 128 : (i + 1) * 128])
+            
+        return filters
+```
+
+- `hidden = F.relu(self.hidden(mean_std_features))`：根据风格图像的均值和标准差，计算隐藏向量，维度为 `[batch_size, 1920]`，并引入激活函数。
+- `for` 循环遍历 `fc_dict` 生成参数。首先根据索引 `i` 获取对应的 `fc`。然后从 `hidden` 输出中切分出该层对应的 128 维片段，接着将这 128 维向量输入线性层生成该层所需的参数，最后将参数按层名存入字典。
+
+对该网络进行 `print` 分析总结：
+
+<table>
+    <th>结构</th>
+    <th>层</th>
+    <th>[in, out]</th>
+    <tr>
+        <td>隐藏层</td>
+        <td>hidden</td>
+        <td>[1920, 1792]</td>
+    </tr>
+    <tr>
+        <td rowspan="2">映射至下采样层参数</td>
+        <td>fc1</td>
+        <td>[128, 18496]</td>
+    </tr>
+    <tr>
+        <td>fc2</td>
+        <td>[128, 73856]</td>
+    </tr>
+    <tr>
+        <td rowspan="10">映射至残差块参数</td>
+        <td>fc3</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc4</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc5</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc6</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc7</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc8</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc9</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc10</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc11</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td>fc12</td>
+        <td>[128, 147584]</td>
+    </tr>
+    <tr>
+        <td rowspan="2">映射至上采样层参数</td>
+        <td>fc13</td>
+        <td>[128, 73792]</td>
+    </tr>
+    <tr>
+        <td>fc14</td>
+        <td>[128, 18464]</td>
+    </tr>
+</table>
+
+<details>
+<summary>原输出</summary>
+
+`print(metanet)`：
+
+```
+MetaNet(
+  (hidden): Linear(in_features=1920, out_features=1792, bias=True)
+  (fc1): Linear(in_features=128, out_features=18496, bias=True)
+  (fc2): Linear(in_features=128, out_features=73856, bias=True)
+  (fc3): Linear(in_features=128, out_features=147584, bias=True)
+  (fc4): Linear(in_features=128, out_features=147584, bias=True)
+  (fc5): Linear(in_features=128, out_features=147584, bias=True)
+  (fc6): Linear(in_features=128, out_features=147584, bias=True)
+  (fc7): Linear(in_features=128, out_features=147584, bias=True)
+  (fc8): Linear(in_features=128, out_features=147584, bias=True)
+  (fc9): Linear(in_features=128, out_features=147584, bias=True)
+  (fc10): Linear(in_features=128, out_features=147584, bias=True)
+  (fc11): Linear(in_features=128, out_features=147584, bias=True)
+  (fc12): Linear(in_features=128, out_features=147584, bias=True)
+  (fc13): Linear(in_features=128, out_features=73792, bias=True)
+  (fc14): Linear(in_features=128, out_features=18464, bias=True)
+)
+```
+
+`torchsummary.summary(metanet, (1920,))`:
+
+```
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Linear-1                 [-1, 1792]       3,442,432
+            Linear-2                [-1, 18496]       2,385,984
+            Linear-3                [-1, 73856]       9,527,424
+            Linear-4               [-1, 147584]      19,038,336
+            Linear-5               [-1, 147584]      19,038,336
+            Linear-6               [-1, 147584]      19,038,336
+            Linear-7               [-1, 147584]      19,038,336
+            Linear-8               [-1, 147584]      19,038,336
+            Linear-9               [-1, 147584]      19,038,336
+           Linear-10               [-1, 147584]      19,038,336
+           Linear-11               [-1, 147584]      19,038,336
+           Linear-12               [-1, 147584]      19,038,336
+           Linear-13               [-1, 147584]      19,038,336
+           Linear-14                [-1, 73792]       9,519,168
+           Linear-15                [-1, 18464]       2,381,856
+================================================================
+Total params: 217,640,224
+Trainable params: 217,640,224
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.01
+Forward/backward pass size (MB): 12.68
+Params size (MB): 830.23
+Estimated Total Size (MB): 842.92
+----------------------------------------------------------------
+```
+
+</details>
+
+## 代码 Demo 结果
+
+复现代码：[Github/01.ref_and_note/06.MetaNets](https://github.com/Fingsinz/StyleTransfer/blob/main/src/01.ref_and_note/06.MetaNets.py)
+
+<table>
+    <th>示例 1</th>
+    <th>示例 2</th>
+    <tr>
+        <td><img src="../static/images/Meta/fig2.png" /></td>
+        <td><img src="../static/images/Meta/fig3.png" /></td>
+    </tr>
+</table>

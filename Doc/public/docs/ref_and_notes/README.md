@@ -8,13 +8,13 @@ class: heading_no_counter
 
 ### TODO
 
-1. Meta Networks for Neural Style Transfer
-2. 学习 PyTorch 框架(2)
+1. 编写基本的项目框架代码，实现一种方法，后面考虑扩展
+2. [风格转移指标（Style Transfer Indicator）Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network](https://ieeexplore.ieee.org/document/10154714)
+3. 学习 PyTorch 框架(2)
 	- [ ] 迁移学习
     - [ ] 实验跟踪
     - [ ] 论文复制
     - [ ] 模型部署
-3. ......
 
 ### 涉及文献
 
