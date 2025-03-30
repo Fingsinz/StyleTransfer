@@ -147,10 +147,19 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <h3 id="2025.03.19~2025.03.26">2025.03.19~2025.03.26</h3>
+                            <h3 id="2025.03.27~2025.03.30">2025.03.27~2025.03.30</h3>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>编码项目，地址：<a href="https://github.com/Fingsinz/StyleTransfer-PyTorch/"  target="_blank">Github/Fingsinz/StyleTransfer-PyTorch</a></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>添加基本 MetaNet 结构并训练网络</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>添加推演程序、模型结果打分程序</li>
+</ul>
+<h3 id="2025.03.19~2025.03.26">2025.03.19~2025.03.26</h3>
 <ul>
 <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>03.19 阅读《Meta Networks for Neural Style Transfer》</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>03.23 了解 MetaNet 思想</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>03.23 了解 MetaNet 思想<ul>
+<li>通过网络生成另一网络的参数</li>
+</ul>
+</li>
 <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>03.24 复现 MetaNet</li>
 <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>03.25 ~ 03.26 代码实验 demo，代码分析，弄清 MetaNet 结构</li>
 <li><a href="../ref_and_notes/metanet.html"  >MetaNet</a></li>
@@ -158,28 +167,40 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <h3 id="2025.03.16~2025.03.17">2025.03.16~2025.03.17</h3>
 <ul>
 <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>阅读《Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks》</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>了解 CycleGAN 的基本架构。</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>复现论文。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>了解 CycleGAN 的基本架构<ul>
+<li>两个生成器 $G_A$ 和 $G_B$，满足 $F(G(x))\approx x$ 和 $G(F(y))\approx y$</li>
+<li>两个判别器 $D_X$ 和 $D_Y$，$D_X$ 用于区分图像 $\{x\}$ 和生成图像 $\{F(y)\}$，$D_Y$ 用于区分图像 $\{y\}$ 和生成图像 $\{G(x)\}$</li>
+</ul>
+</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>复现论文</li>
 <li><a href="../ref_and_notes/cyclegan.html"  >CycleGAN：循环 GAN</a></li>
 </ul>
 <h3 id="2025.03.11~2025.03.15">2025.03.11~2025.03.15</h3>
 <ul>
 <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>阅读《High-Resolution Image Synthesis and Semantic Manipulation with cGANs》</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>了解 pix2pixHD 中的三级判别器和 Coarse-to-Fine Generator。</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>理解 pix2pixHD 仓库中的部分代码。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>了解 pix2pixHD 中的三级判别器和 Coarse-to-Fine Generator<ul>
+<li>全局生成器 $G_1$ 和局部增强器 $G_2$</li>
+<li>三级判别器 $D_1$、$D_2$ 和 $D_3$，分别对应原始分辨率图像、下采样 1/2 的图像和下采样 1/4 的图像</li>
+</ul>
+</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>理解 pix2pixHD 仓库中的部分代码</li>
 <li><a href="../ref_and_notes/patchgan.html"  >PatchGAN 到 Multi-Scale PatchGAN</a></li>
 </ul>
 <h3 id="2025.03.06~2025.03.10">2025.03.06~2025.03.10</h3>
 <ul>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>了解 cGAN</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>了解 pix2pix 中的 70×70 PatchGAN</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>了解 cGAN：$D(x|c)$ 或 $D(G(z|c)|c)$</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>了解 pix2pix 中的 70×70 PatchGAN<ul>
+<li>将输入图像分割为多个局部小块（Patch），每个 Patch 独立判断真伪，最终取所有 Patch 的平均结果作为整体判别输出</li>
+<li>论文中感受野最后为 70，即 Patch 为 70×70</li>
+</ul>
+</li>
 <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>理解 pytorch-CycleGAN-and-pix2pix 仓库中 pip2pix model 部分</li>
 <li><a href="../ref_and_notes/cgan.html"  >cGAN：条件 GAN</a></li>
 </ul>
 <h3 id="2025.03.05">2025.03.05</h3>
 <ul>
 <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>学习 VGG 网络架构，完成阅读论文《Very Deep Convolutional Networks for Large-Scale Image Recognition》<ul>
-<li>首次系统性地研究了卷积神经网络（CNN）深度对大规模图像识别任务的影响，并提出了经典的 VGG 网络架构，其中 VGG-16、VGG-19 效果比较好。</li>
+<li>首次系统性地研究了卷积神经网络（CNN）深度对大规模图像识别任务的影响，并提出了经典的 VGG 网络架构，其中 VGG-16、VGG-19 效果比较好</li>
 <li>使用 3 × 3 小卷积核堆叠替代大卷积核，减少参数量并引入更多非线性因素</li>
 <li>通过浅层网络预训练初始化深层网络的前几层和全连接层，加速收敛并缓解梯度不稳定问题</li>
 <li><a href="../ref_and_notes/vgg.html"  >VGG 笔记</a></li>
@@ -218,7 +239,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 </ul>
 <h3 id="2025.02.01~2025.02.04">2025.02.01~2025.02.04</h3>
 <ul>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>完成阅读论文《Generative Adversarial Nets》，做了个<a href="/StyleTransfer/ref_and_note/GAN.html"  >笔记和实验</a>。<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>完成阅读论文《Generative Adversarial Nets》，做了个<a href="/StyleTransfer/ref_and_note/GAN.html"  >笔记和实验</a><ul>
 <li>生成器、判别器</li>
 <li>在 $k$ 步优化判别器 D 和 $1$ 步优化生成器 G 之间交替进行</li>
 <li>最大化 $\log D(G(z))$ 代替最小化 $\log(1−D(G(z)))$ 训练生成器 G</li>
@@ -228,12 +249,12 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 </ul>
 <h3 id="2025.01.06~2025.01.13">2025.01.06~2025.01.13</h3>
 <ul>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>完成 &amp; 提交开题报告。</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>完成预期方案及成果。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>完成 &amp; 提交开题报告</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>完成预期方案及成果</li>
 </ul>
 <h3 id="2024.12.29">2024.12.29</h3>
 <ul>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>选定网页框架，新建文件夹。</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>选定网页框架，新建文件夹</li>
 </ul>
 
                         

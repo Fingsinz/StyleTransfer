@@ -34,11 +34,16 @@ items:
         file: patchgan.md
     -   label: CycleGAN：循环GAN
         file: cyclegan.md
-    -   label: Meta Networks
-        file: metanet.md
+    -   label: 风格迁移评价
+        file: evaluation.md
 
 -   label: 风格迁移实战
     collapsed: false
     items:
-    -   label: Image Style Transfer Using Convolutional Neural Networks
+    -   label: 卷积神经网络的图像风格迁移（d2l）
+    -   label: 特征变换 WCT
+    -   label: 自适应实例归一化 AdaIN
+    -   label: Meta Networks
+        file: metanet.md
+
 

@@ -115,11 +115,14 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cgan.html"><span class="label">cGAN：条件 GAN</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/patchgan.html"><span class="label">PatchGAN 到多尺度 PatchGAN</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cyclegan.html"><span class="label">CycleGAN：循环GAN</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/metanet.html"><span class="label">Meta Networks</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/evaluation.html"><span class="label">风格迁移评价</span><span class=""></span></a></li>
 </ul>
 </li>
 <li class="not_active no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
-<li class="not_active no_link"><a><span class="label">Image Style Transfer Using Convolutional Neural Networks</span><span class=""></span></a></li>
+<li class="not_active no_link"><a><span class="label">卷积神经网络的图像风格迁移（d2l）</span><span class=""></span></a></li>
+<li class="not_active no_link"><a><span class="label">特征变换 WCT</span><span class=""></span></a></li>
+<li class="not_active no_link"><a><span class="label">自适应实例归一化 AdaIN</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/metanet.html"><span class="label">Meta Networks</span><span class=""></span></a></li>
 </ul>
 </li>
 </ul>
@@ -171,8 +174,8 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                         
                             <h3 id="TODO">TODO</h3>
 <ol>
-<li>编写基本的项目框架代码，实现一种方法，后面考虑扩展</li>
-<li><a href="https://ieeexplore.ieee.org/document/10154714"  target="_blank">风格转移指标（Style Transfer Indicator）Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network</a></li>
+<li>编写基本的项目框架代码，实现一种方法（MetaNets），后面考虑扩展比较 AdaIN （<a href="https://arxiv.org/abs/1703.06868"  target="_blank">Arbitrary Style Transfer in Real-time with Adaptive Instance Normalization</a>）和特征变换（<a href="https://arxiv.org/abs/1705.08086"  target="_blank">Universal Style Transfer via Feature Transforms</a>）</li>
+<li>学习评估指标 <a href="https://ieeexplore.ieee.org/document/10154714"  target="_blank">风格转移指标（Style Transfer Indicator）Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network</a></li>
 <li>学习 PyTorch 框架(2)<ul>
 <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>迁移学习</li>
 <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>实验跟踪</li>

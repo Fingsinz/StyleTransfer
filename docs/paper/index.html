@@ -10,7 +10,7 @@
     <meta name="keywords" content="">
     
     
-    <meta name="description" content="None">
+    <meta name="description" content="基于深度学习的图像风格迁移算法研究">
     
     <meta name="generator" content="teedoc">
     <meta name="theme" content="teedoc-plugin-theme-default">
@@ -46,7 +46,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         
     
     
-    <title>待完成 - Style Transfer - Fingsinz</title>
+    <title>基于深度学习的图像风格迁移算法研究 - Style Transfer - Fingsinz</title>
     
     <script type="text/javascript">js_vars = {}</script>
     <script type="text/javascript">metadata = {"tags": [], "date": false, "update": [], "ts": 0, "author": "", "brief": "", "cover": ""}</script>
@@ -112,7 +112,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     <div id="article_head">
                         <div id="article_title">
                             
-                            <h1>待完成</h1>
+                            <h1>基于深度学习的图像风格迁移算法研究</h1>
                             
                         </div>
                         <div id="article_tags">
@@ -141,7 +141,14 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            
+                            <h2 id="%E5%85%83%E7%BD%91%E7%BB%9C%E9%A3%8E%E6%A0%BC%E8%BF%81%E7%A7%BB%E6%94%B9%E8%BF%9B">元网络风格迁移改进</h2>
+<h3 id="%E8%BF%81%E7%A7%BB%E5%90%8E%E5%9B%BE%E5%83%8F%E4%BF%9D%E6%8C%81%E5%8E%9F%E5%9B%BE%E5%83%8F%E5%A4%A7%E5%B0%8F%E4%B8%80%E8%87%B4">迁移后图像保持原图像大小一致</h3>
+<ol>
+<li>迁移时摒弃原来的强制缩放。</li>
+<li>调整 TransformNet 的下采样逻辑：移除 <code>stride=2</code>，改用卷积核实现特征提取。</li>
+<li>调整 TransformNet 的上采样逻辑：使用 bilinear 插值，替代固定 <code>scale_factor</code>，同时在 <code>forward</code> 使用 <code>F.interpolate</code>，动态恢复原始尺寸。</li>
+</ol>
+
                         
                     </div>
                 </div>

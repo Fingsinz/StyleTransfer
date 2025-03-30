@@ -26,37 +26,7 @@
         </url>
         <url>
             <loc>https:///StyleTransfer/paper/index.html</loc>
-            <lastmod>2025-01-16</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https:///StyleTransfer/ref_and_notes/cgan.html</loc>
-            <lastmod>2025-03-06</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https:///StyleTransfer/ref_and_notes/cyclegan.html</loc>
-            <lastmod>2025-03-11</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https:///StyleTransfer/ref_and_notes/gan.html</loc>
-            <lastmod>2025-02-01</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https:///StyleTransfer/ref_and_notes/metanet.html</loc>
-            <lastmod>2025-03-19</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>1.0</priority>
-        </url>
-        <url>
-            <loc>https:///StyleTransfer/ref_and_notes/patchgan.html</loc>
-            <lastmod>2025-03-11</lastmod>
+            <lastmod>2025-03-27</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -73,14 +43,20 @@
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/pytorch_custom_datasets.html</loc>
-            <lastmod>2025-02-12</lastmod>
+            <loc>https:///StyleTransfer/ref_and_notes/cgan.html</loc>
+            <lastmod>2025-03-06</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/pytorch_install.html</loc>
-            <lastmod>2025-02-07</lastmod>
+            <loc>https:///StyleTransfer/ref_and_notes/cyclegan.html</loc>
+            <lastmod>2025-03-11</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/evaluation.html</loc>
+            <lastmod>2025-03-27</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -109,6 +85,24 @@
             <priority>1.0</priority>
         </url>
         <url>
+            <loc>https:///StyleTransfer/ref_and_notes/gan.html</loc>
+            <lastmod>2025-02-01</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/metanet.html</loc>
+            <lastmod>2025-03-19</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/patchgan.html</loc>
+            <lastmod>2025-03-11</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
             <loc>https:///StyleTransfer/ref_and_notes/pytorch_basic_workflow.html</loc>
             <lastmod>2025-02-08</lastmod>
             <changefreq>weekly</changefreq>
@@ -123,6 +117,18 @@
         <url>
             <loc>https:///StyleTransfer/ref_and_notes/pytorch_computer_vision.html</loc>
             <lastmod>2025-02-11</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/pytorch_custom_datasets.html</loc>
+            <lastmod>2025-02-12</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/pytorch_install.html</loc>
+            <lastmod>2025-02-07</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
