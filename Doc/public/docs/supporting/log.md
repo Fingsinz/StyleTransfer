@@ -8,7 +8,7 @@ class: heading_no_counter
 
 ### 2025.03.27~2025.03.30
 
-- [x] 编码项目，地址：[Github](https://github.com/Fingsinz/StyleTransfer-PyTorch/)
+- [x] 编码项目，地址：[Github/Fingsinz/StyleTransfer-PyTorch](https://github.com/Fingsinz/StyleTransfer-PyTorch/)
 - [x] 添加基本 MetaNet 结构并训练网络
 - [x] 添加推演程序、模型结果打分程序
 
@@ -16,6 +16,7 @@ class: heading_no_counter
 
 - [x] 03.19 阅读《Meta Networks for Neural Style Transfer》
 - [x] 03.23 了解 MetaNet 思想
+    - 通过网络生成另一网络的参数
 - [x] 03.24 复现 MetaNet
 - [x] 03.25 ~ 03.26 代码实验 demo，代码分析，弄清 MetaNet 结构
 - [MetaNet](../ref_and_notes/metanet.md)
@@ -24,6 +25,8 @@ class: heading_no_counter
 
 - [x] 阅读《Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks》
 - [x] 了解 CycleGAN 的基本架构
+    - 两个生成器 $G_A$ 和 $G_B$，满足 $F(G(x))\approx x$ 和 $G(F(y))\approx y$
+    - 两个判别器 $D_X$ 和 $D_Y$，$D_X$ 用于区分图像 $\{x\}$ 和生成图像 $\{F(y)\}$，$D_Y$ 用于区分图像 $\{y\}$ 和生成图像 $\{G(x)\}$
 - [x] 复现论文
 - [CycleGAN：循环 GAN](../ref_and_notes/cyclegan.md)
 
@@ -31,13 +34,17 @@ class: heading_no_counter
 
 - [x] 阅读《High-Resolution Image Synthesis and Semantic Manipulation with cGANs》
 - [x] 了解 pix2pixHD 中的三级判别器和 Coarse-to-Fine Generator
+    - 全局生成器 $G_1$ 和局部增强器 $G_2$
+    - 三级判别器 $D_1$、$D_2$ 和 $D_3$，分别对应原始分辨率图像、下采样 1/2 的图像和下采样 1/4 的图像
 - [x] 理解 pix2pixHD 仓库中的部分代码
 - [PatchGAN 到 Multi-Scale PatchGAN](../ref_and_notes/patchgan.md)
 
 ### 2025.03.06~2025.03.10
 
-- [x] 了解 cGAN
+- [x] 了解 cGAN：$D(x|c)$ 或 $D(G(z|c)|c)$
 - [x] 了解 pix2pix 中的 70×70 PatchGAN
+    - 将输入图像分割为多个局部小块（Patch），每个 Patch 独立判断真伪，最终取所有 Patch 的平均结果作为整体判别输出
+    - 论文中感受野最后为 70，即 Patch 为 70×70
 - [x] 理解 pytorch-CycleGAN-and-pix2pix 仓库中 pip2pix model 部分
 - [cGAN：条件 GAN](../ref_and_notes/cgan.md)
 
