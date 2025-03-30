@@ -328,6 +328,21 @@ class CycleGAN(nn.Module):
         self.generator_xy.train()
         self.generator_yx.train()
         
+    def one_image_test(self, in_image, mode):
+        if mode == 'monet2photo':
+            self.generator_xy.eval()
+            output = self.generator_xy(in_image)
+            
+            output_image = transforms.ToPILImage()(output)
+            output_image.save('output.png')
+        
+        elif mode == 'photo2monet':
+            self.generator_yx.eval()
+            output = self.generator_yx(in_image)
+            
+            output_image = transforms.ToPILImage()(output)
+            output_image.save('output.png')
+        
 def save_model(model: torch.nn.Module,
                target_dir: str,
                model_name: str):
