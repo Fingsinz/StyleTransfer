@@ -8,8 +8,8 @@ class: heading_no_counter
 
 ### TODO
 
-1. 编写基本的项目框架代码，实现一种方法，后面考虑扩展
-2. [风格转移指标（Style Transfer Indicator）Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network](https://ieeexplore.ieee.org/document/10154714)
+1. 编写基本的项目框架代码，实现一种方法（MetaNets），后面考虑扩展比较 AdaIN （[Arbitrary Style Transfer in Real-time with Adaptive Instance Normalization](https://arxiv.org/abs/1703.06868)）和特征变换（[Universal Style Transfer via Feature Transforms](https://arxiv.org/abs/1705.08086)）
+2. 学习评估指标 [风格转移指标（Style Transfer Indicator）Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network](https://ieeexplore.ieee.org/document/10154714)
 3. 学习 PyTorch 框架(2)
 	- [ ] 迁移学习
     - [ ] 实验跟踪
