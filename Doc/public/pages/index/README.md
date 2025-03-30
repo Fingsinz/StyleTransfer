@@ -10,4 +10,4 @@ id: home_page
 
 *2025届毕业设计课题，Fingsinz*
 
-*[Github](https://github.com/Fingsinz/StyleTransfer)*
+*[[项目文档]](https://github.com/Fingsinz/StyleTransfer) [[项目代码]](https://github.com/Fingsinz/StyleTransfer-PyTorch)*

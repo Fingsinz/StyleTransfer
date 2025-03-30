@@ -4,6 +4,8 @@
 
 网页文档: [https://fingsinz.github.io/StyleTransfer/](https://fingsinz.github.io/StyleTransfer/)
 
+项目实践：[https://github.com/Fingsinz/StyleTransfer-PyTorch](https://github.com/Fingsinz/StyleTransfer-PyTorch)
+
 ## 项目环境 Environment
 
 - OS: Windows 10
@@ -17,7 +19,7 @@ StyleTransfer
 
 - docs: teedoc 生成的静态网页文档
 
-- src: 项目源码
+- src: 学习源码
     - 01.ref_and_note: 文献阅读笔记
     - 02.pytorch_learning: PyTorch 框架学习
 
