@@ -8,6 +8,7 @@ class: heading_no_counter
 
 ### 2025.03.27~2025.03.30
 
+- [x] 了解风格迁移结果评分机制，阅读《Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network》
 - [x] 编码项目，地址：[Github/Fingsinz/StyleTransfer-PyTorch](https://github.com/Fingsinz/StyleTransfer-PyTorch/)
 - [x] 添加基本 MetaNet 结构并训练网络
 - [x] 添加推演程序、模型结果打分程序
