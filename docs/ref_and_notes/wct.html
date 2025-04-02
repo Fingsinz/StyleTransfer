@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html lang="zh" id="wct" class="">
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="keywords" content="WCT">
+    
+    
+    <meta name="description" content="特征 Whiten-Color 转换">
+    
+    <meta name="generator" content="teedoc">
+    <meta name="theme" content="teedoc-plugin-theme-default">
+    
+        
+        <meta name="markdown-generator" content="teedoc-plugin-markdown-parser">
+        
+        <script>
+MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]]}, "svg": {"fontCache": "global"}};
+</script>
+        
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+        <script src="/StyleTransfer/static/js/theme_default/pre_main.js"></script>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/prism.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/viewer.min.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/dark.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/theme_default/light.css" type="text/css"/>
+        
+        <script src="/StyleTransfer/static/js/theme_default/jquery.min.js"></script>
+        
+        <script src="/StyleTransfer/static/js/theme_default/split.js"></script>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/search/style.css" type="text/css"/>
+        
+        <link rel="stylesheet" href="/StyleTransfer/static/css/custom.css" type="text/css"/>
+        
+        <meta name="html-generator" content="teedoc-plugin-jupyter-notebook-parser">
+        
+    
+    
+    <title>特征 Whiten-Color 转换 - Style Transfer - Fingsinz</title>
+    
+    <script type="text/javascript">js_vars = {}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2025-03-31", "update": [], "ts": 1743350400, "author": "", "brief": "", "cover": "", "id": "wct"}</script>
+</head>
+
+
+<body class="type_doc">
+    
+    <div id="navbar">
+        <div id="navbar_menu">
+            <a class="site_title" href="/StyleTransfer/">
+                
+                
+                    <h2>Style Transfer By Fingsinz</h2>
+                
+        </a>
+            <a id="navbar_menu_btn"></a>
+        </div>
+        <div id="navbar_items">
+            <div>
+                <ul id="nav_left">
+<li class=""><a  href="/StyleTransfer/supporting/">辅助材料</a></li>
+<li class="active"><a  href="/StyleTransfer/ref_and_notes/">文献学习 & 笔记</a></li>
+<li class=""><a  href="/StyleTransfer/paper/">论文正文</a></li>
+</ul>
+
+            </div>
+            <div>
+                <ul id="nav_right">
+</ul>
+
+                <ul class="nav_plugins"><li><a id="themes" class="light"></a></li></ul><ul class="nav_plugins"><li><a id="search"><span class="icon"></span><span class="placeholder">搜索</span>
+                            <div id="search_hints">
+                                <span id="search_input_hint">输入关键词，多关键词空格隔开</span>
+                                <span id="search_loading_hint">正在加载，请稍候。。。</span>
+                                <span id="search_download_err_hint">下载文件失败，请刷新重试或检查网络</span>
+                                <span id="search_other_docs_result_hint">来自其它文档的结果</span>
+                                <span id="search_curr_doc_result_hint">当前文档搜索结果</span>
+                            </div></a></li></ul>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">
+        <div id="sidebar_wrapper">
+            <div id="sidebar">
+                <div id="sidebar_title">
+                    
+                </div>
+                <ul class="show">
+<li class="not_active no_link"><a><span class="label">PyTorch 框架</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_install.html"><span class="label">PyTorch 环境安装</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_tensor.html"><span class="label">Tensor 张量</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_basic_workflow.html"><span class="label">PyTorch 基本工作流</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_classification.html"><span class="label">PyTorch 分类模型</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_computer_vision.html"><span class="label">PyTorch 中的计算机视觉</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_custom_datasets.html"><span class="label">PyTorch 中自定义数据集</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_modular.html"><span class="label">PyTorch 模块化</span><span class=""></span></a></li>
+</ul>
+</li>
+<li class="not_active no_link"><a><span class="label">理论学习</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/vgg.html"><span class="label">VGG 卷积网络</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/resnet.html"><span class="label">ResNet：残差网络</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/unet.html"><span class="label">U-Net 卷积网络</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/gan.html"><span class="label">GAN：生成对抗网络</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cgan.html"><span class="label">cGAN：条件 GAN</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/patchgan.html"><span class="label">PatchGAN 到多尺度 PatchGAN</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cyclegan.html"><span class="label">CycleGAN：循环GAN</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/evaluation.html"><span class="label">风格迁移评价</span><span class=""></span></a></li>
+</ul>
+</li>
+<li class="active_parent no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="active with_link"><a href="/StyleTransfer/ref_and_notes/wct.html"><span class="label">特征变换 - WCT（对比模型）</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/fast_patch_based.html"><span class="label">基于 Patch 的风格转移（对比模型）</span><span class=""></span></a></li>
+<li class="not_active no_link"><a><span class="label">自适应实例归一化 AdaIN（对比模型）</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/metanet.html"><span class="label">Meta Networks（研究模型）</span><span class=""></span></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
+        <div id="article">
+            <div id="menu_wrapper">
+                <div id="menu">
+                </div>
+            </div>
+            <div id="content_wrapper">
+                <div id="content_body">
+                    <div id="article_head">
+                        <div id="article_title">
+                            
+                            <h1>特征 Whiten-Color 转换</h1>
+                            
+                        </div>
+                        <div id="article_tags">
+                            <ul>
+                            
+                            </ul>
+                        </div>
+                        <div id="article_info">
+                        <div id="article_info_left">
+                            <span class="article_author">
+                                
+                            </span>
+                            
+                                <span class="article_date" title="最后修改日期： 2025-03-31">
+                                    2025-03-31
+                                </span>
+                            
+                        </div>
+                        <div id="article_info_right">
+                            
+                        </div>
+                        </div>
+                    </div>
+                    <div id="article_tools">
+                        <span></span>
+                        <span id="toc_btn"></span>
+                    </div>
+                    <div id="update_history">
+                        
+                    </div>
+                    <div id="article_content">
+                        
+                            <p><a href="https://arxiv.org/abs/1705.08086"  target="_blank">Universal Style Transfer via Feature Transforms</a></p>
+<p><em>LI Y, CHEN F, YANG J, et al. Universal Style Transfer via Feature Transforms[J]. Neural Information Processing Systems,Neural Information Processing Systems, 2017.</em></p>
+<blockquote>
+<p>Universal style transfer aims to transfer arbitrary visual styles to content images. Existing feed-forward based methods, while enjoying the inference efficiency, are mainly limited by inability of generalizing to unseen styles or compromised visual quality. In this paper, we present a simple yet effective method that tackles these limitations without training on any pre-defined styles. The key ingredient of our method is a pair of feature transforms, whitening and coloring, that are embedded to an image reconstruction network. The whitening and coloring transforms reflect direct matching of feature covariance of the content image to a given style image, which shares similar spirits with the optimization of Gram matrix based cost in neural style transfer. We demonstrate the effectiveness of our algorithm by generating high-quality stylized images with comparisons to a number of recent methods. We also analyze our method by visualizing the whitened features and synthesizing textures by simple feature coloring.</p>
+</blockquote>
+<p><strong>摘要</strong>：通用样式转移的目的是将任意的视觉风格转移到内容图像中。现有的基于前馈的方法虽然具有较高的推理效率，但主要存在不能泛化到未知样式或视觉质量较差的问题。在本文中，我们提出了一个简单而有效的方法来解决这些限制，而不需要训练任何预定义的样式。方法的关键是嵌入到图像重建网络中的一对特征变换，即增白和着色。增白和着色变换反映了内容图像的特征协方差与给定风格图像的直接匹配，这与神经风格迁移中基于 Gram 矩阵的代价优化具有相似的精神。我们通过生成高质量的风格化图像来证明我们算法的有效性，并与许多最近的方法进行了比较。我们还通过可视化白化特征和通过简单的特征着色合成纹理来分析我们的方法。</p>
+<h2 id="%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8%E7%BB%93%E6%9E%84">编码器-解码器结构</h2>
+<p>使用 VGG-19 作为编码器，对其进行微调；并训练解码器网络，只需将 VGG 特征反转到原始图像。</p>
+<p><img src="../static/images/WCT/fig1.png" alt="" /></p>
+<ul>
+<li>解码器设计成与 VGG-19 网络对称，使用最近邻上采样层用于扩大特征图。</li>
+</ul>
+<p>使用像素重建损失和特征损失对输入图像进行重建：</p>
+$$
+L = \vert\vert I_o - I_i \vert\vert _2^2 + \lambda\vert\vert \Phi(I_o) - \Phi(I_i) \vert\vert\tag{1}
+$$<p>其中，$I_i$ 是输入图像，$I_o$ 是重建输出图像，$\Phi$ 是 VGG 编码器提取 <code>Relu_X_1</code> 的特征，$\lambda$ 是权重系数。</p>
+<h2 id="Whitening-%E5%92%8C-Coloring">Whitening 和 Coloring</h2>
+<p>给定内容图像 $I_c$ 和风格图像 $I_s$，首先提取向量化后的 VGG 特征 $f_c \in \mathfrak{R}^{C\times H_c W_c}$ 和 $f_s \in \mathfrak{R}^{C\times H_s W_s}$。接下来提出一个白化和着色变换去调整 $f_c$ 相对于 $f_s$ 的统计。即 <strong>WCT 的目标是直接变换 $f_c$ 去匹配 $f_s$ 的协方差矩阵</strong>。</p>
+<p>WCT 过程包括 Whitening（白化）和 Coloring（着色）变换。</p>
+<h3 id="%E7%99%BD%E5%8C%96%E5%8F%98%E6%8D%A2">白化变换</h3>
+<p>首先，$f_c$ 通过减去其均值向量使得中心化：</p>
+$$
+f_c \leftarrow f_c - \mu_c\tag{2}
+$$<p>然后对 $f_c$ 进行式 (3) 的线性变换，得到 $\hat{f}_c$，使得特征映射是不相关的（$\hat{f}_c \hat{f}_c^\top=I$）。协方差矩阵 $f_c f_c^\top \in \mathfrak{R}^{C\times C}$，衡量内容特征各通道之间的相关性（即风格信息），且满足$f_c f_c^\top = E_c D_c E_c^\top$</p>
+$$
+\hat{f}_c = E_c D_c^{-\frac {1}{2}} E_c^\top f_c\tag{3}
+$$<ul>
+<li>$D_c\in \mathfrak{R}^{C\times C}$，对角特征值矩阵：对角线元素为协方差矩阵的特征值，反映各主方向的方差强度。</li>
+<li>$E_c\in \mathfrak{R}^{C\times C}$，正交特征向量矩阵：每一列是协方差矩阵的特征向量，构成正交基，表示特征空间的主方向。</li>
+<li>$D_c^{-\frac {1}{2}}$，特征值缩放：对特征值取平方根的倒数，使各方向的方差归一化为 1。</li>
+<li>$\hat{f}_c \in \mathfrak{R}^{C\times H_c W_c}$，白化后的特征：满足 $\hat{f}_c \hat{f}_c^\top = I$（单位矩阵），即各通道不相关且方差为1。</li>
+</ul>
+<p>公式 (3) 可以理解为：</p>
+<ol>
+<li>通过 $E_c^\top f_c$ 将原始特征投影到协方差矩阵的特征向量空间，消除通道间的相关性。</li>
+<li>接着 $D_c^{-\frac {1}{2}} E_c^\top f_c$ 对投影后的特征进行缩放，使每个方向的方差变为 1。</li>
+<li>最后 $E_c D_c^{-\frac {1}{2}} E_c^\top f_c$ 将归一化后的特征逆投影回原始空间，得到白化特征 $\hat{f}_c$。</li>
+</ol>
+<p>白化的核心意义：</p>
+<ul>
+<li>剥离风格信息：通过消除特征通道间的相关性（协方差），去除内容特征中的风格统计特性。</li>
+<li>保留内容结构：白化后的特征仍保留全局内容结构（如图2中的桥梁、人脸轮廓），但细节纹理（如梵高笔触）被移除。</li>
+<li>为着色变换做准备：白化后的特征协方差为 $I$，后续通过着色变换注入目标风格的协方差，实现风格迁移。</li>
+</ul>
+<h3 id="%E7%9D%80%E8%89%B2%E5%8F%98%E6%8D%A2">着色变换</h3>
+<p>同样，$f_s$ 通过减去其均值向量使得中心化。然后进行着色变换，基本上是白化的逆过程。</p>
+<p>对 $\hat{f}_c$ 进行式 (4) 的线性变换，得到 $\hat{f}_{cs}$，使得特征映射之间存在所需的相关性（$\hat{f}_{cs} {\hat{f}_{cs}}^\top=f_s f_s^\top$）。协方差矩阵 $f_s f_s^\top \in \mathfrak{R}^{C\times C}$，衡量风格图像各通道间的相关性，满足 $f_s f_s^\top = E_s D_s E_s^\top$</p>
+$$
+\hat{f}_{cs} = E_s D_s^{\frac {1}{2}} E_s^\top \hat{f}_c\tag{4}
+$$<ul>
+<li>$E_s \in \mathfrak{R}^{C\times C}$，正交特征向量矩阵：协方差矩阵的特征向量，表示风格特征空间的主方向（如纹理方向、色彩分布模式）。</li>
+<li>$D_s \in \mathfrak{R}^{C\times C}$，对角特征值矩阵：对角线元素为协方差矩阵的特征值，反映各主方向的方差强度（如风格纹理的能量分布）。</li>
+<li>$D_s^{-\frac {1}{2}}$，特征值缩放：对特征值取平方根，恢复风格特征的原始方差强度。</li>
+<li>$\hat{f}_{cs} \in \mathfrak{R}^{C\times H_c W_c}$，着色后的特征：变换后的特征满足 $\hat{f}_{cs} {\hat{f}_{cs}}^\top=f_s f_s^\top$，即协方差与风格特征完全一致，且均值通过重新中心化对齐。</li>
+</ul>
+<p>公式 (4) 可以理解为：</p>
+<ol>
+<li>$E_s^\top \hat{f}_c$ 将白化后的内容特征投影到风格协方差矩阵的特征向量空间中。</li>
+<li>$D_s^{\frac {1}{2}} E_s^\top \hat{f}_c$ 则对投影后的特征进行缩放，使其方差与风格一致。</li>
+<li>然后 $E_s D_s^{\frac {1}{2}} E_s^\top \hat{f}_c$ 将缩放后的特征逆投影回原始空间，得到协方差匹配的风格化特征。</li>
+<li>最后添加风格均值向量 $m_s$，使变换后的特征在均值和协方差上均与风格对齐。</li>
+</ol>
+<p>着色的核心意义：</p>
+<ul>
+<li>协方差匹配：通过数学变换强制白化特征的协方差与目标风格一致，实现风格统计特性的迁移（如笔触、纹理）。</li>
+<li>均值对齐：添加风格均值向量 $m_s$，确保色彩分布与风格图像一致（如梵高画的蓝色基调）。</li>
+<li>内容-风格分离与融合：白化剥离内容风格，着色注入目标风格，实现“内容结构 + 风格统计”的合成。</li>
+</ul>
+<h2 id="%E5%A4%9A%E7%BA%A7%E9%A3%8E%E6%A0%BC%E8%BF%81%E7%A7%BB">多级风格迁移</h2>
+<p>从高层到低层（粗到细）：先在高语义层（如ReLU_5_1）匹配风格的整体模式，再逐步细化低层（如ReLU_1_1）的色彩和纹理细节。</p>
+<p>反向操作（低层到高层）会导致底层细节被高层操作破坏，因此粗到细的顺序更有效。</p>
+<h2 id="%E5%85%B3%E9%94%AE%E5%88%9B%E6%96%B0">关键创新</h2>
+<ul>
+<li>无需风格训练：仅需预训练图像重建解码器，新风格通过 WCT 直接匹配特征统计量，无需微调网络。</li>
+<li>高效性与通用性：单次前馈即可完成迁移，支持任意风格输入，且生成质量优于现有方法（如 Gatys 的优化方法或固定风格的前馈网络）。</li>
+<li>用户控制：通过参数 α 调节风格化强度（公式 4），支持多尺度风格输入和空间掩码控制局部风格化。</li>
+</ul>
+<h2 id="%E5%AE%9E%E7%8E%B0">实现</h2>
+<p>Torch-Github：<a href="https://github.com/Yijunmaverick/UniversalStyleTransfer"  target="_blank">https://github.com/Yijunmaverick/UniversalStyleTransfer</a></p>
+
+                        
+                    </div>
+                </div>
+                <div id="previous_next">
+                    <div id="previous">
+                        
+                        <a href="/StyleTransfer/ref_and_notes/evaluation.html">
+                            <span class="icon"></span>
+                            <span class="label">风格迁移评价</span>
+                        </a>
+                        
+                    </div>
+                    <div id="next">
+                        
+                        <a href="/StyleTransfer/ref_and_notes/fast_patch_based.html">
+                            <span class="label">基于 Patch 的风格转移（对比模型）</span>
+                            <span class="icon"></span>
+                        </a>
+                        
+                    </div>
+                </div>
+                <div id="comments-container"></div>
+            </div>
+            <div id="toc_wrapper">
+                <div id="toc">
+                    <div id="toc_content">
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="to_top" href="#"></a>
+    <div id="doc_footer">
+        <div id="footer">
+            <div id="footer_top">
+                <ul>
+<li><a></a><ul><li><a target="_blank" href="/StyleTransfer/#"></a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <div id="footer_bottom">
+                <ul>
+<li><a target="_blank" href="https://github.com/teedoc/teedoc">Generated by teedoc - Fingsinz - 2024.12.29</a></li>
+</ul>
+
+            </div>
+        </div>
+    </div>
+    
+        <script src="/StyleTransfer/teedoc-plugin-markdown-parser/mermaid.min.js"></script>
+    
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+        <script src="/StyleTransfer/static/js/theme_default/tocbot.min.js"></script>
+    
+        <script src="/StyleTransfer/static/js/theme_default/main.js"></script>
+    
+        <script src="/StyleTransfer/static/js/theme_default/viewer.min.js"></script>
+    
+        <script src="/StyleTransfer/static/css/theme_default/prism.min.js"></script>
+    
+        <script src="/StyleTransfer/static/js/search/search_main.js"></script>
+    
+        <script src="/StyleTransfer/static/js/custom.js"></script>
+    
+</body>
+
+</html>

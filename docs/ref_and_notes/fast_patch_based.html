@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html lang="zh" id="evaluation" class="">
+<html lang="zh" id="fast_patch_based" class="">
 
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="keywords" content="迁移评价">
+    <meta name="keywords" content="Fast Patch-based">
     
     
-    <meta name="description" content="风格迁移评价">
+    <meta name="description" content="Fast Patch-based Style Transfer of Arbitrary Style">
     
     <meta name="generator" content="teedoc">
     <meta name="theme" content="teedoc-plugin-theme-default">
@@ -46,10 +46,10 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         
     
     
-    <title>风格迁移评价 - Style Transfer - Fingsinz</title>
+    <title>快速基于补丁的任意风格的风格转移 - Style Transfer - Fingsinz</title>
     
     <script type="text/javascript">js_vars = {}</script>
-    <script type="text/javascript">metadata = {"tags": [], "date": "2025-03-27", "update": [], "ts": 1743004800, "author": "", "brief": "", "cover": "", "id": "evaluation"}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2025-04-01", "update": [], "ts": 1743436800, "author": "", "brief": "", "cover": "", "id": "fast_patch_based"}</script>
 </head>
 
 
@@ -107,7 +107,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_modular.html"><span class="label">PyTorch 模块化</span><span class=""></span></a></li>
 </ul>
 </li>
-<li class="active_parent no_link"><a><span class="label">理论学习</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active no_link"><a><span class="label">理论学习</span><span class="sub_indicator"></span></a><ul class="show">
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/vgg.html"><span class="label">VGG 卷积网络</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/resnet.html"><span class="label">ResNet：残差网络</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/unet.html"><span class="label">U-Net 卷积网络</span><span class=""></span></a></li>
@@ -115,12 +115,12 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cgan.html"><span class="label">cGAN：条件 GAN</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/patchgan.html"><span class="label">PatchGAN 到多尺度 PatchGAN</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cyclegan.html"><span class="label">CycleGAN：循环GAN</span><span class=""></span></a></li>
-<li class="active with_link"><a href="/StyleTransfer/ref_and_notes/evaluation.html"><span class="label">风格迁移评价</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/evaluation.html"><span class="label">风格迁移评价</span><span class=""></span></a></li>
 </ul>
 </li>
-<li class="not_active no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="active_parent no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/wct.html"><span class="label">特征变换 - WCT（对比模型）</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/fast_patch_based.html"><span class="label">基于 Patch 的风格转移（对比模型）</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/StyleTransfer/ref_and_notes/fast_patch_based.html"><span class="label">基于 Patch 的风格转移（对比模型）</span><span class=""></span></a></li>
 <li class="not_active no_link"><a><span class="label">自适应实例归一化 AdaIN（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/metanet.html"><span class="label">Meta Networks（研究模型）</span><span class=""></span></a></li>
 </ul>
@@ -139,7 +139,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     <div id="article_head">
                         <div id="article_title">
                             
-                            <h1>风格迁移评价</h1>
+                            <h1>快速基于补丁的任意风格的风格转移</h1>
                             
                         </div>
                         <div id="article_tags">
@@ -153,8 +153,8 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                                 
                             </span>
                             
-                                <span class="article_date" title="最后修改日期： 2025-03-27">
-                                    2025-03-27
+                                <span class="article_date" title="最后修改日期： 2025-04-01">
+                                    2025-04-01
                                 </span>
                             
                         </div>
@@ -172,58 +172,44 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <p><em>仅讨论评估方法</em></p>
-<h2 id="ResNet-18-%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%BB%93%E6%9E%84%E7%9B%B8%E4%BC%BC%E6%80%A7">ResNet 18 预训练模型和结构相似性</h2>
-<p><a href="https://ieeexplore.ieee.org/document/10154714"  target="_blank">Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network</a></p>
-<p><em>TANG Z, WU C, XIAO Y, et al. Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network[J].</em></p>
+                            <p><a href="https://arxiv.org/abs/1612.04337"  target="_blank">Fast Patch-based Style Transfer of Arbitrary Style</a></p>
+<p><em>CHEN T, SCHMIDT M. Fast Patch-based Style Transfer of Arbitrary Style[J]. Cornell University - arXiv,Cornell University - arXiv, 2016.</em></p>
 <blockquote>
-<p>Unlike most image style transfer tasks, which are to convert a photograph into an image with a certain artist’s style, this paper focuses on artistic style transfer in Monet painting, which is transferring a Monet painting into an image in another artist’s style. In our experiments, we successfully implemented the Cycle-Consistent GAN model and applied Neural Style Transfer (NST) model for contrasting effects. In order to evaluate the result of artistic style transfer quantitatively and effectively with a low requirement for computational resources, we also proposed a quantitative method called style transfer indicator to make the comparison more obvious as the comparisons of the effect of image style transfer were mostly done by subjective analysis previously. This method takes both the style and content of the transferred image into account because whether the transferred image belongs to the new style is as important as whether the content of the image is saved. A ResNet18 pre-trained model and structural similarity index are used for the evaluation of style and content respectively. The human survey that we conducted also proved the validity of our style transfer indicator. Moreover, our proposed indicator could also be applied for the evaluation of other image style transfer tasks.</p>
+<p>Artistic style transfer is an image synthesis problem where the content of an image is reproduced with the style of another. Recent works show that a visually appealing style transfer can be achieved by using the hidden activations of a pretrained convolutional neural network. However, existing methods either apply (i) an optimization procedure that works for any style image but is very expensive, or (ii) an efficient feedforward network that only allows a limited number of trained styles. In this work we propose a simpler optimization objective based on local matching that combines the content structure and style textures in a single layer of the pretrained network. We show that our objective has desirable properties such as a simpler optimization landscape, intuitive parameter tuning, and consistent frame-by-frame performance on video. Furthermore, we use 80,000 natural images and 80,000 paintings to train an inverse network that approximates the result of the optimization. This results in a procedure for artistic style transfer that is efficient but also allows arbitrary content and style images.</p>
 </blockquote>
-<p><strong>摘要</strong>：大多数图像风格转换任务都是将一张照片转换成具有某个艺术家风格的图像，而本文主要研究的是莫奈绘画中的艺术风格转换，即将莫奈的一幅画转换成另一个艺术家风格的图像。在我们的实验中，我们成功地实现了循环一致的 GAN 模型，并应用了神经风格迁移（NST）模型来对比效果。为了在对计算资源要求较低的情况下，对艺术风格迁移的效果进行定量有效的评价，我们还提出了一种称为风格迁移指标的定量方法，使图像风格迁移效果的比较更加明显。该方法同时考虑了转换图像的样式和内容，因为转换的图像是否应用新风格与图像的内容是否保持一致同样重要。ResNet 18 预训练模型和结构相似性指数分别用于风格和内容的评估。我们在人们中调查也证明了我们的风格转移指标的有效性。此外，我们提出的指标也可以应用于其他图像风格迁移任务的评估。</p>
-<p><em>在 IV. Evaluation 部分</em></p>
-<h3 id="%E9%A3%8E%E6%A0%BC%E8%AF%84%E5%88%86">风格评分</h3>
-<p>在风格的定量分析方面，采用了风格分类器的方法。</p>
-<ul>
-<li>经过训练的分类器能够区分图像的风格，可以判断风格迁移模型是否将图像迁移到正确的风格以及风格转移的程度。</li>
-</ul>
-<p>其中，ResNet 是一种深度卷积神经网络模型，经过大型图像数据集彻底训练，可以学习图像分类和识别所需的许多特征。</p>
-<ul>
-<li>使用预训练的 ResNet18 模型（需要微调）对生成图像进行风格分类。</li>
-<li>通过 SoftMax 输出概率值作为风格得分（0-1），衡量生成图像与目标风格的匹配度。</li>
-</ul>
-<h3 id="%E5%86%85%E5%AE%B9%E8%AF%84%E5%88%86">内容评分</h3>
-<p>在内容的定量分析方面，采用结构相似性指数 SSIM 指标。</p>
-<p>将 SSIM 的三个组成部分，<strong>亮度</strong>、<strong>对比度</strong> 和 <strong>结构</strong> 相乘生成 SSIM：</p>
+<p><strong>摘要</strong>：艺术风格转移是一个图像合成问题，其中一个图像的内容与另一个图像的风格复制。最近的研究表明，视觉上吸引人的风格转移可以通过使用预训练卷积神经网络的隐藏激活来实现。然而，现有的方法要么应用一个适用于任何风格图像但非常昂贵的优化过程，要么一个只允许有限数量的训练风格的有效前馈网络。在这项工作中，我们提出了一个基于局部匹配的更简单的优化目标，将内容结构和风格纹理结合在预训练网络的单层中。我们展示了我们的目标具有理想的属性，例如更简单的优化场景、直观的参数调优以及视频上一致的逐帧性能。此外，我们使用 80,000 张自然图像和 80,000 幅绘画来训练一个近似优化结果的逆网络。结果是得到一种高效的艺术风格转移过程，允许任意内容和风格图像。</p>
+<h2 id="%E9%A3%8E%E6%A0%BC%E4%BA%A4%E6%8D%A2-Style-Swap">风格交换 Style Swap</h2>
+<p>设 $C$ 表示内容图像，$S$ 表示风格图像。$\Phi(\cdot)$ 表示预训练 CNN 模型的全卷积部分表示的函数，将图像从 RGB 映射到某个中间激活空间。计算激活值 $\Phi(C)$ 和 $\Phi(S)$ 后，风格交换如下：</p>
+<ol>
+<li><p>从内容和风格的激活中提取一组 Patches，表示为 $\{\phi_i (C)\}_{i\in n_c}$ 和 $\{\phi_j (S)\}_{j\in n_s}$，其中 $n_c$ 和 $n_s$ 为提取的 Patch 个数。提取的 Patch 应该有足够的重叠，并且包含所有的激活通道。</p>
+</li>
+<li><p>对于每个内容激活的 Patch，根据归一化互相关度量确定最接近匹配的风格 Patch：</p>
+</li>
+</ol>
 $$
-S(x,y) = f(l(x, y), c(x, y), s(x, y)) = l(x, y) \cdot c(x, y) \cdot s(x, y)
-$$<p>其中，$l$, $c$, $s$ 代表评估亮度、对比度和结构；$x$ 和 $y$ 分别是 2 张图像。</p>
-<h4 id="%E4%BA%AE%E5%BA%A6%E6%B5%8B%E9%87%8F">亮度测量</h4>
-<p>亮度通过图像的均值 $\mu$ 衡量：</p>
+\phi_i^{ss}(C, S) := \arg \mathop{\max}\limits_{\phi_j(S),j=1,...,n_s} \frac {&lt;\phi_i (C), \phi_j (S)&gt;} {\vert\vert \phi_i (C) \vert\vert \cdot \vert\vert \phi_j (S) \vert\vert}
+$$<ol start="3">
+<li><p>将每个内容激活 Patch $\phi_i (C)$ 与其最匹配的风格 Patch $\phi_i^{ss}(C, S)$ 进行交换。</p>
+</li>
+<li><p>通过对步骤 3 中可能具有不同值的重叠区域进行平均，重建完整的内容激活 $\Phi^{ss} (C, S)$。</p>
+</li>
+</ol>
+<h2 id="%E4%BC%98%E5%8C%96%E7%9B%AE%E6%A0%87">优化目标</h2>
+<p>目标是<strong>最小化合成图像激活与目标激活 $\Phi^{ss} (C, S)$ 的平方误差</strong>，并加入总变差正则化（TV Loss）以平滑图像：</p>
 $$
-l(x,y) = \frac{2 \mu_x \mu_y + C_1}{\mu_x^2 + \mu_y^2 + C_1}
-$$<p>其中：</p>
+I_{stylized}(C, S) = \arg \mathop{\min}\limits_{I\in \mathbb{R}^{h\times w\times d}} \vert\vert \Phi(I) - \Phi^{ss}(C, S) \vert\vert _F^2 + \lambda\mathcal{l}_{TV}(I)
+$$<p>优化过程通过反向传播完成，但由于耗时，作者进一步提出逆网络。</p>
+<h2 id="%E9%80%86%E7%BD%91%E7%BB%9C">逆网络</h2>
+<p>训练目标：学习从风格交换后的激活图 $\Phi^{ss} (C, S)$ 直接生成图像，绕过逐次优化。</p>
+<p>关键设计：</p>
 <ul>
-<li>$\mu_x$ 和 $\mu_y$ 是图像 $x$ 和 $y$ 的均值。</li>
-<li>$C_1$ 是一个常数，用于防止分母为零的情况，通常 $C_1=(k_1L)^2$，$L$ 为像素动态范围，$k_1\ll 1$。</li>
+<li>使用混合数据集（8 万自然图像 + 8 万绘画）训练，增强泛化能力。</li>
+<li>引入风格交换后的激活图作为训练数据，解决 CNN 的非满射性问题。</li>
+<li>网络架构基于转置卷积层和实例归一化（InstanceNorm），提升生成质量。</li>
 </ul>
-<h4 id="%E5%AF%B9%E6%AF%94%E5%BA%A6%E6%B5%8B%E9%87%8F">对比度测量</h4>
-<p>对比度通过标准差 $\sigma$ 衡量：</p>
-$$
-c(x,y) = \frac{2 \sigma_x \sigma_y + C_2}{\sigma_x^2 + \sigma_y^2 + C_1}
-$$<p>其中：</p>
-<ul>
-<li>$\sigma_x$ 和 $\sigma_y$ 是图像 $x$ 和 $y$ 的标准差。</li>
-<li>$C_2$ 是一个常数，用于防止分母为零的情况，通常 $C_2=(k_2L)^2$，$L$ 为像素动态范围，$k_2\ll 1$。</li>
-</ul>
-<h4 id="%E7%BB%93%E6%9E%84%E6%B5%8B%E9%87%8F">结构测量</h4>
-<p>结构通过协方差 $\sigma_{xy}$ 衡量：</p>
-$$
-s(x,y) = \frac{\sigma_{xy} + C_3}{\sigma_x \sigma_y + C_3}
-$$<p>其中：</p>
-<ul>
-<li>$\sigma_{xy}$ 是图像 $x$ 和 $y$ 的协方差。</li>
-<li>$C_3$ 是一个常数，通常取 $C_2/2$。</li>
-</ul>
+<h2 id="%E5%AE%9E%E7%8E%B0">实现</h2>
+<p>Torch-Github：<a href="https://github.com/rtqichen/style-swap"  target="_blank">https://github.com/rtqichen/style-swap</a><br />
+PyTorch-Github：<a href="https://github.com/irasin/Pytorch_Style_Swap"  target="_blank">https://github.com/irasin/Pytorch_Style_Swap</a></p>
 
                         
                     </div>
@@ -231,16 +217,16 @@ $$<p>其中：</p>
                 <div id="previous_next">
                     <div id="previous">
                         
-                        <a href="/StyleTransfer/ref_and_notes/cyclegan.html">
+                        <a href="/StyleTransfer/ref_and_notes/wct.html">
                             <span class="icon"></span>
-                            <span class="label">CycleGAN：循环GAN</span>
+                            <span class="label">特征变换 - WCT（对比模型）</span>
                         </a>
                         
                     </div>
                     <div id="next">
                         
-                        <a href="/StyleTransfer/ref_and_notes/wct.html">
-                            <span class="label">特征变换 - WCT（对比模型）</span>
+                        <a href="/StyleTransfer/ref_and_notes/metanet.html">
+                            <span class="label">Meta Networks（研究模型）</span>
                             <span class="icon"></span>
                         </a>
                         
