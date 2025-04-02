@@ -6,6 +6,12 @@ date: 2024-12-29
 class: heading_no_counter
 ---
 
+### 2025.03.31~2025.04.01
+
+- [x] 了解特征变换（白化和着色）的基本机制，准备用于作比较
+- [x] 了解快速基于 Patch 的风格迁移，准备用于作比较
+- [x] 训练了增加注意力机制的 MetaNet，比较效果
+
 ### 2025.03.27~2025.03.30
 
 - [x] 了解风格迁移结果评分机制，阅读《Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network》
