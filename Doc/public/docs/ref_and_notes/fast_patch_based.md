@@ -16,7 +16,7 @@ id: fast_patch_based
 
 ## 风格交换 Style Swap
 
-设 $C$ 表示内容图像，$S$ 表示风格图像。$\Phi(\cdot)$ 表示预训练 CNN 模型的全卷积部分表示的函数，将图像从 RGB 映射到某个中间激活空间。计算激活值 $\Phi(C)$ 和 $\Phi(S)$ 后，风格交换如下：
+设 $C$ 表示内容图像，$S$ 表示风格图像。$\Phi(\cdot)$ 表示预训练 CNN 模型的全卷积部分表示的函数，将图像从 RGB 映射到某个中间激活空间。计算激活值 $\Phi(C)$ 和 $\Phi(S)$ 后，**风格交换**如下：
 
 1. 从内容和风格的激活中提取一组 Patches，表示为 $\{\phi_i (C)\}_{i\in n_c}$ 和 $\{\phi_j (S)\}_{j\in n_s}$，其中 $n_c$ 和 $n_s$ 为提取的 Patch 个数。提取的 Patch 应该有足够的重叠，并且包含所有的激活通道。
 
@@ -52,4 +52,5 @@ $$
 ## 实现
 
 Torch-Github：https://github.com/rtqichen/style-swap
+
 PyTorch-Github：https://github.com/irasin/Pytorch_Style_Swap
