@@ -119,9 +119,10 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 </ul>
 </li>
 <li class="active_parent no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active no_link"><a><span class="label">风格迁移 Gatys（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/wct.html"><span class="label">特征变换 - WCT（对比模型）</span><span class=""></span></a></li>
 <li class="active with_link"><a href="/StyleTransfer/ref_and_notes/fast_patch_based.html"><span class="label">基于 Patch 的风格转移（对比模型）</span><span class=""></span></a></li>
-<li class="not_active no_link"><a><span class="label">自适应实例归一化 AdaIN（对比模型）</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/adain.html"><span class="label">自适应实例归一化 AdaIN（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/metanet.html"><span class="label">Meta Networks（研究模型）</span><span class=""></span></a></li>
 </ul>
 </li>
@@ -179,7 +180,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 </blockquote>
 <p><strong>摘要</strong>：艺术风格转移是一个图像合成问题，其中一个图像的内容与另一个图像的风格复制。最近的研究表明，视觉上吸引人的风格转移可以通过使用预训练卷积神经网络的隐藏激活来实现。然而，现有的方法要么应用一个适用于任何风格图像但非常昂贵的优化过程，要么一个只允许有限数量的训练风格的有效前馈网络。在这项工作中，我们提出了一个基于局部匹配的更简单的优化目标，将内容结构和风格纹理结合在预训练网络的单层中。我们展示了我们的目标具有理想的属性，例如更简单的优化场景、直观的参数调优以及视频上一致的逐帧性能。此外，我们使用 80,000 张自然图像和 80,000 幅绘画来训练一个近似优化结果的逆网络。结果是得到一种高效的艺术风格转移过程，允许任意内容和风格图像。</p>
 <h2 id="%E9%A3%8E%E6%A0%BC%E4%BA%A4%E6%8D%A2-Style-Swap">风格交换 Style Swap</h2>
-<p>设 $C$ 表示内容图像，$S$ 表示风格图像。$\Phi(\cdot)$ 表示预训练 CNN 模型的全卷积部分表示的函数，将图像从 RGB 映射到某个中间激活空间。计算激活值 $\Phi(C)$ 和 $\Phi(S)$ 后，风格交换如下：</p>
+<p>设 $C$ 表示内容图像，$S$ 表示风格图像。$\Phi(\cdot)$ 表示预训练 CNN 模型的全卷积部分表示的函数，将图像从 RGB 映射到某个中间激活空间。计算激活值 $\Phi(C)$ 和 $\Phi(S)$ 后，<strong>风格交换</strong>如下：</p>
 <ol>
 <li><p>从内容和风格的激活中提取一组 Patches，表示为 $\{\phi_i (C)\}_{i\in n_c}$ 和 $\{\phi_j (S)\}_{j\in n_s}$，其中 $n_c$ 和 $n_s$ 为提取的 Patch 个数。提取的 Patch 应该有足够的重叠，并且包含所有的激活通道。</p>
 </li>
@@ -208,8 +209,8 @@ $$<p>优化过程通过反向传播完成，但由于耗时，作者进一步提
 <li>网络架构基于转置卷积层和实例归一化（InstanceNorm），提升生成质量。</li>
 </ul>
 <h2 id="%E5%AE%9E%E7%8E%B0">实现</h2>
-<p>Torch-Github：<a href="https://github.com/rtqichen/style-swap"  target="_blank">https://github.com/rtqichen/style-swap</a><br />
-PyTorch-Github：<a href="https://github.com/irasin/Pytorch_Style_Swap"  target="_blank">https://github.com/irasin/Pytorch_Style_Swap</a></p>
+<p>Torch-Github：<a href="https://github.com/rtqichen/style-swap"  target="_blank">https://github.com/rtqichen/style-swap</a></p>
+<p>PyTorch-Github：<a href="https://github.com/irasin/Pytorch_Style_Swap"  target="_blank">https://github.com/irasin/Pytorch_Style_Swap</a></p>
 
                         
                     </div>
@@ -225,8 +226,8 @@ PyTorch-Github：<a href="https://github.com/irasin/Pytorch_Style_Swap"  target=
                     </div>
                     <div id="next">
                         
-                        <a href="/StyleTransfer/ref_and_notes/metanet.html">
-                            <span class="label">Meta Networks（研究模型）</span>
+                        <a href="/StyleTransfer/ref_and_notes/adain.html">
+                            <span class="label">自适应实例归一化 AdaIN（对比模型）</span>
                             <span class="icon"></span>
                         </a>
                         

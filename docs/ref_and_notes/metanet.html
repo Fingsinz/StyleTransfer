@@ -119,9 +119,10 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 </ul>
 </li>
 <li class="active_parent no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active no_link"><a><span class="label">风格迁移 Gatys（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/wct.html"><span class="label">特征变换 - WCT（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/fast_patch_based.html"><span class="label">基于 Patch 的风格转移（对比模型）</span><span class=""></span></a></li>
-<li class="not_active no_link"><a><span class="label">自适应实例归一化 AdaIN（对比模型）</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/adain.html"><span class="label">自适应实例归一化 AdaIN（对比模型）</span><span class=""></span></a></li>
 <li class="active with_link"><a href="/StyleTransfer/ref_and_notes/metanet.html"><span class="label">Meta Networks（研究模型）</span><span class=""></span></a></li>
 </ul>
 </li>
@@ -381,7 +382,7 @@ $$<p>其中，$I_{w_{\theta}}=\mathcal{N}(I_c;w_{\theta})$，$w_{\theta}=Meta\ma
 <p>详见 <a href="#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E4%B8%8E-MetaNet-%E7%BD%91%E7%BB%9C%E8%AE%A1%E7%AE%97"  >特征提取与 MetaNet 网络计算</a>。</p>
 <h4 id="%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2%E7%BD%91%E7%BB%9C">图像转换网络</h4>
 <p>依次为：反射填充、下采样卷积、残差块、上采样转置卷积。详见 <a href="#%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2%E7%BD%91%E7%BB%9C-TransformNet"  >图像转换网络</a>。</p>
-<h2 id="%E8%AE%AD%E7%BB%83%E7%AD%96%E7%95%A5">训练策略</h2>
+<h3 id="%E8%AE%AD%E7%BB%83%E7%AD%96%E7%95%A5">训练策略</h3>
 <p>神经风格迁移的元网络小批量随机梯度下降训练。在实验中使用 $k = 20$ 和 $m = 8$。</p>
 <ul>
 <li>for epoch of epochs do<ul>
@@ -403,62 +404,7 @@ $$
     \lambda_c \vert\vert \mathbf{CP}(I) - \mathbf{CP}(I_c) \vert\vert ^2_2 +
     \lambda_s \vert\vert \mathbf{SP}(I) - \mathbf{SP}(I_c) \vert\vert ^2_2
 \right)\tag{12}
-$$<h2 id="%E8%AE%BA%E6%96%87%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C">论文实验结果</h2>
-<p>文献中主要对比了以下四类神经风格迁移方法：</p>
-<ol>
-<li>Gatys 等人的梯度下降优化方法（2015）</li>
-<li>Johnson 等人的逐风格训练方法（2016）</li>
-<li>AdaIN（自适应实例归一化）方法（Huang &amp; Belongie, 2017）</li>
-<li>本文提出的元网络方法</li>
-</ol>
-<p>对比指标与结果：</p>
-<table>
-<thead>
-<tr>
-  <th style="text-align:center">方法</th>
-  <th style="text-align:center">编码时间</th>
-  <th style="text-align:center">图像转换时间</th>
-  <th style="text-align:center">模型大小</th>
-  <th style="text-align:center">支持风格数</th>
-  <th style="text-align:center">核心优势与限制</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td style="text-align:center">Gatys (梯度下降)</td>
-  <td style="text-align:center">N/A</td>
-  <td style="text-align:center">9.52s</td>
-  <td style="text-align:center">N/A</td>
-  <td style="text-align:center">∞ (任意风格)</td>
-  <td style="text-align:center">灵活但速度极慢，无法实时应用</td>
-</tr>
-<tr>
-  <td style="text-align:center">Johnson (逐风格训练)</td>
-  <td style="text-align:center">4小时/风格</td>
-  <td style="text-align:center">15ms</td>
-  <td style="text-align:center">7MB/风格</td>
-  <td style="text-align:center">1</td>
-  <td style="text-align:center">单风格快速生成，但需逐风格训练</td>
-</tr>
-<tr>
-  <td style="text-align:center">AdaIN (统计量对齐)</td>
-  <td style="text-align:center">27ms</td>
-  <td style="text-align:center">18ms</td>
-  <td style="text-align:center">25MB</td>
-  <td style="text-align:center">∞</td>
-  <td style="text-align:center">支持多风格，但依赖VGG编码器，模型较大</td>
-</tr>
-<tr>
-  <td style="text-align:center">元网络</td>
-  <td style="text-align:center">19ms</td>
-  <td style="text-align:center">15ms</td>
-  <td style="text-align:center">449KB</td>
-  <td style="text-align:center">∞</td>
-  <td style="text-align:center">快速生成任意风格，模型轻量化，无需重训练</td>
-</tr>
-</tbody>
-</table>
-<h2 id="%E4%BB%A3%E7%A0%81-Demo-%E5%88%86%E6%9E%90">代码 Demo 分析</h2>
+$$<h2 id="%E7%BB%93%E5%90%88%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84">结合代码分析网络结构</h2>
 <p>Reference: <a href="https://ypw.io/style-transfer/"  target="_blank">https://ypw.io/style-transfer/</a></p>
 <h3 id="%E5%8D%B7%E7%A7%AF%E5%9D%97%E6%9E%84%E5%BB%BA-ConvLayer">卷积块构建 ConvLayer</h3>
 <p>构建包含反射填充、卷积、实例归一化和 ReLU 的卷积块。</p>
@@ -767,16 +713,17 @@ Estimated Total Size (MB): 467.30
 <ul>
 <li>假设图像为 <code>(256, 256)</code>，那么 VGG16 输出的尺寸分别为 <code>(64, 256, 256)</code>、<code>(128, 128, 128)</code>、<code>(256, 64, 64)</code>、<code>(512, 32, 32)</code>。取其 Gram 矩阵，即 <code>(64, 64)</code>、<code>(128, 128)</code>、<code>(256, 256)</code>、<code>(512, 512)</code> 也是很大的。</li>
 </ul>
-<p>假如使用 512 × 512 个特征去生成 147584 个权值（残差层），那么这层全连接层的权值就是 $512\times 512\times 147584 = 386888260096$，再假设权重类型为 <code>float32</code>，则权值大小为 144GB。</p>
+<p>假如使用 512 × 512 个特征去生成 147584 个权值（一个残差层），那么这层全连接层的权值就是 $512\times 512\times 147584 = 386888260096$，再假设权重类型为 <code>float32</code>，则仅是权值大小为 144GB，非常不现实。</p>
 <p>考虑只计算每一个卷积核输出的内容均值和标准差。</p>
 <ul>
-<li>这种情况下，特征变成 $(64 + 128 + 256 + 512) \times 2 = 1920$ 维，但是，将图像转换网络的所有权重求和再乘上特征，计算后大小也有 11.8GB，还是不现实。</li>
+<li>这种情况下，特征变成 $(64 + 128 + 256 + 512) \times 2 = 1920$ 维，但是，通过计算将图像转换网络的所有权重求和再乘上特征 $1920\times (18496+73856+147584*10+73792+18464)=3188060160$，计算后大小也有 11.8GB，还是不现实。</li>
 </ul>
 <p>论文中提到，计算风格图像和转移图像两个特征图的均值和标准差作为风格特征。</p>
 <blockquote>
 <p>The dimension of hidden vector is 1792 without specification. The hidden features are connected with the filters of each conv layer of the network in a group manner to decrease the parameter size, which means a 128 dimensional hidden vector for each conv layer.</p>
 </blockquote>
 <p><em>隐向量的维数为 1792。将隐藏特征分组连接到网络各 conv 层的滤波器中，减小参数大小，即每个 conv 层有一个 128 维的隐藏向量。</em></p>
+<p>意思是全连接层使用 $14\times 128=1792$ 个神经元，分别对应 2 层下采样层、10 层残差层和 2 层上采样层。</p>
 
 <pre class="language-python"><code class="language-python">def mean_std(features):
     mean_std_features = []
@@ -948,6 +895,61 @@ Estimated Total Size (MB): 842.92
 ----------------------------------------------------------------
 </code></pre>
 </details>
+<h2 id="%E8%AE%BA%E6%96%87%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C">论文实验结果</h2>
+<p>文献中主要对比了以下四类神经风格迁移方法：</p>
+<ol>
+<li>Gatys 等人的梯度下降优化方法（2015）</li>
+<li>Johnson 等人的逐风格训练方法（2016）</li>
+<li>AdaIN（自适应实例归一化）方法（Huang &amp; Belongie, 2017）</li>
+<li>本文提出的元网络方法</li>
+</ol>
+<p>对比指标与结果：</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">方法</th>
+  <th style="text-align:center">编码时间</th>
+  <th style="text-align:center">图像转换时间</th>
+  <th style="text-align:center">模型大小</th>
+  <th style="text-align:center">支持风格数</th>
+  <th style="text-align:center">核心优势与限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">Gatys (梯度下降)</td>
+  <td style="text-align:center">N/A</td>
+  <td style="text-align:center">9.52s</td>
+  <td style="text-align:center">N/A</td>
+  <td style="text-align:center">∞ (任意风格)</td>
+  <td style="text-align:center">灵活但速度极慢，无法实时应用</td>
+</tr>
+<tr>
+  <td style="text-align:center">Johnson (逐风格训练)</td>
+  <td style="text-align:center">4小时/风格</td>
+  <td style="text-align:center">15ms</td>
+  <td style="text-align:center">7MB/风格</td>
+  <td style="text-align:center">1</td>
+  <td style="text-align:center">单风格快速生成，但需逐风格训练</td>
+</tr>
+<tr>
+  <td style="text-align:center">AdaIN (统计量对齐)</td>
+  <td style="text-align:center">27ms</td>
+  <td style="text-align:center">18ms</td>
+  <td style="text-align:center">25MB</td>
+  <td style="text-align:center">∞</td>
+  <td style="text-align:center">支持多风格，但依赖VGG编码器，模型较大</td>
+</tr>
+<tr>
+  <td style="text-align:center">元网络</td>
+  <td style="text-align:center">19ms</td>
+  <td style="text-align:center">15ms</td>
+  <td style="text-align:center">449KB</td>
+  <td style="text-align:center">∞</td>
+  <td style="text-align:center">快速生成任意风格，模型轻量化，无需重训练</td>
+</tr>
+</tbody>
+</table>
 <h2 id="%E4%BB%A3%E7%A0%81-Demo-%E7%BB%93%E6%9E%9C">代码 Demo 结果</h2>
 <p>复现代码：<a href="https://github.com/Fingsinz/StyleTransfer/blob/main/src/01.ref_and_note/06.MetaNets.py"  target="_blank">Github/01.ref_and_note/06.MetaNets</a></p>
 <table>
@@ -965,9 +967,9 @@ Estimated Total Size (MB): 842.92
                 <div id="previous_next">
                     <div id="previous">
                         
-                        <a href="/StyleTransfer/ref_and_notes/fast_patch_based.html">
+                        <a href="/StyleTransfer/ref_and_notes/adain.html">
                             <span class="icon"></span>
-                            <span class="label">基于 Patch 的风格转移（对比模型）</span>
+                            <span class="label">自适应实例归一化 AdaIN（对比模型）</span>
                         </a>
                         
                     </div>

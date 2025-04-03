@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html lang="zh"  class=" heading_no_counter ">
+<html lang="zh" id="adain" class="">
 
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="AdaIn">
     
     
-    <meta name="description" content="参考文献阅读及其代码测试">
+    <meta name="description" content="自适应实例归一化 AdaIn">
     
     <meta name="generator" content="teedoc">
     <meta name="theme" content="teedoc-plugin-theme-default">
@@ -46,10 +46,10 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         
     
     
-    <title>参考文献及笔记 - Style Transfer - Fingsinz</title>
+    <title>自适应实例归一化 AdaIn - Style Transfer - Fingsinz</title>
     
     <script type="text/javascript">js_vars = {}</script>
-    <script type="text/javascript">metadata = {"tags": [], "date": "2025-01-16", "update": [], "ts": 1736956800, "author": "", "brief": "", "cover": "", "class": "heading_no_counter"}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2025-04-02", "update": [], "ts": 1743523200, "author": "", "brief": "", "cover": "", "id": "adain"}</script>
 </head>
 
 
@@ -96,7 +96,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                 <div id="sidebar_title">
                     
                 </div>
-                <ul class="">
+                <ul class="show">
 <li class="not_active no_link"><a><span class="label">PyTorch 框架</span><span class="sub_indicator"></span></a><ul class="show">
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_install.html"><span class="label">PyTorch 环境安装</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_tensor.html"><span class="label">Tensor 张量</span><span class=""></span></a></li>
@@ -118,11 +118,11 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/evaluation.html"><span class="label">风格迁移评价</span><span class=""></span></a></li>
 </ul>
 </li>
-<li class="not_active no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="active_parent no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
 <li class="not_active no_link"><a><span class="label">风格迁移 Gatys（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/wct.html"><span class="label">特征变换 - WCT（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/fast_patch_based.html"><span class="label">基于 Patch 的风格转移（对比模型）</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/adain.html"><span class="label">自适应实例归一化 AdaIN（对比模型）</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/StyleTransfer/ref_and_notes/adain.html"><span class="label">自适应实例归一化 AdaIN（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/metanet.html"><span class="label">Meta Networks（研究模型）</span><span class=""></span></a></li>
 </ul>
 </li>
@@ -140,7 +140,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     <div id="article_head">
                         <div id="article_title">
                             
-                            <h1>参考文献及笔记</h1>
+                            <h1>自适应实例归一化 AdaIn</h1>
                             
                         </div>
                         <div id="article_tags">
@@ -154,8 +154,8 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                                 
                             </span>
                             
-                                <span class="article_date" title="最后修改日期： 2025-01-16">
-                                    2025-01-16
+                                <span class="article_date" title="最后修改日期： 2025-04-02">
+                                    2025-04-02
                                 </span>
                             
                         </div>
@@ -173,43 +173,44 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <h3 id="TODO">TODO</h3>
-<ol>
-<li>编写基本的项目框架代码，实现一种方法（MetaNets），后面考虑扩展比较 AdaIN （<a href="https://arxiv.org/abs/1703.06868"  target="_blank">Arbitrary Style Transfer in Real-time with Adaptive Instance Normalization</a>）和特征变换（<a href="https://arxiv.org/abs/1705.08086"  target="_blank">Universal Style Transfer via Feature Transforms</a>）</li>
-<li>学习评估指标 <a href="https://ieeexplore.ieee.org/document/10154714"  target="_blank">风格转移指标（Style Transfer Indicator）Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network</a></li>
-<li>学习 PyTorch 框架(2)<ul>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>迁移学习</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>实验跟踪</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>论文复制</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>模型部署</li>
+                            <p><a href="https://arxiv.org/abs/1703.06868"  target="_blank">Arbitrary Style Transfer in Real-time with Adaptive Instance Normalization</a></p>
+<p><em>HUANG X, BELONGIE S. Arbitrary Style Transfer in Real-time with Adaptive Instance Normalization[C/OL]//2017 IEEE International Conference on Computer Vision (ICCV), Venice. 2017. <a href="http://dx.doi.org/10.1109/iccv.2017.167"  target="_blank">http://dx.doi.org/10.1109/iccv.2017.167</a>. DOI:10.1109/iccv.2017.167.</em></p>
+<blockquote>
+<p>Gatys et al. recently introduced a neural algorithm that renders a content image in the style of another image, achieving so-called style transfer. However, their framework requires a slow iterative optimization process, which limits its practical application. Fast approximations with feed-forward neural networks have been proposed to speed up neural style transfer. Unfortunately, the speed improvement comes at a cost: the network is usually tied to a fixed set of styles and cannot adapt to arbitrary new styles. In this paper, we present a simple yet effective approach that for the first time enables arbitrary style transfer in real-time. At the heart of our method is a novel adaptive instance normalization (AdaIN) layer that aligns the mean and variance of the content features with those of the style features. Our method achieves speed comparable to the fastest existing approach, without the restriction to a pre-defined set of styles. In addition, our approach allows flexible user controls such as content-style trade-off, style interpolation, color &amp; spatial controls, all using a single feed-forward neural network.</p>
+</blockquote>
+<p><strong>摘要</strong>：Gatys 等人最近介绍了一种神经算法，该算法将内容图像呈现为另一图像的风格，实现了所谓的风格迁移。然而，他们的框架需要一个缓慢的迭代优化过程，这限制了其实际应用。目前已经提出了前馈神经网络的快速近似来加速神经风格的转换。不幸的是，速度的提高是有代价的：网络通常与一组固定的风格相关联，无法适应任意的新风格。在本文中，我们提出了一种简单而有效的方法，首次实现了任意风格的实时转换。我们方法的核心是一个新颖的自适应实例归一化（AdaIN）层，它将内容特征的均值和方差与样式特征的均值和方差对齐。我们的方法与最快的现有方法速度相当，且不受预定义样式集的限制。此外，我们的方法允许灵活的用户控制，如内容风格权衡，风格插值，颜色和空间控制，所有这些都使用单个前馈神经网络。</p>
+<h2 id="%E8%87%AA%E9%80%82%E5%BA%94%E5%AE%9E%E4%BE%8B%E5%BD%92%E4%B8%80%E5%8C%96%EF%BC%88AdaIN%EF%BC%89">自适应实例归一化（AdaIN）</h2>
+<p>提出了一种新颖的归一化层，通过对<strong>齐内容特征和风格特征的均值和方差（统计量）</strong>，直接在特征空间实现风格迁移。AdaIN 的公式为：</p>
+$$
+\text{AdaIN}(x, y) = \sigma(y) \left( \frac{x - \mu(x)}{\sigma(x)} \right) + \mu(y)
+$$<p>其中，$x$ 为内容特征，$y$ 为风格特征。AdaIN 无需可学习参数，仅通过风格特征的统计量调整内容特征，实现高效风格对齐。</p>
+<p>结合预训练的 VGG 编码器和轻量级解码器，构建了一个端到端的前馈网络。该网络支持对任意未见过的风格进行实时处理（如 512 × 512 图像达 15 FPS），无需针对新风格重新训练。</p>
+<h2 id="%E6%96%B9%E6%B3%95%E6%A1%86%E6%9E%B6">方法框架</h2>
+<h3 id="%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8%E6%9E%B6%E6%9E%84">编码器-解码器架构</h3>
+<p>编码器：固定使用 VGG-19 的前几层（至 relu4_1），提取内容和风格图像的高层特征。</p>
+<p>AdaIN层：将内容特征的均值和方差对齐到风格特征，生成目标特征。</p>
+<p>解码器：随机初始化，通过反卷积将AdaIN输出的特征逆映射到图像空间。解码器未使用归一化层以避免风格固化。</p>
+<h3 id="%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%EF%BC%9A">损失函数：</h3>
+<p>使用预训练 VGG 计算内容损失和风格损失：</p>
+<ul>
+<li>内容损失：目标特征（AdaIN 输出）与生成图像特征的 L2 距离。</li>
+<li>风格损失：生成图像与风格图像在各 VGG 层上的均值和方差差异的 L2 距离。</li>
 </ul>
-</li>
-</ol>
-<h3 id="%E6%B6%89%E5%8F%8A%E6%96%87%E7%8C%AE">涉及文献</h3>
-<ol>
-<li><p><a href="https://arxiv.org/abs/1409.1556"  target="_blank">VGG——Very Deep Convolutional Networks for Large-Scale Image Recognition</a></p>
-</li>
-<li><p><a href="https://arxiv.org/abs/1512.03385"  target="_blank">ResNet——Deep Residual Learning for Image Recognition</a></p>
-</li>
-<li><p><a href="https://arxiv.org/abs/1505.04597"  target="_blank">U-Net: Convolutional Networks for Biomedical Image Segmentation</a></p>
-</li>
-<li><p><a href="https://arxiv.org/abs/1406.2661"  target="_blank">GAN——Generative Adversarial Networks</a></p>
-</li>
-<li><p><a href="https://arxiv.org/abs/1411.1784"  target="_blank">Conditional Generative Adversarial Nets</a></p>
-</li>
-<li><p><a href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Isola_Image-To-Image_Translation_With_CVPR_2017_paper.pdf"  target="_blank">PatchGAN 起源 —— Image-to-Image Translation with Conditional Adversarial Networks</a></p>
-</li>
-<li><p><a href="https://arxiv.org/abs/1711.11585"  target="_blank">将PatchGAN扩展为多尺度（3级金字塔）—— High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs</a></p>
-</li>
-<li><p><a href="https://arxiv.org/abs/1703.10593"  target="_blank">Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks</a></p>
-</li>
-<li><p><a href="https://arxiv.org/abs/1709.04111"  target="_blank">Meta Networks for Neural Style Transfer</a></p>
-</li>
-</ol>
-<h3 id="%E9%A3%8E%E6%A0%BC%E8%BF%81%E7%A7%BB%E5%AE%9E%E6%88%98%E4%BB%A3%E7%A0%81%E5%8F%82%E8%80%83">风格迁移实战代码参考</h3>
-<ol>
-<li>Image Style Transfer Using Convolutional Neural Networks：<a href="https://github.com/b06b01073/style-transfer/tree/main"  target="_blank">https://github.com/b06b01073/style-transfer/tree/main</a></li>
-</ol>
+<h2 id="%E5%85%B3%E9%94%AE%E5%88%9B%E6%96%B0%E7%82%B9">关键创新点</h2>
+<p>从特征统计量视角解释 IN 的作用：</p>
+<ul>
+<li>作者通过实验验证，实例归一化（IN）的有效性源于其对图像风格的归一化，而非仅对比度调整。IN通过消除内容图像的原始风格信息，使网络更易学习目标风格。</li>
+</ul>
+<p>对比现有方法：</p>
+<ul>
+<li>优化方法（如 Gatys）：灵活但速度慢（分钟级）。</li>
+<li>单风格前馈网络（如 Ulyanov）：速度快（毫秒级）但风格受限。</li>
+<li>风格交换（如 Chen）：支持任意风格但计算量大（95% 时间用于风格交换）。</li>
+<li>本文方法：结合前馈速度（接近单风格方法）与任意风格灵活性，且无计算瓶颈。</li>
+</ul>
+<h2 id="%E5%AE%9E%E7%8E%B0">实现</h2>
+<p>Torch-Github：<a href="https://github.com/xunhuang1995/AdaIN-style"  target="_blank">https://github.com/xunhuang1995/AdaIN-style</a></p>
+<p>PyTorch-Github：<a href="https://github.com/naoto0804/pytorch-AdaIN"  target="_blank">https://github.com/naoto0804/pytorch-AdaIN</a></p>
 
                         
                     </div>
@@ -217,8 +218,18 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                 <div id="previous_next">
                     <div id="previous">
                         
+                        <a href="/StyleTransfer/ref_and_notes/fast_patch_based.html">
+                            <span class="icon"></span>
+                            <span class="label">基于 Patch 的风格转移（对比模型）</span>
+                        </a>
+                        
                     </div>
                     <div id="next">
+                        
+                        <a href="/StyleTransfer/ref_and_notes/metanet.html">
+                            <span class="label">Meta Networks（研究模型）</span>
+                            <span class="icon"></span>
+                        </a>
                         
                     </div>
                 </div>
