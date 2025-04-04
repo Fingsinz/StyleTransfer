@@ -1,3 +1,12 @@
 items:
--   label: 正文
-    file: README.md
+-   label: 第 1 章 绪论
+    file: introduction.md
+-   label: 第 2 章 相关理论基础
+    file: related_work.md
+-   label: 第 3 章 基于改进的 MetaNet 风格迁移算法研究
+    file: proposed_network.md
+-   label: 第 4 章 实验与评估
+    file: experiment.md
+-   label: 第 5 章 总结与展望
+    file: conclusion.md
+
