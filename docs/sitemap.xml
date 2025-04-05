@@ -25,20 +25,44 @@
             <priority>1.0</priority>
         </url>
         <url>
+            <loc>https:///StyleTransfer/paper/conclusion.html</loc>
+            <lastmod>2025-04-04</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/paper/experiment.html</loc>
+            <lastmod>2025-04-04</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/paper/introduction.html</loc>
+            <lastmod>2025-04-04</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/paper/proposed_network.html</loc>
+            <lastmod>2025-04-04</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
             <loc>https:///StyleTransfer/paper/index.html</loc>
             <lastmod>2025-04-02</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/vgg.html</loc>
-            <lastmod>2025-03-05</lastmod>
+            <loc>https:///StyleTransfer/paper/references.html</loc>
+            <lastmod>2025-04-04</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https:///StyleTransfer/ref_and_notes/wct.html</loc>
-            <lastmod>2025-03-31</lastmod>
+            <loc>https:///StyleTransfer/paper/related_work.html</loc>
+            <lastmod>2025-04-04</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
@@ -81,6 +105,18 @@
         <url>
             <loc>https:///StyleTransfer/ref_and_notes/cyclegan.html</loc>
             <lastmod>2025-03-11</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/vgg.html</loc>
+            <lastmod>2025-03-05</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>1.0</priority>
+        </url>
+        <url>
+            <loc>https:///StyleTransfer/ref_and_notes/wct.html</loc>
+            <lastmod>2025-03-31</lastmod>
             <changefreq>weekly</changefreq>
             <priority>1.0</priority>
         </url>
