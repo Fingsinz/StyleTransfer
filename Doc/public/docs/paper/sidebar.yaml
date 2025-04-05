@@ -9,4 +9,6 @@ items:
     file: experiment.md
 -   label: 第 5 章 总结与展望
     file: conclusion.md
+-   label: 参考文献
+    file: references.md
 
