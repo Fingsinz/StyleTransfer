@@ -6,6 +6,12 @@ date: 2024-12-29
 class: heading_no_counter
 ---
 
+### 2025.04.02~
+
+- 对改进的 MetaNet 网络进行消融实验和对比实验（实验记录平台：[Swanlab](https://swanlab.cn/@Fingsinz/StyleTransfer/overview)），尝试在不同的部分进行改进
+- 实验等待过程做撰写毕业设计论文
+    - [x] 04.04 拟全文目录，起草论文第一章绪论
+
 ### 2025.03.31~2025.04.01
 
 - [x] 了解特征变换（白化和着色）的基本机制，准备用于作比较
