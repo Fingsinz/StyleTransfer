@@ -41,7 +41,7 @@ items:
     collapsed: false
     items:
     -   label: 风格迁移 Gatys（对比模型）
-    -   label: 特征变换 - WCT（对比模型）
+    -   label: 特征变换 - WCT
         file: wct.md
     -   label: 基于 Patch 的风格转移（对比模型）
         file: fast_patch_based.md
