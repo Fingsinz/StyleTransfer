@@ -41,12 +41,15 @@ items:
     collapsed: false
     items:
     -   label: 风格迁移 Gatys（对比模型）
+        file: gatys.md
     -   label: 特征变换 - WCT
         file: wct.md
     -   label: 基于 Patch 的风格转移（对比模型）
         file: fast_patch_based.md
     -   label: 自适应实例归一化 AdaIN（对比模型）
         file: adain.md
+    -   label: 实时多风格迁移的生成网络（对比模型）
+        file: msgnet.md
     -   label: Meta Networks（研究模型）
         file: metanet.md
 
