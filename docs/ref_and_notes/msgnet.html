@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html lang="zh" id="evaluation" class="">
+<html lang="zh" id="msgnet" class="">
 
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="keywords" content="迁移评价">
+    <meta name="keywords" content="msgnet">
     
     
-    <meta name="description" content="风格迁移评价">
+    <meta name="description" content="Multi-style Generative Network for Real-time Transfer">
     
     <meta name="generator" content="teedoc">
     <meta name="theme" content="teedoc-plugin-theme-default">
@@ -46,10 +46,10 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         
     
     
-    <title>风格迁移评价 - Style Transfer - Fingsinz</title>
+    <title>Multi-style Generative Network for Real-time Transfer - Style Transfer - Fingsinz</title>
     
     <script type="text/javascript">js_vars = {}</script>
-    <script type="text/javascript">metadata = {"tags": [], "date": "2025-03-27", "update": [], "ts": 1743004800, "author": "", "brief": "", "cover": "", "id": "evaluation"}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2025-04-09", "update": [], "ts": 1744128000, "author": "", "brief": "", "cover": "", "id": "msgnet"}</script>
 </head>
 
 
@@ -107,7 +107,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_modular.html"><span class="label">PyTorch 模块化</span><span class=""></span></a></li>
 </ul>
 </li>
-<li class="active_parent no_link"><a><span class="label">理论学习</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active no_link"><a><span class="label">理论学习</span><span class="sub_indicator"></span></a><ul class="show">
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/vgg.html"><span class="label">VGG 卷积网络</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/resnet.html"><span class="label">ResNet：残差网络</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/unet.html"><span class="label">U-Net 卷积网络</span><span class=""></span></a></li>
@@ -115,15 +115,15 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cgan.html"><span class="label">cGAN：条件 GAN</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/patchgan.html"><span class="label">PatchGAN 到多尺度 PatchGAN</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cyclegan.html"><span class="label">CycleGAN：循环GAN</span><span class=""></span></a></li>
-<li class="active with_link"><a href="/StyleTransfer/ref_and_notes/evaluation.html"><span class="label">风格迁移评价</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/evaluation.html"><span class="label">风格迁移评价</span><span class=""></span></a></li>
 </ul>
 </li>
-<li class="not_active no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="active_parent no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/gatys.html"><span class="label">风格迁移 Gatys（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/wct.html"><span class="label">特征变换 - WCT</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/fast_patch_based.html"><span class="label">基于 Patch 的风格转移（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/adain.html"><span class="label">自适应实例归一化 AdaIN（对比模型）</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/msgnet.html"><span class="label">实时多风格迁移的生成网络（对比模型）</span><span class=""></span></a></li>
+<li class="active with_link"><a href="/StyleTransfer/ref_and_notes/msgnet.html"><span class="label">实时多风格迁移的生成网络（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/metanet.html"><span class="label">Meta Networks（研究模型）</span><span class=""></span></a></li>
 </ul>
 </li>
@@ -141,7 +141,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     <div id="article_head">
                         <div id="article_title">
                             
-                            <h1>风格迁移评价</h1>
+                            <h1>Multi-style Generative Network for Real-time Transfer</h1>
                             
                         </div>
                         <div id="article_tags">
@@ -155,8 +155,8 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                                 
                             </span>
                             
-                                <span class="article_date" title="最后修改日期： 2025-03-27">
-                                    2025-03-27
+                                <span class="article_date" title="最后修改日期： 2025-04-09">
+                                    2025-04-09
                                 </span>
                             
                         </div>
@@ -174,58 +174,40 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <p><em>仅讨论评估方法</em></p>
-<h2 id="ResNet-18-%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%BB%93%E6%9E%84%E7%9B%B8%E4%BC%BC%E6%80%A7">ResNet 18 预训练模型和结构相似性</h2>
-<p><a href="https://ieeexplore.ieee.org/document/10154714"  target="_blank">Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network</a></p>
-<p><em>TANG Z, WU C, XIAO Y, et al. Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network[J].</em></p>
+                            <p><a href="https://arxiv.org/abs/1703.06953"  target="_blank">Multi-style Generative Network for Real-time Transfer</a></p>
+<p><em>ZHANG H, DANA K. Multi-style Generative Network for Real-time Transfer[M/OL]//Lecture Notes in Computer Science,Computer Vision – ECCV 2018 Workshops. 2019: 349-365. <a href="http://dx.doi.org/10.1007/978-3-030-11018-5_32"  target="_blank">http://dx.doi.org/10.1007/978-3-030-11018-5_32</a>. DOI:10.1007/978-3-030-11018-5_32.</em></p>
 <blockquote>
-<p>Unlike most image style transfer tasks, which are to convert a photograph into an image with a certain artist’s style, this paper focuses on artistic style transfer in Monet painting, which is transferring a Monet painting into an image in another artist’s style. In our experiments, we successfully implemented the Cycle-Consistent GAN model and applied Neural Style Transfer (NST) model for contrasting effects. In order to evaluate the result of artistic style transfer quantitatively and effectively with a low requirement for computational resources, we also proposed a quantitative method called style transfer indicator to make the comparison more obvious as the comparisons of the effect of image style transfer were mostly done by subjective analysis previously. This method takes both the style and content of the transferred image into account because whether the transferred image belongs to the new style is as important as whether the content of the image is saved. A ResNet18 pre-trained model and structural similarity index are used for the evaluation of style and content respectively. The human survey that we conducted also proved the validity of our style transfer indicator. Moreover, our proposed indicator could also be applied for the evaluation of other image style transfer tasks.</p>
+<p>Despite the rapid progress in style transfer, existing approaches using feed-forward generative network for multi-style or arbitrary-style transfer are usually compromised of image quality and model flexibility. We find it is fundamentally difficult to achieve comprehensive style modeling using 1-dimensional style embedding. Motivated by this, we introduce CoMatch Layer that learns to match the second order feature statistics with the target styles. With the CoMatch Layer, we build a Multi-style Generative Network (MSG-Net), which achieves real-time performance. We also employ an specific strategy of upsampled convolution which avoids checkerboard artifacts caused by fractionally-strided convolution. Our method has achieved superior image quality comparing to state-of-the-art approaches. The proposed MSG-Net as a general approach for real-time style transfer is compatible with most existing techniques including content-style interpolation, color-preserving, spatial control and brush stroke size control. MSG-Net is the first to achieve real-time brush-size control in a purely feed-forward manner for style transfer. Our implementations and pre-trained models for Torch, PyTorch and MXNet frameworks will be publicly available.</p>
 </blockquote>
-<p><strong>摘要</strong>：大多数图像风格转换任务都是将一张照片转换成具有某个艺术家风格的图像，而本文主要研究的是莫奈绘画中的艺术风格转换，即将莫奈的一幅画转换成另一个艺术家风格的图像。在我们的实验中，我们成功地实现了循环一致的 GAN 模型，并应用了神经风格迁移（NST）模型来对比效果。为了在对计算资源要求较低的情况下，对艺术风格迁移的效果进行定量有效的评价，我们还提出了一种称为风格迁移指标的定量方法，使图像风格迁移效果的比较更加明显。该方法同时考虑了转换图像的样式和内容，因为转换的图像是否应用新风格与图像的内容是否保持一致同样重要。ResNet 18 预训练模型和结构相似性指数分别用于风格和内容的评估。我们在人们中调查也证明了我们的风格转移指标的有效性。此外，我们提出的指标也可以应用于其他图像风格迁移任务的评估。</p>
-<p><em>在 IV. Evaluation 部分</em></p>
-<h3 id="%E9%A3%8E%E6%A0%BC%E8%AF%84%E5%88%86">风格评分</h3>
-<p>在风格的定量分析方面，采用了风格分类器的方法。</p>
+<p><strong>摘要</strong>：尽管风格迁移的研究进展迅速，但现有的使用前馈生成网络进行多风格或任意风格迁移的方法通常会损害图像质量和模型灵活性。我们发现使用一维样式嵌入实现全面的样式建模从根本上是困难的。受此启发，我们引入了 CoMatch Layer，该层学习将二阶特征统计与目标风格进行匹配。利用 CoMatch 层构建了多风格生成网络（MSG-Net），实现了实时性能。我们还采用了一种特殊的上采样卷积策略，避免了由分数阶卷积引起的棋盘伪影。与最先进的方法相比，我们的方法取得了卓越的图像质量。所提出的 MSG-Net 作为实时风格转换的通用方法，与大多数现有技术兼容，包括内容风格插值、色彩保持、空间控制和笔触大小控制。MSG-Net 是第一个以纯粹的前馈方式实现实时笔刷大小控制的风格转移。我们对 Torch、PyTorch 和 MXNet 框架的实现和预训练模型将公开可用。</p>
+<h2 id="%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9">主要内容</h2>
+<h3 id="CoMatch-%E5%B1%82">CoMatch 层</h3>
+<p>通过匹配目标风格的二阶特征统计量（ Gram 矩阵），取代传统的一维风格嵌入（均值和方差），更全面地捕捉风格特征。</p>
 <ul>
-<li>经过训练的分类器能够区分图像的风格，可以判断风格迁移模型是否将图像迁移到正确的风格以及风格转移的程度。</li>
+<li>解决了因一维嵌入导致的风格表达能力不足的问题，显著提升了生成图像的质量。</li>
 </ul>
-<p>其中，ResNet 是一种深度卷积神经网络模型，经过大型图像数据集彻底训练，可以学习图像分类和识别所需的许多特征。</p>
+<h3 id="MSG-Net%E6%9E%B6%E6%9E%84">MSG-Net架构</h3>
 <ul>
-<li>使用预训练的 ResNet18 模型（需要微调）对生成图像进行风格分类。</li>
-<li>通过 SoftMax 输出概率值作为风格得分（0-1），衡量生成图像与目标风格的匹配度。</li>
+<li>上采样卷积：采用整数步长卷积结合上采样操作，替代传统的反卷积（分数步长卷积），避免了棋盘格伪影。</li>
+<li>上采样残差块：扩展残差网络结构，支持恒等映射，加速收敛并提升深层网络的稳定性。</li>
+<li>实时笔触控制：通过动态调整风格图像的分辨率（训练时随机采样尺寸，推理时用户自定义），实现笔触大小的实时调整。</li>
 </ul>
-<h3 id="%E5%86%85%E5%AE%B9%E8%AF%84%E5%88%86">内容评分</h3>
-<p>在内容的定量分析方面，采用结构相似性指数 SSIM 指标。</p>
-<p>将 SSIM 的三个组成部分，<strong>亮度</strong>、<strong>对比度</strong> 和 <strong>结构</strong> 相乘生成 SSIM：</p>
-$$
-S(x,y) = f(l(x, y), c(x, y), s(x, y)) = l(x, y) \cdot c(x, y) \cdot s(x, y)
-$$<p>其中，$l$, $c$, $s$ 代表评估亮度、对比度和结构；$x$ 和 $y$ 分别是 2 张图像。</p>
-<h4 id="%E4%BA%AE%E5%BA%A6%E6%B5%8B%E9%87%8F">亮度测量</h4>
-<p>亮度通过图像的均值 $\mu$ 衡量：</p>
-$$
-l(x,y) = \frac{2 \mu_x \mu_y + C_1}{\mu_x^2 + \mu_y^2 + C_1}
-$$<p>其中：</p>
+<h2 id="%E5%85%B3%E9%94%AE%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82">关键技术细节</h2>
+<h3 id="%E8%AE%AD%E7%BB%83%E7%AD%96%E7%95%A5">训练策略</h3>
+<ol>
+<li><p>使用预训练的 VGG 网络作为损失网络，通过联合优化内容损失（特征匹配）和风格损失（Gram 矩阵匹配）。</p>
+</li>
+<li><p>风格图像在训练时动态调整尺寸（256、512、768），使模型适应不同笔触大小。</p>
+</li>
+</ol>
+<h3 id="%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84">网络结构</h3>
 <ul>
-<li>$\mu_x$ 和 $\mu_y$ 是图像 $x$ 和 $y$ 的均值。</li>
-<li>$C_1$ 是一个常数，用于防止分母为零的情况，通常 $C_1=(k_1L)^2$，$L$ 为像素动态范围，$k_1\ll 1$。</li>
+<li>编码器-解码器框架：Siamese 网络提取风格特征，生成网络通过 CoMatch 层融合内容与风格信息。</li>
+<li>反射填充：减少边界伪影。</li>
+<li>实例归一化：提升生成图像对比度鲁棒性。</li>
 </ul>
-<h4 id="%E5%AF%B9%E6%AF%94%E5%BA%A6%E6%B5%8B%E9%87%8F">对比度测量</h4>
-<p>对比度通过标准差 $\sigma$ 衡量：</p>
-$$
-c(x,y) = \frac{2 \sigma_x \sigma_y + C_2}{\sigma_x^2 + \sigma_y^2 + C_1}
-$$<p>其中：</p>
-<ul>
-<li>$\sigma_x$ 和 $\sigma_y$ 是图像 $x$ 和 $y$ 的标准差。</li>
-<li>$C_2$ 是一个常数，用于防止分母为零的情况，通常 $C_2=(k_2L)^2$，$L$ 为像素动态范围，$k_2\ll 1$。</li>
-</ul>
-<h4 id="%E7%BB%93%E6%9E%84%E6%B5%8B%E9%87%8F">结构测量</h4>
-<p>结构通过协方差 $\sigma_{xy}$ 衡量：</p>
-$$
-s(x,y) = \frac{\sigma_{xy} + C_3}{\sigma_x \sigma_y + C_3}
-$$<p>其中：</p>
-<ul>
-<li>$\sigma_{xy}$ 是图像 $x$ 和 $y$ 的协方差。</li>
-<li>$C_3$ 是一个常数，通常取 $C_2/2$。</li>
-</ul>
+<h2 id="%E5%AE%9E%E7%8E%B0">实现</h2>
+<p>PyTorch-Github：<a href="https://github.com/zhanghang1989/PyTorch-Multi-Style-Transfer"  target="_blank">https://github.com/zhanghang1989/PyTorch-Multi-Style-Transfer</a></p>
 
                         
                     </div>
@@ -233,16 +215,16 @@ $$<p>其中：</p>
                 <div id="previous_next">
                     <div id="previous">
                         
-                        <a href="/StyleTransfer/ref_and_notes/cyclegan.html">
+                        <a href="/StyleTransfer/ref_and_notes/adain.html">
                             <span class="icon"></span>
-                            <span class="label">CycleGAN：循环GAN</span>
+                            <span class="label">自适应实例归一化 AdaIN（对比模型）</span>
                         </a>
                         
                     </div>
                     <div id="next">
                         
-                        <a href="/StyleTransfer/ref_and_notes/gatys.html">
-                            <span class="label">风格迁移 Gatys（对比模型）</span>
+                        <a href="/StyleTransfer/ref_and_notes/metanet.html">
+                            <span class="label">Meta Networks（研究模型）</span>
                             <span class="icon"></span>
                         </a>
                         

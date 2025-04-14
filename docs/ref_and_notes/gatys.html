@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<html lang="zh" id="evaluation" class="">
+<html lang="zh" id="gatys" class="">
 
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="keywords" content="迁移评价">
+    <meta name="keywords" content="Gatys">
     
     
-    <meta name="description" content="风格迁移评价">
+    <meta name="description" content="Gatys 等人提出的风格迁移方法">
     
     <meta name="generator" content="teedoc">
     <meta name="theme" content="teedoc-plugin-theme-default">
@@ -46,10 +46,10 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         
     
     
-    <title>风格迁移评价 - Style Transfer - Fingsinz</title>
+    <title>Gatys 等人提出的风格迁移方法 - Style Transfer - Fingsinz</title>
     
     <script type="text/javascript">js_vars = {}</script>
-    <script type="text/javascript">metadata = {"tags": [], "date": "2025-03-27", "update": [], "ts": 1743004800, "author": "", "brief": "", "cover": "", "id": "evaluation"}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2025-04-09", "update": [], "ts": 1744128000, "author": "", "brief": "", "cover": "", "id": "gatys"}</script>
 </head>
 
 
@@ -107,7 +107,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_modular.html"><span class="label">PyTorch 模块化</span><span class=""></span></a></li>
 </ul>
 </li>
-<li class="active_parent no_link"><a><span class="label">理论学习</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active no_link"><a><span class="label">理论学习</span><span class="sub_indicator"></span></a><ul class="show">
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/vgg.html"><span class="label">VGG 卷积网络</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/resnet.html"><span class="label">ResNet：残差网络</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/unet.html"><span class="label">U-Net 卷积网络</span><span class=""></span></a></li>
@@ -115,11 +115,11 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cgan.html"><span class="label">cGAN：条件 GAN</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/patchgan.html"><span class="label">PatchGAN 到多尺度 PatchGAN</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cyclegan.html"><span class="label">CycleGAN：循环GAN</span><span class=""></span></a></li>
-<li class="active with_link"><a href="/StyleTransfer/ref_and_notes/evaluation.html"><span class="label">风格迁移评价</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/evaluation.html"><span class="label">风格迁移评价</span><span class=""></span></a></li>
 </ul>
 </li>
-<li class="not_active no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
-<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/gatys.html"><span class="label">风格迁移 Gatys（对比模型）</span><span class=""></span></a></li>
+<li class="active_parent no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="active with_link"><a href="/StyleTransfer/ref_and_notes/gatys.html"><span class="label">风格迁移 Gatys（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/wct.html"><span class="label">特征变换 - WCT</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/fast_patch_based.html"><span class="label">基于 Patch 的风格转移（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/adain.html"><span class="label">自适应实例归一化 AdaIN（对比模型）</span><span class=""></span></a></li>
@@ -141,7 +141,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     <div id="article_head">
                         <div id="article_title">
                             
-                            <h1>风格迁移评价</h1>
+                            <h1>Gatys 等人提出的风格迁移方法</h1>
                             
                         </div>
                         <div id="article_tags">
@@ -155,8 +155,8 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                                 
                             </span>
                             
-                                <span class="article_date" title="最后修改日期： 2025-03-27">
-                                    2025-03-27
+                                <span class="article_date" title="最后修改日期： 2025-04-09">
+                                    2025-04-09
                                 </span>
                             
                         </div>
@@ -174,58 +174,54 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <p><em>仅讨论评估方法</em></p>
-<h2 id="ResNet-18-%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%BB%93%E6%9E%84%E7%9B%B8%E4%BC%BC%E6%80%A7">ResNet 18 预训练模型和结构相似性</h2>
-<p><a href="https://ieeexplore.ieee.org/document/10154714"  target="_blank">Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network</a></p>
-<p><em>TANG Z, WU C, XIAO Y, et al. Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network[J].</em></p>
+                            <p><a href="https://arxiv.org/abs/1508.06576"  target="_blank">A Neural Algorithm of Artistic Style</a></p>
+<p><em>GATYS L, ECKER A, BETHGE M. A Neural Algorithm of Artistic Style[J/OL]. Journal of Vision, 2016: 326. <a href="http://dx.doi.org/10.1167/16.12.326"  target="_blank">http://dx.doi.org/10.1167/16.12.326</a>. DOI:10.1167/16.12.326.</em></p>
 <blockquote>
-<p>Unlike most image style transfer tasks, which are to convert a photograph into an image with a certain artist’s style, this paper focuses on artistic style transfer in Monet painting, which is transferring a Monet painting into an image in another artist’s style. In our experiments, we successfully implemented the Cycle-Consistent GAN model and applied Neural Style Transfer (NST) model for contrasting effects. In order to evaluate the result of artistic style transfer quantitatively and effectively with a low requirement for computational resources, we also proposed a quantitative method called style transfer indicator to make the comparison more obvious as the comparisons of the effect of image style transfer were mostly done by subjective analysis previously. This method takes both the style and content of the transferred image into account because whether the transferred image belongs to the new style is as important as whether the content of the image is saved. A ResNet18 pre-trained model and structural similarity index are used for the evaluation of style and content respectively. The human survey that we conducted also proved the validity of our style transfer indicator. Moreover, our proposed indicator could also be applied for the evaluation of other image style transfer tasks.</p>
+<p>In fine art, especially painting, humans have mastered the skill to create unique visual experiences through composing a complex interplay between the content and style of an image. Thus far the algorithmic basis of this process is unknown and there exists no artificial system with similar capabilities. However, in other key areas of visual perception such as object and face recognition near-human performance was recently demonstrated by a class of biologically inspired vision models called Deep Neural Networks. Here we introduce an artificial system based on a Deep Neural Network that creates artistic images of high perceptual quality. The system uses neural representations to separate and recombine content and style of arbitrary images, providing a neural algorithm for the creation of artistic images. Moreover, in light of the striking similarities between performance-optimised artificial neural networks and biological vision, our work offers a path forward to an algorithmic understanding of how humans create and perceive artistic imagery.</p>
 </blockquote>
-<p><strong>摘要</strong>：大多数图像风格转换任务都是将一张照片转换成具有某个艺术家风格的图像，而本文主要研究的是莫奈绘画中的艺术风格转换，即将莫奈的一幅画转换成另一个艺术家风格的图像。在我们的实验中，我们成功地实现了循环一致的 GAN 模型，并应用了神经风格迁移（NST）模型来对比效果。为了在对计算资源要求较低的情况下，对艺术风格迁移的效果进行定量有效的评价，我们还提出了一种称为风格迁移指标的定量方法，使图像风格迁移效果的比较更加明显。该方法同时考虑了转换图像的样式和内容，因为转换的图像是否应用新风格与图像的内容是否保持一致同样重要。ResNet 18 预训练模型和结构相似性指数分别用于风格和内容的评估。我们在人们中调查也证明了我们的风格转移指标的有效性。此外，我们提出的指标也可以应用于其他图像风格迁移任务的评估。</p>
-<p><em>在 IV. Evaluation 部分</em></p>
-<h3 id="%E9%A3%8E%E6%A0%BC%E8%AF%84%E5%88%86">风格评分</h3>
-<p>在风格的定量分析方面，采用了风格分类器的方法。</p>
+<p><strong>摘要</strong>：在美术中，尤其是绘画，人类已经掌握了通过构成图像内容和风格之间复杂的相互作用来创造独特视觉体验的技能。到目前为止，这一过程的算法基础尚不清楚，也没有具有类似能力的人工系统。然而，在视觉感知的其他关键领域，如物体和人脸识别，最近一类被称为深度神经网络的生物启发视觉模型证明了接近人类的表现。在这里，我们介绍了一个基于深度神经网络的人工系统，它可以创建高感知质量的艺术图像。该系统利用神经表征对任意图像的内容和风格进行分离和重组，为艺术图像的创作提供了神经算法。此外，鉴于性能优化的人工神经网络和生物视觉之间惊人的相似性，我们的工作为理解人类如何创造和感知艺术图像的算法提供了一条道路。</p>
+<h2 id="%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9">主要内容</h2>
+<h3 id="%E5%86%85%E5%AE%B9%E4%B8%8E%E9%A3%8E%E6%A0%BC%E7%9A%84%E5%88%86%E7%A6%BB">内容与风格的分离</h3>
+<p>利用卷积神经网络（CNN）不同层次的特征表示：</p>
 <ul>
-<li>经过训练的分类器能够区分图像的风格，可以判断风格迁移模型是否将图像迁移到正确的风格以及风格转移的程度。</li>
+<li>内容特征：由 CNN 高层（如 <code>conv4_2</code>）捕获，保留图像的高层语义信息（如物体及其布局），但忽略细节像素。</li>
+<li>风格特征：通过计算多层特征图的 Gram 矩阵（特征相关性）来捕捉纹理、颜色和局部结构，形成多尺度的风格表示。</li>
 </ul>
-<p>其中，ResNet 是一种深度卷积神经网络模型，经过大型图像数据集彻底训练，可以学习图像分类和识别所需的许多特征。</p>
-<ul>
-<li>使用预训练的 ResNet18 模型（需要微调）对生成图像进行风格分类。</li>
-<li>通过 SoftMax 输出概率值作为风格得分（0-1），衡量生成图像与目标风格的匹配度。</li>
-</ul>
-<h3 id="%E5%86%85%E5%AE%B9%E8%AF%84%E5%88%86">内容评分</h3>
-<p>在内容的定量分析方面，采用结构相似性指数 SSIM 指标。</p>
-<p>将 SSIM 的三个组成部分，<strong>亮度</strong>、<strong>对比度</strong> 和 <strong>结构</strong> 相乘生成 SSIM：</p>
+<h3 id="%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95">图像生成方法</h3>
+<p>损失函数：联合优化内容损失（$\mathcal{L}_{content}$）和风格损失（$\mathcal{L}_{style}$）：</p>
 $$
-S(x,y) = f(l(x, y), c(x, y), s(x, y)) = l(x, y) \cdot c(x, y) \cdot s(x, y)
-$$<p>其中，$l$, $c$, $s$ 代表评估亮度、对比度和结构；$x$ 和 $y$ 分别是 2 张图像。</p>
-<h4 id="%E4%BA%AE%E5%BA%A6%E6%B5%8B%E9%87%8F">亮度测量</h4>
-<p>亮度通过图像的均值 $\mu$ 衡量：</p>
-$$
-l(x,y) = \frac{2 \mu_x \mu_y + C_1}{\mu_x^2 + \mu_y^2 + C_1}
-$$<p>其中：</p>
-<ul>
-<li>$\mu_x$ 和 $\mu_y$ 是图像 $x$ 和 $y$ 的均值。</li>
-<li>$C_1$ 是一个常数，用于防止分母为零的情况，通常 $C_1=(k_1L)^2$，$L$ 为像素动态范围，$k_1\ll 1$。</li>
+\mathcal{L}_{total} = \alpha \mathcal{L}_{content} + \beta \mathcal{L}_{style}
+$$<ul>
+<li>内容损失：基于目标图像与生成图像在指定层的特征差异（均方误差）。</li>
+<li>风格损失：基于 Gram 矩阵的差异，通过多层（如<code>conv1_1</code>至<code>conv5_1</code>）加权求和。</li>
 </ul>
-<h4 id="%E5%AF%B9%E6%AF%94%E5%BA%A6%E6%B5%8B%E9%87%8F">对比度测量</h4>
-<p>对比度通过标准差 $\sigma$ 衡量：</p>
-$$
-c(x,y) = \frac{2 \sigma_x \sigma_y + C_2}{\sigma_x^2 + \sigma_y^2 + C_1}
-$$<p>其中：</p>
+<p>优化过程：从白噪声图像出发，通过梯度下降逐步调整，使生成图像同时匹配目标内容和风格。</p>
+<h3 id="%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%94%B9%E8%BF%9B">网络架构与改进</h3>
+<ol>
+<li>使用 VGG-19 网络，移除全连接层，仅保留卷积和池化层。</li>
+<li>将最大池化替换为平均池化，以改善梯度流动和生成效果。</li>
+</ol>
+<h2 id="%E5%85%B3%E9%94%AE%E5%88%9B%E6%96%B0%E7%82%B9">关键创新点</h2>
+<ol>
+<li><p>Gram 矩阵表征风格：Gram 矩阵通过计算不同特征图之间的相关性，有效捕捉纹理的统计特性（如颜色分布、笔触方向），从而将风格抽象为多尺度的统计信息。</p>
+</li>
+<li><p>分层控制风格与内容：</p>
 <ul>
-<li>$\sigma_x$ 和 $\sigma_y$ 是图像 $x$ 和 $y$ 的标准差。</li>
-<li>$C_2$ 是一个常数，用于防止分母为零的情况，通常 $C_2=(k_2L)^2$，$L$ 为像素动态范围，$k_2\ll 1$。</li>
+<li>高层内容层（如 <code>conv4_2</code>）保留全局结构，适合内容重建。</li>
+<li>多层级风格层（低层到高层）分别捕捉不同尺度的局部纹理（低层）和整体色彩协调（高层）。</li>
+<li>通过调整使用的层数（如仅用低层生成局部纹理）和损失权重（$\alpha/\beta$），可灵活控制生成效果。</li>
 </ul>
-<h4 id="%E7%BB%93%E6%9E%84%E6%B5%8B%E9%87%8F">结构测量</h4>
-<p>结构通过协方差 $\sigma_{xy}$ 衡量：</p>
-$$
-s(x,y) = \frac{\sigma_{xy} + C_3}{\sigma_x \sigma_y + C_3}
-$$<p>其中：</p>
+</li>
+</ol>
+<h2 id="%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C">实验结果</h2>
+<p>成功将名画风格（如梵高《星空》、蒙克《呐喊》）应用到同一张照片（图宾根内卡河畔），生成图像既保留原图内容，又复现艺术风格。</p>
+<p>参数影响分析：</p>
 <ul>
-<li>$\sigma_{xy}$ 是图像 $x$ 和 $y$ 的协方差。</li>
-<li>$C_3$ 是一个常数，通常取 $C_2/2$。</li>
+<li>层数选择：使用更高层风格特征（如包含 <code>conv5_1</code>）会生成更平滑、连贯的视觉效果。</li>
+<li>权重调整：增大 $\alpha/\beta$（侧重内容）保留更多原图结构；减小 $\alpha/\beta$（侧重风格）则强化纹理，弱化内容。</li>
 </ul>
+<h2 id="%E5%AE%9E%E7%8E%B0">实现</h2>
+<p>TensorFlow-Github：<a href="https://github.com/lengstrom/fast-style-transfer"  target="_blank">https://github.com/lengstrom/fast-style-transfer</a></p>
 
                         
                     </div>
@@ -233,16 +229,16 @@ $$<p>其中：</p>
                 <div id="previous_next">
                     <div id="previous">
                         
-                        <a href="/StyleTransfer/ref_and_notes/cyclegan.html">
+                        <a href="/StyleTransfer/ref_and_notes/evaluation.html">
                             <span class="icon"></span>
-                            <span class="label">CycleGAN：循环GAN</span>
+                            <span class="label">风格迁移评价</span>
                         </a>
                         
                     </div>
                     <div id="next">
                         
-                        <a href="/StyleTransfer/ref_and_notes/gatys.html">
-                            <span class="label">风格迁移 Gatys（对比模型）</span>
+                        <a href="/StyleTransfer/ref_and_notes/wct.html">
+                            <span class="label">特征变换 - WCT</span>
                             <span class="icon"></span>
                         </a>
                         
