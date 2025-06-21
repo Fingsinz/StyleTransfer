@@ -17,7 +17,7 @@ items:
     -   label: PyTorch 模块化
         file: pytorch_modular.md
 
--   label: 理论学习
+-   label: 图像风格迁移相关理论
     collapsed: false
     items:
     -   label: VGG 卷积网络
@@ -26,29 +26,32 @@ items:
         file: resnet.md
     -   label: U-Net 卷积网络
         file: unet.md
-    -   label: GAN：生成对抗网络
-        file: gan.md
-    -   label: cGAN：条件 GAN
-        file: cgan.md
-    -   label: PatchGAN 到多尺度 PatchGAN
-        file: patchgan.md
-    -   label: CycleGAN：循环GAN
-        file: cyclegan.md
+    -   label: 未能使用上的算法
+        collapsed: true
+        items:
+        -   label: GAN：生成对抗网络
+            file: gan.md
+        -   label: cGAN：条件 GAN
+            file: cgan.md
+        -   label: PatchGAN 到多尺度 PatchGAN
+            file: patchgan.md
+        -   label: CycleGAN：循环GAN
+            file: cyclegan.md
     -   label: 风格迁移评价
         file: evaluation.md
 
 -   label: 风格迁移实战
     collapsed: false
     items:
-    -   label: 风格迁移 Gatys（对比模型）
+    -   label: 风格迁移 Gatys
         file: gatys.md
     -   label: 特征变换 - WCT
         file: wct.md
-    -   label: 基于 Patch 的风格转移（对比模型）
+    -   label: 基于 Patch 的风格转移
         file: fast_patch_based.md
-    -   label: 自适应实例归一化 AdaIN（对比模型）
+    -   label: AdaIN（对比模型）
         file: adain.md
-    -   label: 实时多风格迁移的生成网络（对比模型）
+    -   label: MSGNet（对比模型）
         file: msgnet.md
     -   label: Meta Networks（研究模型）
         file: metanet.md

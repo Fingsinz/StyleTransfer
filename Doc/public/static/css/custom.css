@@ -16,3 +16,14 @@
 body {  
     font-family: "霞鹜文楷", "Times New Roman", Helvetica, sans-serif;  
 }
+
+#content_body img {
+    display: block;  
+    margin: 0 auto; 
+}
+
+table {  
+    margin: 0 auto;  
+    display: table;  
+    width: auto;  
+}

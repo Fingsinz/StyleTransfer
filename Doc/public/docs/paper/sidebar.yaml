@@ -1,4 +1,6 @@
 items:
+-   label: 摘要
+    file: abstract.md
 -   label: 第 1 章 绪论
     file: introduction.md
 -   label: 第 2 章 相关理论基础
@@ -9,6 +11,4 @@ items:
     file: experiment.md
 -   label: 第 5 章 总结与展望
     file: conclusion.md
--   label: 参考文献
-    file: references.md
 

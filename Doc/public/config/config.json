@@ -9,11 +9,6 @@
         "home_url": "/",
         "items": [
             {
-                "url": "/supporting/",
-                "label": "辅助材料",
-                "position": "left"
-            },
-            {
                 "url": "/ref_and_notes/",
                 "label": "文献学习 & 笔记",
                 "position": "left"

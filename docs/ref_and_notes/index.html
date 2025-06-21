@@ -68,7 +68,6 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         <div id="navbar_items">
             <div>
                 <ul id="nav_left">
-<li class=""><a  href="/StyleTransfer/supporting/">辅助材料</a></li>
 <li class="active"><a  href="/StyleTransfer/ref_and_notes/">文献学习 & 笔记</a></li>
 <li class=""><a  href="/StyleTransfer/paper/">论文正文</a></li>
 </ul>
@@ -107,23 +106,26 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/pytorch_modular.html"><span class="label">PyTorch 模块化</span><span class=""></span></a></li>
 </ul>
 </li>
-<li class="not_active no_link"><a><span class="label">理论学习</span><span class="sub_indicator"></span></a><ul class="show">
+<li class="not_active no_link"><a><span class="label">图像风格迁移相关理论</span><span class="sub_indicator"></span></a><ul class="show">
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/vgg.html"><span class="label">VGG 卷积网络</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/resnet.html"><span class="label">ResNet：残差网络</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/unet.html"><span class="label">U-Net 卷积网络</span><span class=""></span></a></li>
+<li class="not_active no_link"><a><span class="label">未能使用上的算法</span><span class="sub_indicator sub_indicator_collapsed"></span></a><ul class="">
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/gan.html"><span class="label">GAN：生成对抗网络</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cgan.html"><span class="label">cGAN：条件 GAN</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/patchgan.html"><span class="label">PatchGAN 到多尺度 PatchGAN</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/cyclegan.html"><span class="label">CycleGAN：循环GAN</span><span class=""></span></a></li>
+</ul>
+</li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/evaluation.html"><span class="label">风格迁移评价</span><span class=""></span></a></li>
 </ul>
 </li>
 <li class="not_active no_link"><a><span class="label">风格迁移实战</span><span class="sub_indicator"></span></a><ul class="show">
-<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/gatys.html"><span class="label">风格迁移 Gatys（对比模型）</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/gatys.html"><span class="label">风格迁移 Gatys</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/wct.html"><span class="label">特征变换 - WCT</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/fast_patch_based.html"><span class="label">基于 Patch 的风格转移（对比模型）</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/adain.html"><span class="label">自适应实例归一化 AdaIN（对比模型）</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/msgnet.html"><span class="label">实时多风格迁移的生成网络（对比模型）</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/fast_patch_based.html"><span class="label">基于 Patch 的风格转移</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/adain.html"><span class="label">AdaIN（对比模型）</span><span class=""></span></a></li>
+<li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/msgnet.html"><span class="label">MSGNet（对比模型）</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/ref_and_notes/metanet.html"><span class="label">Meta Networks（研究模型）</span><span class=""></span></a></li>
 </ul>
 </li>
@@ -174,43 +176,45 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <h3 id="TODO">TODO</h3>
-<ol>
-<li>编写基本的项目框架代码，实现一种方法（MetaNets），后面考虑扩展比较 AdaIN （<a href="https://arxiv.org/abs/1703.06868"  target="_blank">Arbitrary Style Transfer in Real-time with Adaptive Instance Normalization</a>）和特征变换（<a href="https://arxiv.org/abs/1705.08086"  target="_blank">Universal Style Transfer via Feature Transforms</a>）</li>
-<li>学习评估指标 <a href="https://ieeexplore.ieee.org/document/10154714"  target="_blank">风格转移指标（Style Transfer Indicator）Evaluation of Painting Artistic Style Transfer Based on Generative Adversarial Network</a></li>
-<li>学习 PyTorch 框架(2)<ul>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>迁移学习</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>实验跟踪</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>论文复制</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>模型部署</li>
+                            <h2 id="%E7%9B%AE%E5%BD%95">目录</h2>
+<ul>
+<li><p>PyTorch 框架</p>
+<ul>
+<li>PyTorch 环境安装</li>
+<li>Tensor 张量</li>
+<li>PyTorch 基本工作流</li>
+<li>PyTorch 分类模型</li>
+<li>PyTorch 中的计算机视觉</li>
+<li>PyTorch 中自定义数据集</li>
+<li>PyTorch 模块化</li>
 </ul>
 </li>
-</ol>
-<h3 id="%E6%B6%89%E5%8F%8A%E6%96%87%E7%8C%AE">涉及文献</h3>
-<ol>
-<li><p><a href="https://arxiv.org/abs/1409.1556"  target="_blank">VGG——Very Deep Convolutional Networks for Large-Scale Image Recognition</a></p>
+<li><p>图像风格迁移相关理论</p>
+<ul>
+<li>VGG 卷积网络</li>
+<li>ResNet：残差网络</li>
+<li>U-Net 卷积网络</li>
+<li>未能使用上的算法（本来打算基于GAN做图像风格迁移，但后来转向基于元学习的算法）<ul>
+<li>GAN：生成对抗网络</li>
+<li>cGAN：条件 GAN</li>
+<li>PatchGAN 到多尺度 PatchGAN</li>
+<li>CycleGAN：循环GAN</li>
+</ul>
 </li>
-<li><p><a href="https://arxiv.org/abs/1512.03385"  target="_blank">ResNet——Deep Residual Learning for Image Recognition</a></p>
+<li>风格迁移评价</li>
+</ul>
 </li>
-<li><p><a href="https://arxiv.org/abs/1505.04597"  target="_blank">U-Net: Convolutional Networks for Biomedical Image Segmentation</a></p>
+<li><p>风格迁移实战</p>
+<ul>
+<li>风格迁移 Gatys</li>
+<li>特征变换 - WCT</li>
+<li>基于 Patch 的风格转移</li>
+<li>label: AdaIN（对比模型）</li>
+<li>MSGNet（对比模型）</li>
+<li>Meta Networks（研究模型）</li>
+</ul>
 </li>
-<li><p><a href="https://arxiv.org/abs/1406.2661"  target="_blank">GAN——Generative Adversarial Networks</a></p>
-</li>
-<li><p><a href="https://arxiv.org/abs/1411.1784"  target="_blank">Conditional Generative Adversarial Nets</a></p>
-</li>
-<li><p><a href="https://openaccess.thecvf.com/content_cvpr_2017/papers/Isola_Image-To-Image_Translation_With_CVPR_2017_paper.pdf"  target="_blank">PatchGAN 起源 —— Image-to-Image Translation with Conditional Adversarial Networks</a></p>
-</li>
-<li><p><a href="https://arxiv.org/abs/1711.11585"  target="_blank">将PatchGAN扩展为多尺度（3级金字塔）—— High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs</a></p>
-</li>
-<li><p><a href="https://arxiv.org/abs/1703.10593"  target="_blank">Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks</a></p>
-</li>
-<li><p><a href="https://arxiv.org/abs/1709.04111"  target="_blank">Meta Networks for Neural Style Transfer</a></p>
-</li>
-</ol>
-<h3 id="%E9%A3%8E%E6%A0%BC%E8%BF%81%E7%A7%BB%E5%AE%9E%E6%88%98%E4%BB%A3%E7%A0%81%E5%8F%82%E8%80%83">风格迁移实战代码参考</h3>
-<ol>
-<li>Image Style Transfer Using Convolutional Neural Networks：<a href="https://github.com/b06b01073/style-transfer/tree/main"  target="_blank">https://github.com/b06b01073/style-transfer/tree/main</a></li>
-</ol>
+</ul>
 
                         
                     </div>

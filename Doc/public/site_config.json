@@ -7,7 +7,6 @@
     "config_template_dir": "config",
     "route": {
         "docs": {
-            "/supporting/": "docs/supporting",
             "/paper/": "docs/paper",
             "/ref_and_notes/": "docs/ref_and_notes"
         },

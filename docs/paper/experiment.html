@@ -49,7 +49,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
     <title>实验与评估 - Style Transfer - Fingsinz</title>
     
     <script type="text/javascript">js_vars = {}</script>
-    <script type="text/javascript">metadata = {"tags": [], "date": "2025-04-04", "update": [], "ts": 1743696000, "author": "", "brief": "", "cover": "", "id": "experiment", "class": "heading_no_counter"}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2025-06-21", "update": [], "ts": 1750435200, "author": "", "brief": "", "cover": "", "id": "experiment", "class": "heading_no_counter"}</script>
 </head>
 
 
@@ -68,7 +68,6 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         <div id="navbar_items">
             <div>
                 <ul id="nav_left">
-<li class=""><a  href="/StyleTransfer/supporting/">辅助材料</a></li>
 <li class=""><a  href="/StyleTransfer/ref_and_notes/">文献学习 & 笔记</a></li>
 <li class="active"><a  href="/StyleTransfer/paper/">论文正文</a></li>
 </ul>
@@ -97,12 +96,12 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     
                 </div>
                 <ul class="show">
+<li class="not_active with_link"><a href="/StyleTransfer/paper/abstract.html"><span class="label">摘要</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/paper/introduction.html"><span class="label">第 1 章 绪论</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/paper/related_work.html"><span class="label">第 2 章 相关理论基础</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/paper/proposed_network.html"><span class="label">第 3 章 基于改进的 MetaNet 风格迁移算法研究</span><span class=""></span></a></li>
 <li class="active with_link"><a href="/StyleTransfer/paper/experiment.html"><span class="label">第 4 章 实验与评估</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/paper/conclusion.html"><span class="label">第 5 章 总结与展望</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/StyleTransfer/paper/references.html"><span class="label">参考文献</span><span class=""></span></a></li>
 </ul>
 
             </div>
@@ -131,8 +130,8 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                                 
                             </span>
                             
-                                <span class="article_date" title="最后修改日期： 2025-04-04">
-                                    2025-04-04
+                                <span class="article_date" title="最后修改日期： 2025-06-21">
+                                    2025-06-21
                                 </span>
                             
                         </div>
@@ -150,9 +149,524 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <h2 id="4.1-%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE">4.1 实验设置</h2>
-<h2 id="4.2-%E7%BA%B5%E5%90%91%E5%AF%B9%E6%AF%94">4.2 纵向对比</h2>
-<h2 id="4.3-%E6%A8%AA%E5%90%91%E5%AF%B9%E6%AF%94">4.3 横向对比</h2>
+                            <style>
+.text {
+    text-indent: 2em;
+    font-size: 20px;
+}
+
+.note {
+    text-align: center;
+    font-size: 0.8em"
+}
+
+table>caption {
+    margin: 0 0 5px 0;
+}
+
+table>thead>tr>th {
+    border-top: 2px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+table>tbody>tr:last-child>td {
+    border-bottom: 2px solid #000;
+}
+table>thead>tr>th {
+    padding: 6px 20px;
+    text-align: center;
+}
+
+table>tbody>tr>td {
+    padding: 6px 20px;
+    text-align: center;
+}
+</style>
+<h2 id="4.1-%E5%AE%9E%E9%AA%8C%E8%AE%BE%E7%BD%AE">4.1 实验设置</h2>
+<h3 id="4.1.1-%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BB%8B%E7%BB%8D">4.1.1 数据集介绍</h3>
+<div class="text">
+<p>本研究的实验中内容图像数据选用Microsoft COCO 2017数据集中的测试集，风格图像数据使用WikiArt数据集的子集。</p>
+<p>Microsoft COCO 2017 是微软团队提供的一个用于进行图像识别的数据集，覆盖人、汽车、动物等多个物体类别和天空、草地、建筑等多种背景。COCO全称Common Objects in Context，实验中使用的 COCO 2017 test 数据集由 40670 张高度真实且场景复杂图像组成<sup>[38]</sup>。Microsoft COCO 2017 数据集多样的物体以及丰富的背景可以为图像风格迁移提供有力的内容图像支持。</p>
+<p>WikiArt 数据集是一个非营利性的线上艺术博物馆项目。目前为止，数据集已经收录了3293位艺术家的169057件画作，包括61个流派。实验中使用的Wikiart数据集子集包括80000张图片，涉及抽象表现主义、巴罗克风格、流行艺术、现实主义、印象主义、文艺复兴盛期和晚期等20个流派。WikiArt数据集记录了许多艺术家的真实画作，为图像风格迁移提供了有效的风格图像支持。</p>
+</div>
+<h3 id="4.1.2-%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE">4.1.2 实验环境配置</h3>
+<div class="text">
+<p>本文中的所有实验均依托超算互联网平台。在训练过程中，硬件层面CPU使用的是Hygon C86 7285 型号的 32 核处理器，浮点计算使用异构加速卡，加速卡类型为DCU，显存16GB；软件方面，配置DTK 25.04开发工具包、PyTorch 2.4.1深度学习框架及Python 3.10编程语言环境。</p>
+<p>在整个训练过程中总共执行100次迭代。训练中采用余弦退火动态学习率调整策略，初始学习率设置为0.001，最小学习率设置为0.00001，可以保证训练的稳定性，提高模型的收敛效率。选择Adam优化器，能够提高了训练过程的稳定性和收敛速度。标准情况下，内容损失权重设置为1，风格损失权重设置为150，总变异损失权重设置为0.00001。</p>
+<p>除了上述的迭代轮次、学习率、优化器、内容损失权重、风格损失权重之外，本文实验的超参数变量还有VGG模型的版本(16还是19)、批次大小、轮换风格图像的轮次、图像转换网络卷积层的通道基数base、是否引入注意力机制以及注意力机制的种类。</p>
+</div>
+<h3 id="4.1.3-%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87">4.1.3 评估指标</h3>
+<div class="text">
+<p>实验的评估主要采用客观的SSIM指标、PSNR指标、风格特征Gram矩阵余弦相似度、主观的人工视觉判别意见得分以及模型推演速度作为图像风格迁移生成图像质量和效率的评价标准。前两者SSIM指标和PSNR指标用于评估风格迁移在内容上的性能，风格特征Gram矩阵余弦相似度和主观人工评分则用于评估风格迁移在风格上的性能。</p>
+<p>SSIM(Structural Similarity)指的是结构相似性指数，用于衡量两幅图像在亮度(均值)、色彩对比度(方差)与结构(协方差)三个维度上的相似性，取值范围为-1到1，值越接近1表示两幅图像越相似。对于亮度的计算如式4.1，色彩对比度的计算如式4.2，结构相似计算如式4.3，其中，$I(x,y)$ 表示图像的亮度特征，$c(x,y)$ 表示图像的色彩对比度特征，$s(x,y)$ 表示图像的结构特征，$\mu_x$ 和 $\mu_y$ 分别表示图像x和y的均值，$\sigma_x$ 和 $\sigma_y$ 分别表示图像x和y的方差，$\sigma_{xy}$ 表示图像x和y的协方差，$C_1$、$C_2$ 和 $C_3$ 都为常数。</p>
+</div>
+$$
+I(x,y)=\frac {2 \mu_x \mu_y + C_1} {\mu_x^2 + \mu_y^2 + C_1}\tag{4.1}
+$$$$
+c(x,y)=\frac {2 \sigma_{xy} + C_2}{\sigma_x^2 + \sigma_y^2 + C_2}\tag{4.2}
+$$$$
+s(x,y)=\frac {\sigma_{xy} + C_3}{\sigma_x \sigma_y + C_3}\tag{4.3}
+$$<div class="text">
+<p>PSNR(Peak Signal-to-Noise Ratio)指的是峰值信噪比，通过量化生成图像与原图像的像素级差异从而评估生成质量。PSNR的数学定义如公式4.4所示，其中 $I$ 为内容图像，$J$ 为迁移图像，$MAX_I$ 表示图像像素的最大可能值，$MSE$ 表示均方误差。PSNR的值越高，说明像素差异越小，图像的结构则越接近原内容图像。PSNR能够有效捕捉迁移后图像与内容图像在轮廓、物体布局等低频结构上的一致性。例如，当风格迁移模型过度扭曲内容结构时，PSNR会显著下降，从而在内容保留方面提供客观量化依据。</p>
+</div>
+$$
+PSNR=10\log_{10}\frac{MAX_I^2}{MSE}\tag{4.4}
+$$$$
+MSE=\frac {1}{mn}\sum_{i=1}^{m-1}\sum_{j=1}^{n-1}(I(i,j)-J(i,j))^2\tag{4.5}
+$$<div class="text">
+<p>风格Gram矩阵余弦相似度(Style Gram Matrix Cosine Similarity)是一种评估两幅图像风格相似性的指标，本文中简称为SGMCS，下同。该指标的计算流程如下。首先，通过预训练的VGG-19卷积神经网络模型提取风格图像和迁移后图像的某些层输出作为风格特征。接着对提取到的风格特征计算Gram矩阵。Gram矩阵的每个元素表示特征图中不同通道之间的内积，可以反映特征通道之间的相关性，能够有效表示图像的风格信息。然后将Gram矩阵其展平为一维向量，计算风格迁移后图像跟原风格图像的一维向量的余弦相似度。SGMCS的计算表达式如公式4.6，其中Gram的计算如公式4.7，$\epsilon$ 为极小常数，此处取值为避免分母为0。Gram计算公式中输入为 $I\in\mathbb{R}^{C\times H\times W}$，重塑后 $I'\in\mathbb{R}^{C\times(H\times W)}$。SGMCS的计算结果范围在[-1,1]之间，值越接近1，表示两幅图像的风格相似度越高；值越接近-1，表示风格越是相反；值为0则表示两者风格完全不相关。</p>
+</div>
+$$
+\text{SGMCS}(I_s, I_t) = \frac {Gram(I_s)\cdot Gram(I_t)}{\Vert Gram(I_s)\Vert \Vert Gram(I_t)\Vert + \epsilon}\tag{4.6}
+$$$$
+Gram(I) = I' \cdot I'^T\tag{4.7}
+$$<div class="text">
+<p>主观的人工视觉判别得分是由人类主观的评价得到。实验中选取若干个风格图像样本和内容图像样本进行图像风格迁移，然后评分员对风格迁移后的图像进行评分。分值范围从0到10分，其中0分表示质量最差，表示可能出现严重的语义扭曲、风格特征完全缺失或存在显著伪影；10分表示质量最好，表示迁移效果理想。在得到一系列评分数据后，人为剔除异常评分以保证数据有效性。最终评估指标通过计算有效评分的算术平均值获得，即某风格迁移方法的最终得分为所有评分员对该方法生成图像评分的均值。</p>
+<p>模型推演速度SPI(Second Per Image)指的是单张图像从读取、处理到输出所需要的时间，可以衡量模型从输入内容图像、风格图像到输出风格迁移图像的效率。SPI的计算过程如公式4.7。模型推演速度受模型结构的复杂度、硬件环境、软件环境等因素影响，仅供参考。在实验设计中加入模型推演速度的评估，将模型聚焦于实时交互场景和边缘设备部署等方面，保证风格迁移效果的同时降低图像风格迁移所占用的时间。本章中模型推演速度的测试环境配置如下：处理器为16 vCPU的Intel (R) Xeon (R) Platinum 8474C，显卡采用RTX 4090D(显存24GB)，内存容量80GB，操作系统为Ubuntu22.04，软件环境为Python3.12、PyTorch2.5.1及CUDA12.4。</p>
+</div>
+<h2 id="4.2-%E5%AE%9E%E9%AA%8C%E6%B5%81%E7%A8%8B">4.2 实验流程</h2>
+<div class="text">
+<p>本文实验包括网络的训练、网络参数调整以及与其他图像风格迁移算法的比较分析。</p>
+<p>本文元网络训练流程如图4.1所示。训练开始时初始化VGG模型、图像转换网络和元学习器。在训练过程中，模型按照设定的轮次进行循环训练。在每一轮中，内容图像数据集被划分为指定批次大小的若干个小批量输入到网络中进行训练。每间隔固定的批次数，随机选取一张新的风格图像提取风格特征，用于训练学习当前阶段风格的迁移。在每个批次中，模型对该批次的内容图像进行风格迁移，并与原内容图像和原风格图像计算内容损失、风格损失，以及与自身计算总变分损失。随后，模型根据计算的损失利用优化器优化模型参数，从而降低模型损失，提升图像风格迁移的效果。</p>
+</div>
+<p><img src="../static/images/Paper/TrainFlow.svg" alt="图4.1训练流程" /></p>
+<p class="note">图4.1训练流程</p>
+<h2 id="4.3-%E7%BA%B5%E5%90%91%E5%AF%B9%E6%AF%94">4.3 纵向对比</h2>
+<div class="text">
+<p>纵向对比主要针对网络自身的不同参数取值所产生的效果进行对比。本节对于MetaNet的实验固定迭代轮次为100，固定使用余弦退火动态调整学习率和Adam优化器，其余参数如风格损失权重、VGG模型的版本(16还是19)、批次大小、轮换风格图像的轮次、图像转换网络卷积层的通道基数base、是否引入注意力机制以及注意力机制的种类都作为变量进行实现对比分析结果。实验使用10张风格图像和500张内容图像，共生成5000张迁移图像。在此基础上计算结构相似性指数、峰值信噪比指数、Gram特征余弦相似度和FID指数。</p>
+<p>其中基线模型的参数为：无注意力机制，特征提取网络选用VGG-16模型，风格损失权重设置为50，内容损失权重设置为1，总变分损失权重为1e-6，批次大小设定为8，每20批次内容图像轮换一次风格图像，图像转换网络初始通道基数base设置为8。</p>
+</div>
+<h3 id="4.3.1-%E9%A3%8E%E6%A0%BC%E6%8D%9F%E5%A4%B1%E6%9D%83%E9%87%8D%E5%BD%B1%E5%93%8D%E5%AE%9E%E9%AA%8C">4.3.1 风格损失权重影响实验</h3>
+<div class="text">
+<p>针对风格损失权重进行对比实验，分别取值为50、100、150、200。实验中，添加基础通道注意力模块，图像转换网络初始通道基数base设置为32，其余参数同基线模型的参数。各个模型训练时长和所占资源相近，实验指标情况如表4-1所示，其中模型名字简称为风格损失权重的取值。</p>
+<p>从表4-1可知，随着风格损失权重逐步提升，SSIM指标从初始的0.441下降至0.338，表明原内容图像与风格迁移后的图像在结构上的相似度越来越低。SSIM指标的下降可能是因为风格损失权重的增加，使得风格在迁移中的占比越来越大，内容细节在迁移过程中可能被忽视。而PSNR指标数值稳定地维持在27.89至27.94区间内，波动幅度较小，图像的整体保真度并未受到显著影响。风格Gram矩阵余弦相似度同样随着风格损失权重的升高而升高，与预期的理论表现高度契合。推演速度无明显差异，说明风格损失权重的调整对计算效率影响较小。</p>
+</div>
+<p class="note">表4-1风格损失权重实验结果</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">模型</th>
+  <th style="text-align:center">SSIM</th>
+  <th style="text-align:center">PSNR</th>
+  <th style="text-align:center">SGMCS</th>
+  <th style="text-align:center">SPI</th>
+  <th style="text-align:center">人工评分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">50</td>
+  <td style="text-align:center"><u>0.441457</u></td>
+  <td style="text-align:center">27.919930</td>
+  <td style="text-align:center">0.686667</td>
+  <td style="text-align:center">0.155095</td>
+  <td style="text-align:center">4.1</td>
+</tr>
+<tr>
+  <td style="text-align:center">100</td>
+  <td style="text-align:center">0.366497</td>
+  <td style="text-align:center"><u>27.939641</u></td>
+  <td style="text-align:center">0.697833</td>
+  <td style="text-align:center">0.149371</td>
+  <td style="text-align:center">6.6</td>
+</tr>
+<tr>
+  <td style="text-align:center">150</td>
+  <td style="text-align:center">0.362293</td>
+  <td style="text-align:center">27.889932</td>
+  <td style="text-align:center">0.696696</td>
+  <td style="text-align:center"><u>0.148403</u></td>
+  <td style="text-align:center">6.5</td>
+</tr>
+<tr>
+  <td style="text-align:center">200</td>
+  <td style="text-align:center">0.337894</td>
+  <td style="text-align:center">27.901066</td>
+  <td style="text-align:center"><u>0.701731</u></td>
+  <td style="text-align:center">0.152467</td>
+  <td style="text-align:center"><u>7.3</u></td>
+</tr>
+</tbody>
+</table>
+<p><img src="../static/images/Paper/StyleWeight.webp" alt="图4.2风格损失权重不同取值效果对比" /></p>
+<p class="note">图4.2风格损失权重不同取值效果对比</p>
+<h3 id="4.3.2-%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84%E7%A7%8D%E7%B1%BB%E5%BD%B1%E5%93%8D%E5%AE%9E%E9%AA%8C">4.3.2 注意力机制的种类影响实验</h3>
+<div class="text">
+<p>针对注意力机制模块的种类进行对比实验，分别设置为基础通道注意力模块、增强通道注意力模块、自注意力机模块和Transformer模块。实验中，无注意力机制的模型为基线模型，其余的参数同基线模型的参数。实验指标情况如表4-2，其中模型名字简称为注意力机制的种类。</p>
+<p>从表4-2可知，在SSIM指标和PSNR指标上，添加基础通道注意力模块的模型的SSIM指标相比基线模型提升了3.96%，PSNR指标提升了0.21%，表明基础通道注意力模块能够有效捕捉并还原图像中的细节；而添加增强通道注意力的模型的SSIM指标增幅比添加基础通道注意力的模型低，内容相似度有所下降。添加Transformer的模型PSNR指标为所有模型最高，但SSIM指标略高于基线，表明Transformer提升了图像整体亮度和对比度的稳定性，但在局部细节的处理上未能显著优于其他注意力模型。在风格Gram矩阵余弦相似度上，添加增强通道注意力的模型高于其他所有模型，可能是因为增强了通道注意力的强度，使得模型更注重风格的特征，从而提升了风格的匹配度。添加Transformer的模型在该项上得分在所有模型中最低，表明该模型更侧重于图像内容而非风格纹理，风格相似度显著降低。添加自注意力的模型整体表现不佳。究其原因，可能是自注意力机制在建模长距离依赖时，可能因计算参数冗余或参数解析能力不足，反而降低了图像局部结构的还原效果，需进一步优化。综合SSIM指标和风格Gram矩阵余弦相似度指标来看，添加各种注意力机制能够在风格迁移效果大致不变的情况下，有效保留原内容图像中的内容特征。</p>
+</div>
+<p class="note">表4-2注意力机制实验结果</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">模型</th>
+  <th style="text-align:center">SSIM</th>
+  <th style="text-align:center">PSNR</th>
+  <th style="text-align:center">SGMCS</th>
+  <th style="text-align:center">SPI</th>
+  <th style="text-align:center">人工评分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">无注意力(基线模型)</td>
+  <td style="text-align:center">0.408205</td>
+  <td style="text-align:center">27.879501</td>
+  <td style="text-align:center">0.610139</td>
+  <td style="text-align:center"><u>0.148580</u></td>
+  <td style="text-align:center">5.3</td>
+</tr>
+<tr>
+  <td style="text-align:center">基础通道注意力</td>
+  <td style="text-align:center"><u>0.424355</u></td>
+  <td style="text-align:center">27.938609</td>
+  <td style="text-align:center">0.609673</td>
+  <td style="text-align:center">0.154184</td>
+  <td style="text-align:center">5.7</td>
+</tr>
+<tr>
+  <td style="text-align:center">增强通道注意力</td>
+  <td style="text-align:center">0.411272</td>
+  <td style="text-align:center">27.961223</td>
+  <td style="text-align:center"><u>0.610794</u></td>
+  <td style="text-align:center">0.158146</td>
+  <td style="text-align:center"><u>7.1</u></td>
+</tr>
+<tr>
+  <td style="text-align:center">自注意力</td>
+  <td style="text-align:center">0.391212</td>
+  <td style="text-align:center">27.889798</td>
+  <td style="text-align:center">0.605021</td>
+  <td style="text-align:center">0.154176</td>
+  <td style="text-align:center">6.4</td>
+</tr>
+<tr>
+  <td style="text-align:center">Transformer</td>
+  <td style="text-align:center">0.410037</td>
+  <td style="text-align:center"><u>27.964593</u></td>
+  <td style="text-align:center">0.593184</td>
+  <td style="text-align:center">0.158225</td>
+  <td style="text-align:center">4.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4.3.3-VGG%E6%A8%A1%E5%9E%8B%E5%BD%B1%E5%93%8D%E5%AE%9E%E9%AA%8C">4.3.3 VGG模型影响实验</h3>
+<div class="text">
+<p>针对VGG模型的不同选择，分别使用VGG-16和VGG-19进行实验，比较图像风格迁移效果。实验中添加了基础通道注意力模块，风格损失权重设置为100，图像转换网络通道基数base设置为32，其余参数同基线模型的参数。</p>
+<p>实验指标情况如表4-3所示。基于预训练的VGG-19模型的SSIM指标略高于基于预训练VGG-16的模型。但是两者指标的数值相差不大，可以认为在保留图像结构细节上的能力接近。另外，这两个模型的PSNR指标相近，可以认为VGG模型并不影响峰值信噪比。在风格Gram矩阵余弦相似度指标上，基于预训练的VGG-19模型的高于基于预训练VGG-16的模型，说明预训练的VGG-19模型在提取风格特征上更具有优势，可能是因为VGG-19具有更深的网络结构，能够提取更深层的风格特征。</p>
+</div>
+<p class="note">表4-3VGG模型实验结果</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">模型</th>
+  <th style="text-align:center">SSIM</th>
+  <th style="text-align:center">PSNR</th>
+  <th style="text-align:center">SGMCS</th>
+  <th style="text-align:center">SPI</th>
+  <th style="text-align:center">人工评分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">VGG-16</td>
+  <td style="text-align:center">0.366508</td>
+  <td style="text-align:center"><u>27.939701</u></td>
+  <td style="text-align:center">0.643284</td>
+  <td style="text-align:center">0.154881</td>
+  <td style="text-align:center">6.4</td>
+</tr>
+<tr>
+  <td style="text-align:center">VGG-19</td>
+  <td style="text-align:center"><u>0.367502</u></td>
+  <td style="text-align:center">27.939578</td>
+  <td style="text-align:center"><u>0.653839</u></td>
+  <td style="text-align:center"><u>0.153120</u></td>
+  <td style="text-align:center">6.7</u></td>
+</tr>
+</tbody>
+</table>
+<p><img src="../static/images/Paper/VGG.webp" alt="图4.3不同VGG模型效果对比" /></p>
+<p class="note">图4.3不同VGG模型效果对比</p>
+<h3 id="4.3.4-%E5%9B%BE%E5%83%8F%E8%BD%AC%E6%8D%A2%E7%BD%91%E7%BB%9C%E9%80%9A%E9%81%93%E5%9F%BA%E6%95%B0%E5%BD%B1%E5%93%8D%E5%AE%9E%E9%AA%8C">4.3.4 图像转换网络通道基数影响实验</h3>
+<div class="text">
+<p>针对图像转换网络通道基数base进行对比实验，分成两组进行实验，表4-5中模型名字为批次大小以及组别，如“8(1)”表示第一组中图像转换网络通道基数base取值为8的情况。第一组无特别参数设置，“8(1)”即基线模型；第二组添加基础通道注意力模块，其余参数同基线模型。</p>
+<p>图像转换网络通道基数base直接影响图像转换网络的结构复杂度，也间接影响了元学习器的模型参数量。参数量影响模型的大小。表4-4给出了base与图像转换网络和元学习器之间参数量的关系。当base为32时，元学习器的参数量是base为8时参数量的13倍，图像转换网络的参数量是base为8时参数量的15倍。</p>
+<p>实验指标情况如表4-5所示。各个模型的PSNR指标基本保持在较小的区间内浮动。在SSIM指标和风格Gram矩阵余弦相似度上，无论是第一组还是第二组，图像转换网络通道基数base为32的模型得分都高于base为8的模型，说明通道基数base的增加能够有效提高模型保留原内容图像中内容信息的能力以及迁移原风格图像中风格纹理特征的能力。但从推演速度来看，由于base的增加，导致模型复杂度增加，推理运算时长增加。总而言之，增加通道数可能增强模型对图像中复杂结构和特征的捕获能力，进而提升内容保留和风格迁移效果，但同时需要承担推理速度下降的代价，在实际应用中需根据对模型性能和速度的具体需求进行权衡。</p>
+<p>虽然base为32的模型的性能较强，但是从模型参数量和模型推演速度来看，应该结合计算资源、模型训练效率及任务性能需求综合权衡，避免因过度追求通道基数导致参数量爆炸而引发的优化困难或部署成本上升。</p>
+</div>
+<p class="note">表4-4通道基数影响网络参数量</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">图像转换网络通道基数</th>
+  <th style="text-align:center">图像转换网络参数量</th>
+  <th style="text-align:center">元学习器参数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">8</td>
+  <td style="text-align:center">107,971</td>
+  <td style="text-align:center">16,867,720</td>
+</tr>
+<tr>
+  <td style="text-align:center">32</td>
+  <td style="text-align:center">1,676,035</td>
+  <td style="text-align:center">220,797,600</td>
+</tr>
+</tbody>
+</table>
+<p class="note">表4-5图像转换网络通道基数实验结果</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">模型</th>
+  <th style="text-align:center">SSIM</th>
+  <th style="text-align:center">PSNR</th>
+  <th style="text-align:center">SGMCS</th>
+  <th style="text-align:center">SPI</th>
+  <th style="text-align:center">人工评分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">8(1)</td>
+  <td style="text-align:center">0.408205</td>
+  <td style="text-align:center">27.879501</td>
+  <td style="text-align:center">0.610139</td>
+  <td style="text-align:center"><u>0.148580</u></td>
+  <td style="text-align:center">5.9</td>
+</tr>
+<tr>
+  <td style="text-align:center">32(1)</td>
+  <td style="text-align:center"><u>0.434521</u></td>
+  <td style="text-align:center"><u>27.904213</u></td>
+  <td style="text-align:center"><u>0.630926</u></td>
+  <td style="text-align:center">0.159106</td>
+  <td style="text-align:center"><u>6.4</u></td>
+</tr>
+<tr>
+  <td style="text-align:center">8(2)</td>
+  <td style="text-align:center">0.424355</td>
+  <td style="text-align:center"><u>27.938609</u></td>
+  <td style="text-align:center">0.609673</td>
+  <td style="text-align:center"><u>0.155636</u></td>
+  <td style="text-align:center"><u>6.1</u></td>
+</tr>
+<tr>
+  <td style="text-align:center">32(2)</td>
+  <td style="text-align:center"><u>0.441471</u></td>
+  <td style="text-align:center">27.919928</td>
+  <td style="text-align:center"><u>0.627995</u></td>
+  <td style="text-align:center">0.162235</td>
+  <td style="text-align:center">5.7</td>
+</tr>
+</tbody>
+</table>
+<p><img src="../static/images/Paper/base.webp" alt="图4.4不同base效果对比" /></p>
+<p class="note">图4.4不同base效果对比</p>
+<h3 id="4.3.5-%E8%BD%AE%E6%8D%A2%E6%89%B9%E6%AC%A1%E5%BD%B1%E5%93%8D%E5%AE%9E%E9%AA%8C">4.3.5 轮换批次影响实验</h3>
+<div class="text">
+<p>轮换批次指的是训练中每隔多少批次更换一次风格图像进行学习。针对训练过程中的轮换批次进行对比实验，分别取值为10和20。实验中，添加基础通道注意力模块，风格损失权重设置为150，图像转换网络通道基数base设置为32，其余参数同基线模型的参数。实验指标情况如表4-6所示，其中模型名字简称为轮换批次的取值。</p>
+<p>由表4-6可知，每10批次轮换一次风格图像比每20批次轮换一次风格图像在风格Gram矩阵余弦相似度上得分高2.9%。这在数据集总样本数不变的情况下，提高风格图像的轮换频率能够使得模型学习到更多种类的风格样本，从而提高模型的迁移泛化能力。而随着风格迁移的效果的提升，SSIM指标会相应降低，对原内容图像结构细节的保留能力下降。此外，实验中两者的SPI指标没有显著变化，说明风格图像轮换频率的调整仅影响模型训练过程中对风格特征的学习策略，并未改变模型本身的网络结构，因此不影响模型的原来的复杂度。</p>
+</div>
+<p class="note">表4-6轮换批次实验结果</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">模型</th>
+  <th style="text-align:center">SSIM</th>
+  <th style="text-align:center">PSNR</th>
+  <th style="text-align:center">SGMCS</th>
+  <th style="text-align:center">SPI</th>
+  <th style="text-align:center">人工评分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">10</td>
+  <td style="text-align:center">0.353660</td>
+  <td style="text-align:center"><u>27.893030</u></td>
+  <td style="text-align:center"><u>0.660653</u></td>
+  <td style="text-align:center">0.158067</td>
+  <td style="text-align:center"><u>7.8</u></td>
+</tr>
+<tr>
+  <td style="text-align:center">20</td>
+  <td style="text-align:center"><u>0.362311</u></td>
+  <td style="text-align:center">27.890001</td>
+  <td style="text-align:center">0.641875</td>
+  <td style="text-align:center"><u>0.156689</u></td>
+  <td style="text-align:center">6.5</td>
+</tr>
+</tbody>
+</table>
+<p><img src="../static/images/Paper/interval.webp" alt="图4.5不同轮换批次效果对比" /></p>
+<p class="note">图4.5不同轮换批次效果对比</p>
+<h3 id="4.3.6-%E6%89%B9%E6%AC%A1%E5%A4%A7%E5%B0%8F%E5%BD%B1%E5%93%8D%E5%AE%9E%E9%AA%8C">4.3.6 批次大小影响实验</h3>
+<div class="text">
+<p>批次大小指的是在一次梯度更新中所使用的样本数量。针对批次大小进行对比实验，分成两组取值，表4-7和表4-8中模型名字为批次大小以及组别，如“4(1)”表示第一组中批次大小取值为4的情况。第一组基于VGG-19预训练模型，添加Transformer模块，风格损失权重设置为150；第二组添加基础通道注意力模块，风格损失权重设置为100，其余参数同基线模型。</p>
+<p>批次大小参数直接影响训练的过程，在总样本数一致的情况下，更大的批次大小意味着更新梯度频次更少，所以还需考虑训练所需时长。训练时长基于本章4.1小节中实验设置的环境下测量，由表4-7可知批次大小越小，训练时长越长。在第一组中，批次大小为4的模型训练时长甚至比批次大小为8的模型长了11小时。</p>
+<p>实验指标情况如表4-8所示。对于SSIM指标，第一组的批次大小从4扩大到8时，指标提升3.9%；第二组的批次大小从8扩大到16时，指标提升了5.2%。这说明更大的批次大小使得模型处理了更多的内容样本，模型能够花费更多精力地学习内容图像的结构特征，从而更好地保留原内容图像的细节信息。但是对于风格Gram矩阵余弦相似度而言，第一组的指标下降了1%，第二组的指标下降了0.8%。这说明批次大小增加会导致模型在风格特征学习上出现一定程度的弱化。这种情况可能是因为在数据集总样本数不变的情况下，批次大小越大，每一轮所迭代的次数越少，能够轮换学习的新风格图像越少，模型对风格特征的学习不够充分。综合可得，增大批次大小能够增强模型对内容结构的学习能力，但因减少迭代次数和风格样本的接触频率，导致风格特征学习的效果下降。</p>
+</div>
+<p class="note">表4-7批次大小与训练时长</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">模型</th>
+  <th style="text-align:center">训练时长</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">4(1)</td>
+  <td style="text-align:center">2天3小时18分钟</td>
+</tr>
+<tr>
+  <td style="text-align:center">8(1)</td>
+  <td style="text-align:center">1天16小时19分钟</td>
+</tr>
+<tr>
+  <td style="text-align:center">8(2)</td>
+  <td style="text-align:center">1天11小时56分钟</td>
+</tr>
+<tr>
+  <td style="text-align:center">16(2)</td>
+  <td style="text-align:center">1天9小时26分钟</td>
+</tr>
+</tbody>
+</table>
+<p class="note">表4-8批次大小实验结果</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">模型</th>
+  <th style="text-align:center">SSIM</th>
+  <th style="text-align:center">PSNR</th>
+  <th style="text-align:center">SGMCS</th>
+  <th style="text-align:center">SPI</th>
+  <th style="text-align:center">人工评分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">4(1)</td>
+  <td style="text-align:center">0.343987</td>
+  <td style="text-align:center"><u>27.881804</u></td>
+  <td style="text-align:center"><u>0.681195</u></td>
+  <td style="text-align:center"><u>0.158763</u></td>
+  <td style="text-align:center"><u>8.0</u></td>
+</tr>
+<tr>
+  <td style="text-align:center">8(1)</td>
+  <td style="text-align:center"><u>0.357377</u></td>
+  <td style="text-align:center">27.879289</td>
+  <td style="text-align:center">0.674350</td>
+  <td style="text-align:center">0.161896</td>
+  <td style="text-align:center">7.7</td>
+</tr>
+<tr>
+  <td style="text-align:center">8(2)</td>
+  <td style="text-align:center">0.366508</td>
+  <td style="text-align:center">27.939701</td>
+  <td style="text-align:center"><u>0.643284</u></td>
+  <td style="text-align:center"><u>0.156573</u></td>
+  <td style="text-align:center"><u>6.6</u></td>
+</tr>
+<tr>
+  <td style="text-align:center">16(2)</td>
+  <td style="text-align:center"><u>0.385595</u></td>
+  <td style="text-align:center"><u>27.999234</u></td>
+  <td style="text-align:center">0.638068</td>
+  <td style="text-align:center">0.158555</td>
+  <td style="text-align:center">5.2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4.4-%E6%A8%AA%E5%90%91%E5%AF%B9%E6%AF%94">4.4 横向对比</h2>
+<div class="text">
+<p>本小节对多个模型展开横向对比分析，进行对比的模型包括基线模型、本文改进模型、AdaIN方法、MSG-Net方法以及StyleID方法[39]。<br />
+基准模型被定义为未经任何特定参数调整的原始模型，基于Shen的思想实现。经过重复实验后，用于横向对比的本文改进模型的参数设置为：添加Transformer模块，特征提取网络选用VGG-19模型，风格损失权重设置为200，内容损失权重设置为1，总变分损失权重设置为10<sub>-6</sub>，批次大小设定为4，每10批次内容图像轮换一次风格图像，图像转换网络初始通道基数base设置为32。</p>
+<p>AdaIN(Adaptive Instance Normalization)方法意为自适应实例归一化，通过将内容图像的特征进行实例归一化处理后，再用风格图像的均值和方差替换内容特征的对应统计量。</p>
+<p>MSG-Net(Multi-style Generative Network)是一种多风格生成网络，通过Siamese网络提取多尺度Gram矩阵，再使用CoMatch层匹配风格Gram矩阵，实现风格迁移。</p>
+<p>StyleID(Style Injection in Diffusion)是一种基于扩散模型的方法，不进行训练，直接微调扩散模型进行快速风格迁移。</p>
+</div>
+<p class="note">表4-9横向对比评估指标</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:center">模型</th>
+  <th style="text-align:center">SSIM</th>
+  <th style="text-align:center">PSNR</th>
+  <th style="text-align:center">SGMCS</th>
+  <th style="text-align:center">SPI</th>
+  <th style="text-align:center">人工评分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center">基线模型</td>
+  <td style="text-align:center"><u>0.408205</u></td>
+  <td style="text-align:center">27.879501</td>
+  <td style="text-align:center">0.610139</td>
+  <td style="text-align:center"><u>0.148580</u></td>
+  <td style="text-align:center">5.3</td>
+</tr>
+<tr>
+  <td style="text-align:center">本文改进方法</td>
+  <td style="text-align:center">0.330672</td>
+  <td style="text-align:center">27.886268</td>
+  <td style="text-align:center"><u>0.733233</u></td>
+  <td style="text-align:center">0.171477</td>
+  <td style="text-align:center">8.4</td>
+</tr>
+<tr>
+  <td style="text-align:center">AdaIN</td>
+  <td style="text-align:center">0.102123</td>
+  <td style="text-align:center">27.901968</td>
+  <td style="text-align:center">0.720675</td>
+  <td style="text-align:center">0.065824</td>
+  <td style="text-align:center">8.3</td>
+</tr>
+<tr>
+  <td style="text-align:center">MSG-Net</td>
+  <td style="text-align:center">0.065857</td>
+  <td style="text-align:center">27.889683</td>
+  <td style="text-align:center">0.629356</td>
+  <td style="text-align:center">0.383283</td>
+  <td style="text-align:center">8.0</td>
+</tr>
+<tr>
+  <td style="text-align:center">StyleID</td>
+  <td style="text-align:center">0.144267</td>
+  <td style="text-align:center"><u>27.911183</u></td>
+  <td style="text-align:center">0.674784</td>
+  <td style="text-align:center">7.259386</td>
+  <td style="text-align:center"><u>9.3</u></td>
+</tr>
+</tbody>
+</table>
+<div class="text">
+<p>各模型间的对比结果如表4-9所示。在SSIM指标上，基线模型得分最高，说明它在保留原始内容方面的卓越表现。另一方面，AdaIN、MSG-Net、StyleID等方法的得分均低于0.15，这可能是因为风格迁移过程中风格对图像的亮度、对比度产生了明显的变化，与原内容图像的亮度、对比度相差甚远，从而导致SSIM指标得分偏低。同时也存在另一种可能性，即SSIM指标在图像风格迁移任务中存在评估局限性，无法全面精准地衡量风格迁移后的图像质量。在PSNR指标上，所有模型的得分接近，说明各个模型在降噪能力层面的表现差异并不显著，处于同一水平区间。在风格Gram矩阵余弦相似度上，本文提出的改进方法得分最高，说明该模型迁移后的风格与原风格相似度最大，学习到的风格图像特征更贴切全面。其他模型的得分不理想，但是结合表4-9的人工评分和图4.6的结果分析，可能是因为该指标的特征计算方式可能存在片面性，未能合理评估风格迁移任务中的效果，导致一些风格迁移效果良好的模型在该指标中未能得到理想分数。在推演速度上，AdaIN模型速度最快；本文改进方法在提升风格迁移效果的同时也保持可观的推演效率；而StyleID模型的推演速度最慢，说明基于扩散模型的图像风格迁移方法在计算过程中较为复杂。另外StyleID需要大量的预计算空间，如一个由10张内容图像和12张风格图像组成近4MB空间大小的图像风格迁移任务需要70GB左右的存储空间进行存储预计算量，且在推演过程中显存占用高达20GB。这进一步说明基于扩散模型的图像风格迁移方法需要更强大的硬件存储和计算资源。</p>
+<p>本文改进方法模型的更多结果如图4.7和图4.8所示。迁移所使用的内容图像为校内建筑景色，风格则选取经典的艺术画作。通过本文的改进风格迁移模型，将校园景色分别呈现出不同风格。总体来看，风格迁移技术通过改变色彩、笔触、纹理等元素，使同一内容图像展现出从抽象到写实、古典到现代等多样艺术风格，具备丰富的视觉表现力与艺术模仿能力。</p>
+</div>
+<p><img src="../static/images/Paper/HorizontalComp.webp" alt="图4.6各模型间迁移对比" /></p>
+<p class="note">图4.6各模型间迁移对比</p>
+<p><img src="../static/images/Paper/Mine1.webp" alt="图4.7本研究改进模型迁移效果1" /></p>
+<p class="note">图4.7本研究改进模型迁移效果1</p>
+<p><img src="../static/images/Paper/Mine2.webp" alt="图4.8本研究改进模型迁移效果2" /></p>
+<p class="note">图4.8本研究改进模型迁移效果2</p>
+<h2 id="4.5-%E6%9C%AC%E7%AB%A0%E5%B0%8F%E7%BB%93">4.5 本章小结</h2>
+<div class="text">
+<p>本章介绍了本文改进模型的训练环境、训练流程，并展开评估对比分析。</p>
+<p>实验依托超算互联网平台，使用Hygon处理器和DCU加速卡，基于PyTorch框架实现算法。训练采用Microsoft COCO 2017 test数据集作为内容图像，WikiArt数据集子集作为风格图像。在评估环节中，采用SSIM指标和PSNR指标衡量风格迁移前后图像内容的相似性，采用风格Gram矩阵余弦相似度评估风格的相似度，采用推演速度评估模型效率，同时引入人工主观评分对图像质量进行全面评估。</p>
+<p>在模型评估对比部分，将风格损失权重、注意力机制、VGG模型版本、图像转换网络通道基数、轮换批次和批次大小作为变量进行实验，分别评估每个变量对风格迁移效果的影响。最后，与AdaIN、MSG-Net、StyleID等方法进行横向对比，展示本文改进模型在风格迁移效果上的优越性。</p>
+<p>本章通过系统性实验验证了模型设计的有效性，揭示了关键超参数对风格迁移效果的影响效果，为模型优化提供了数据支撑。未来可进一步探索轻量化网络结构、动态调整损失权重策略，或结合更复杂注意力机制，以在边缘设备部署、实时交互等场景中实现更优性能。</p>
+</div>
+<hr />
+<p>[38] Lin T Y, Maire M, Belongie S, et al. Microsoft COCO Common Objects in Context[M/OL]//Computer Vision – ECCV 2014,Lecture Notes in Computer Science. 2014 740-755.<br />
+[39] Chung J, Hyun S, Heo J  P. Style Injection in Diffusion: A Training-free Approach for Adapting Large-scale Diffusion Models for Style Transfer[C]// roceedings of the IEEE/CVF conference on computer vision and pattern recognition. 2024  8795-8805.</p>
 
                         
                     </div>

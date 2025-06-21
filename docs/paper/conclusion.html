@@ -49,7 +49,7 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
     <title>总结与展望 - Style Transfer - Fingsinz</title>
     
     <script type="text/javascript">js_vars = {}</script>
-    <script type="text/javascript">metadata = {"tags": [], "date": "2025-04-04", "update": [], "ts": 1743696000, "author": "", "brief": "", "cover": "", "id": "conclusion", "class": "heading_no_counter"}</script>
+    <script type="text/javascript">metadata = {"tags": [], "date": "2025-06-21", "update": [], "ts": 1750435200, "author": "", "brief": "", "cover": "", "id": "conclusion", "class": "heading_no_counter"}</script>
 </head>
 
 
@@ -68,7 +68,6 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
         <div id="navbar_items">
             <div>
                 <ul id="nav_left">
-<li class=""><a  href="/StyleTransfer/supporting/">辅助材料</a></li>
 <li class=""><a  href="/StyleTransfer/ref_and_notes/">文献学习 & 笔记</a></li>
 <li class="active"><a  href="/StyleTransfer/paper/">论文正文</a></li>
 </ul>
@@ -97,12 +96,12 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     
                 </div>
                 <ul class="show">
+<li class="not_active with_link"><a href="/StyleTransfer/paper/abstract.html"><span class="label">摘要</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/paper/introduction.html"><span class="label">第 1 章 绪论</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/paper/related_work.html"><span class="label">第 2 章 相关理论基础</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/paper/proposed_network.html"><span class="label">第 3 章 基于改进的 MetaNet 风格迁移算法研究</span><span class=""></span></a></li>
 <li class="not_active with_link"><a href="/StyleTransfer/paper/experiment.html"><span class="label">第 4 章 实验与评估</span><span class=""></span></a></li>
 <li class="active with_link"><a href="/StyleTransfer/paper/conclusion.html"><span class="label">第 5 章 总结与展望</span><span class=""></span></a></li>
-<li class="not_active with_link"><a href="/StyleTransfer/paper/references.html"><span class="label">参考文献</span><span class=""></span></a></li>
 </ul>
 
             </div>
@@ -131,8 +130,8 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                                 
                             </span>
                             
-                                <span class="article_date" title="最后修改日期： 2025-04-04">
-                                    2025-04-04
+                                <span class="article_date" title="最后修改日期： 2025-06-21">
+                                    2025-06-21
                                 </span>
                             
                         </div>
@@ -150,8 +149,32 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                     </div>
                     <div id="article_content">
                         
-                            <h2 id="5.1-%E6%80%BB%E7%BB%93">5.1 总结</h2>
-<h2 id="5.2-%E5%B1%95%E6%9C%9B">5.2 展望</h2>
+                            <style>
+.text {
+    text-indent: 2em;
+    font-size: 20px;
+}
+
+.note {
+    text-align: center;
+    font-size: 0.8em"
+}
+</style>
+<h2 id="5.1-%E7%A0%94%E7%A9%B6%E6%80%BB%E7%BB%93">5.1 研究总结</h2>
+<div class="text">
+<p>早期的图像风格迁移技术主要依赖手工设计特征与数学建模等传统方法实现。这类方法不仅需要研究人员针对不同场景设计复杂处理流程，而且存在开发周期长、人力成本高和迁移效果不佳的问题。在深度学习技术的推动下，基于神经网络的图像风格迁移算法取代了传统方法，能够提升处理效率，并且生成视觉效果更细腻、艺术表现力更强的风格化图像。基于此，本文对基于元学习的深度学习图像风格迁移方法展开研究。具体工作如下：</p>
+<p>(1)本文首先阐述了研究背景与意义。图像风格迁移技术能够完成在艺术创作、影视特效、文创设计等领域的任务。接着通过梳理传统方法的局限性和深度学习方法的发展脉络，明确了研究的必要性和应用价值。然后本文介绍了图像风格迁移相关的理论基础，为后续模型改进和实验设计提供了理论支撑。</p>
+<p>(2)提出了一种基于改进的 MetaNet图像风格迁移算法。在元学习理论的基础上对MetaNet 进行改进，在特征提取方面采用深度更深的预训练VGG-19模型代替原来的预训练VGG-16模型，增强模型对复杂风格图像的纹理和色彩分布的表达能力。同时改进图像转换网络的结构，通过引入最大池化层代替原来的固定步幅卷积下采样，结合双线性插值动态恢复空间尺寸的上采样方法，并且使用实例归一化层增强模型的特征学习能力。此外，本文尝试在元学习器中引入基础通道注意力模块、增强通道注意力模块、自注意力模块和Transformer四种注意力模块，加强训练过程中深层图像空间的表达，减少内容特征和风格特征的丢失，提高图像风格迁移效果。</p>
+<p>(3)使用COCO 2017测试数据集和WikiArt数据集子集进行模型训练。通过设计多组对比实验，从注意力机制类型、VGG版本、轮换批次、批次大小等不同的超参数出发进行纵向对比，也与AdaIN、MSG-Net和StyleID等主流风格迁移算法进行横向对比。实验中采用SSIM结构相似性指数、PSNR峰值信噪比、风格Gram矩阵余弦相似度等客观指标，结合人工视觉评分，定量分析生成图像的内容保留度和风格匹配度。结果表明，改进后的算法在风格Gram矩阵余弦相似度指标上高于基线模型和其他对比算法，证明其对风格特征的捕捉能力更强；同时，在SSIM和PSNR指标上保持稳定，说明内容结构未因风格迁移而严重失真，综合性能优于部分现有方法，验证了改进策略的有效性和优越性。在人工视觉评分上，基于扩散模型的StyleID方法得分高于本文的改进方法及其他方法，图像风格迁移效果更出色。然而StyleID方法需要较长的推演时间，达到本研究改进方法所需时间的31倍。另外，StyleID方法还需对输入的内容图像和风格图像执行预计算操作，占用大量额外存储空间。与之相比，本研究方法无需预计算步骤，直接通过元学习器动态<br />
+生成转换网络参数，在保持高效推理速度的同时避免了额外存储开销，在实际应用中更具部署优势。</p>
+</div>
+<h2 id="5.2-%E7%A0%94%E7%A9%B6%E5%B1%95%E6%9C%9B">5.2 研究展望</h2>
+<div class="text">
+<p>本文以图像风格迁移作为研究领域，深入研究与分析基于深度学习的图像风格迁移方法，并提出基于MetaNet的改进算法。实验结果表明，相较于基线模型与主流方法，本文算法在风格迁移结果图像的质量与效果上均实现显著提升。但未来研究仍存在一些改进的方向：</p>
+<p>(1)图像风格迁移领域尚未形成统一且标准化的评价指标体系。作为人工智能领域的重要研究方向，图像风格迁移算法的科学性亟需一套严谨、可量化的评估标准予以支撑。然而，现阶段的效果评估主要依赖主观评分与传统客观质量评估指标。传统图像质量评估指标难以较好地衡量风格迁移任务中内容保留与风格重构的复杂特性；另外，主观的审美认知受个体影响较大，使得主观评价结果难以形成普适性结论。</p>
+<p>(2)风格迁移效果与基于扩散模型的风格迁移相比仍有明显差距。基于扩散模型的风格迁移能够更细腻地实现风格与内容的融合，生成图像的视觉效果更具真实感和艺术感，而本文改进的风格迁移方法在色彩过渡、纹理细节的呈现以及风格与内容的自然融合度等方面均存在不足，距离基于扩散模型的风格迁移水平尚有一段距离。</p>
+<p>(3)本研究缺乏图像风格迁移系统的实现和多模态融合。对算法改进但未落地成实际应用系统，后续研究可尝试构建图像风格迁移系统，整合文本描述、视频序列等多模态输入，以语义导向为核心优化风格迁移过程，进而满足多元场景的应用需求。</p>
+</div>
 
                         
                     </div>
@@ -166,11 +189,6 @@ MathJax = {"loader": {"load": ["output/svg"]}, "tex": {"inlineMath": [["$", "$"]
                         
                     </div>
                     <div id="next">
-                        
-                        <a href="/StyleTransfer/paper/references.html">
-                            <span class="label">参考文献</span>
-                            <span class="icon"></span>
-                        </a>
                         
                     </div>
                 </div>

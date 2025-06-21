@@ -11,3 +11,6 @@ id: home_page
 *2025届毕业设计课题，Fingsinz*
 
 *[[项目文档]](https://github.com/Fingsinz/StyleTransfer) [[项目代码]](https://github.com/Fingsinz/StyleTransfer-PyTorch)*
+
+
+<img src="static/images/Paper/example1.webp" style="width:80%"/>
